@@ -1,1 +1,1 @@
-# Hypermedia_project-Monstars
+# HypermediaProject-Monstars
