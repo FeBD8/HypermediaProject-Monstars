@@ -17,7 +17,11 @@
     <div class="content">
       <Nuxt />
     </div>
-    <div class="footer"></div>
+    <div class="footer">
+      © 2021 Monstar S.p.A.
+      Via Schiaffino 11  
+      20158 Milano, Italy
+    </div>
   </div>
 </template>
 
@@ -27,8 +31,11 @@ export default {}
 
 <style>
 .header {
+  position: fixed; /* Set the navbar to fixed position */
+  top: 0; /* Position the navbar at the top of the page */
+  width: 100%; /* Full width */
   height: 30px;
-  background: blue;
+  background: #0d2b66;
   color: white;
   font-size: 25px;
   display: flex;
@@ -61,17 +68,21 @@ export default {}
 .image {
   margin-right: 300px;
 }
-.content {
-  height: 80px;
+
+.content{
+  margin-top: 30px;
+  height:500px;
 }
 
 .footer {
-  height: 80px;
+  height: 30px;
   background: green;
   color: white;
   font-size: 25px;
   display: flex;
   text-align: center;
   align-items: center;
+  width: 100%; /* Full width */
+  font-size: 15px;
 }
 </style>
