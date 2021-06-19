@@ -51,15 +51,15 @@ function defineDatabaseStructure() {
     }
   )
   // Creating the 1 -> N association between Person and Area in which they work
-  Area.hasMany(Person, {
+  Person.belongsTo(Area, {
     as: "WorkingArea",
     foreignKey: {
       name: 'working_area_id',
-      //allowNull: false,
+      allowNull: false,
     },
   })
   // Creating the 1 -> N association between Person and Area for which they are responsible
-  Area.hasMany(Person, { 
+  Person.belongsTo(Area, { 
     as: "AreaResp",
     foreignKey: 'responsible_of_area_id' 
   })
@@ -68,7 +68,7 @@ function defineDatabaseStructure() {
     as: "ReferenceAssistant",
     foreignKey: {
       name: 'reference_assistant_id',
-      //allowNull: false,
+      allowNull: false,
     },
   })
   // Creating the 1 -> 1 association between Person and Product for which he/she is the product manager
@@ -76,7 +76,7 @@ function defineDatabaseStructure() {
     as: "ProductManager",
     foreignKey: {
       name: 'product_manager_id',
-      //allowNull: false,
+      allowNull: false,
     },
   })
   // Creating the 1 -> N association between Product and Area in which it belongs to
@@ -84,7 +84,7 @@ function defineDatabaseStructure() {
     as: "Area",
     foreignKey: {
       name: 'area_id',
-      //allowNull: false,
+      allowNull: false,
     },
   })
 
@@ -117,48 +117,48 @@ async function insertFakeData() {
     surname: 'Colombo',
     role: 'Software Engineer',
     image: '',
-    setWorkingArea: area1,
-    setAreaResp: area1,
+    working_area_id: area1.id,
+    responsible_of_area_id: area1.id,
   })
   const person2 = await Person.create({
     name: 'Riccardo',
     surname: 'Zanaboni',
     role: 'Software Engineer',
     image: '',
-    setWorkingArea: area2,
-    setAreaResp: area2,
+    working_area_id: area2.id,
+    responsible_of_area_id: area2.id,
   })
   const person3 = await Person.create({
     name: 'Fabio',
     surname: 'Rossanigo',
     role: 'Software Engineer',
     image: '',
-    setWorkingArea: area2,
-    setAreaResp: area2,
+    working_area_id: area2.id,
+    responsible_of_area_id: area2.id,
   })
   const person4 = await Person.create({
     name: 'Luigi',
     surname: 'Bianchi',
     role: 'Software Engineer',
     image: '',
-    setWorkingArea: area1,
+    working_area_id: area1.id,
   })
   // Create 2 Products
   const product1 = await Product.create({
     name: 'Security manager software',
     description: '',
     image: '',
-    setArea: area1,
-    setProductManager: person1,
-    setReferenceAssistant: person4,
+    area_id: area1.id,
+    product_manager_id: person1.id,
+    reference_assistant_id: person4.id,
   })
   const product2 = await Product.create({
     name: 'AI Tools',
     description: '',
     image: '',
-    setArea: area2,
-    setProductManager: person3,
-    setReferenceAssistant: person2,
+    area_id: area2.id,
+    product_manager_id: person3.id,
+    reference_assistant_id: person2.id,
   })
 }
 
