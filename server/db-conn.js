@@ -16,8 +16,8 @@ const db = new Sequelize(
  * Function to define the structure of the database
  */
 function defineDatabaseStructure() {
-  const People = db.define(
-    'people',
+  const Person = db.define(
+    'person',
     {
       name: DataTypes.STRING,
       surname: DataTypes.STRING,
@@ -50,39 +50,46 @@ function defineDatabaseStructure() {
       underscored: true,
     }
   )
-  // Creating the 1 -> N association between People and Area in which they work
-  Area.hasMany(People, {
+  // Creating the 1 -> N association between Person and Area in which they work
+  Area.hasMany(Person, {
+    as: "WorkingArea",
     foreignKey: {
       name: 'working_area_id',
-      allowNull: false,
+      //allowNull: false,
     },
   })
-  // Creating the 1 -> N association between People and Area for which they are responsible
-  Area.hasMany(People, { foreignKey: 'responsible_for_area_id' })
-  // Creating the 1 -> N association between People and Product for which they are the reference for the assistance
-  Product.hasMany(People, {
+  // Creating the 1 -> N association between Person and Area for which they are responsible
+  Area.hasMany(Person, { 
+    as: "AreaResp",
+    foreignKey: 'responsible_of_area_id' 
+  })
+  // Creating the 1 -> 1 association between Person and Product for which they are the reference for the assistance
+  Product.belongsTo(Person, {
+    as: "ReferenceAssistant",
     foreignKey: {
-      name: 'reference_assistance_of_product_id',
-      allowNull: false,
+      name: 'reference_assistant_id',
+      //allowNull: false,
     },
   })
-  // Creating the 1 -> 1 association between People and Product for which he/she is the product manager
-  Product.hasOne(People, {
+  // Creating the 1 -> 1 association between Person and Product for which he/she is the product manager
+  Product.belongsTo(Person, {
+    as: "ProductManager",
     foreignKey: {
-      name: 'manager_of_product_id',
-      allowNull: false,
+      name: 'product_manager_id',
+      //allowNull: false,
     },
   })
   // Creating the 1 -> N association between Product and Area in which it belongs to
   Area.hasMany(Product, {
+    as: "Area",
     foreignKey: {
       name: 'area_id',
-      allowNull: false,
+      //allowNull: false,
     },
   })
 
   db._tables = {
-    People,
+    Person,
     Area,
     Product,
   }
@@ -92,35 +99,69 @@ function defineDatabaseStructure() {
  * Function to insert some fake info in the database
  */
 async function insertFakeData() {
-  // const { Article, Comment } = db._tables
-  // // Create the first Article
-  // const firstArticle = await Article.create({
-  //   title: 'Such good article',
-  //   summary: 'This is the summary of the first good article',
-  //   content: 'The content of the first article',
-  //   image:
-  //     'https://www.meme-arsenal.com/memes/98c0fb217e3b35d20518647668cea5dc.jpg',
-  // })
-  // await Article.create({
-  //   title: 'Why Fallout 76 is broken',
-  //   summary: '..no really... why?',
-  //   content:
-  //     'After more than 50 hours plundering the irradiated wasteland of Fallout 76, the greatest mystery still lingering is who this mutated take on Fallout is intended for. Like many of Vault-Tec’s underground bunkers, Bethesda’s multiplayer riff on its post-nuclear RPG series is an experiment gone awry. There are bright spots entangled in this mass of frustratingly buggy and sometimes conflicting systems, but what fun I was able to salvage from the expansive but underpopulated West Virginia map was consistently overshadowed by the monotony of its gathering and crafting treadmill.\nOn the surface, Fallout 76 is another dose of Bethesda’s tried-and-true open-world RPG formula on a larger-than-ever map that’s begging to be explored. As you emerge from Vault 76 you’ll start in a relatively peaceful forest and venture out into more dangerous pockets of the irradiated wasteland. My favorite is traveling the lengths of the Cranberry Bog, where the pinkish-red fields are seemingly inviting from afar but turn out to be full of a snaking system of trenches and alien forests that hide the worst horrors of the wasteland, but there are many more.',
-  //   image:
-  //     'https://www.meme-arsenal.com/memes/925f3e6e213ebe0bc196d379a7281ee8.jpg',
-  // })
-  // const comment1 = await Comment.create({
-  //   content: 'Great article! Keep posting',
-  // })
-  // const comment2 = await Comment.create({
-  //   content: 'Such Doge.',
-  // })
-
-  // // Adding the first comment to the first article
-  // await firstArticle.addComment(comment1.id)
-  // // Adding the second comment to the first article
-  // await firstArticle.addComment(comment2.id)
+  const { Person, Area, Product } = db._tables
+    // Create 2 Areas
+    const area1 = await Area.create({
+      name: 'Security',
+      description: '',
+      image: '',
+    })
+    const area2 = await Area.create({
+      name: 'Artificial Intelligence',
+      description: '',
+      image: '',
+    })
+  // Create 3 Person
+  const person1 = await Person.create({
+    name: 'Luca',
+    surname: 'Colombo',
+    role: 'Software Engineer',
+    image: '',
+    setWorkingArea: area1,
+    setAreaResp: area1,
+  })
+  const person2 = await Person.create({
+    name: 'Riccardo',
+    surname: 'Zanaboni',
+    role: 'Software Engineer',
+    image: '',
+    setWorkingArea: area2,
+    setAreaResp: area2,
+  })
+  const person3 = await Person.create({
+    name: 'Fabio',
+    surname: 'Rossanigo',
+    role: 'Software Engineer',
+    image: '',
+    setWorkingArea: area2,
+    setAreaResp: area2,
+  })
+  const person4 = await Person.create({
+    name: 'Luigi',
+    surname: 'Bianchi',
+    role: 'Software Engineer',
+    image: '',
+    setWorkingArea: area1,
+  })
+  // Create 2 Products
+  const product1 = await Product.create({
+    name: 'Security manager software',
+    description: '',
+    image: '',
+    setArea: area1,
+    setProductManager: person1,
+    setReferenceAssistant: person4,
+  })
+  const product2 = await Product.create({
+    name: 'AI Tools',
+    description: '',
+    image: '',
+    setArea: area2,
+    setProductManager: person3,
+    setReferenceAssistant: person2,
+  })
 }
+
 /**
  * Function to initialize the database. This is exported and called in the main api.js file
  */
