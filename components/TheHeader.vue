@@ -1,21 +1,78 @@
 <template>
-  <header class="header">
-    <div class="logo">
-      <nuxt-link to="/">
-        <img src = "https://cutewallpaper.org/21/monstars-logo-space-jam/Monstars-Logo-LogoDix.png"/>
-      </nuxt-link>
+  <header class="w3-top">
+    <div class="w3-display-container">
+      <div class="w3-bar">
+        <div class="w3-bar-item logo w3-display-left">
+          <nuxt-link to="/" @click.native="closeNav()">
+            <img
+              src="https://cutewallpaper.org/21/monstars-logo-space-jam/Monstars-Logo-LogoDix.png"
+              class="logo"
+            />
+          </nuxt-link>
+        </div>
+        <nav class="w3-bar-item w3-display-right w3-hide-small w3-hide-medium">
+          <div
+            v-for="(item, itemIndex) of menuOptions"
+            :key="'menu-item-' + itemIndex"
+            class="w3-bar-item w3-xlarge"
+          >
+            <div v-if="item.name === 'Areas'" class="w3-dropdown-hover">
+              <nuxt-link class="w3-button w3-hover-white" :to="item.path">
+                {{ item.name }}
+              </nuxt-link>
+              <div class="w3-bar-block w3-dropdown-content">
+                <div
+                  v-for="(area, areaIndex) of areas"
+                  :key="'area-' + areaIndex"
+                  class="w3-xlarge"
+                >
+                  <nuxt-link
+                    class="w3-bar-item w3-button"
+                    style="width: 100%"
+                    :to="item.path"
+                  >
+                    {{ area.name }}
+                  </nuxt-link>
+                </div>
+              </div>
+            </div>
+            <nuxt-link
+              v-else
+              class="w3-bar-item w3-button w3-hover-white"
+              :to="item.path"
+            >
+              {{ item.name }}
+            </nuxt-link>
+          </div>
+        </nav>
+        <a
+          class="w3-bar-item w3-button w3-hide-large w3-display-right icon"
+          @click="openNav()"
+          ><img src="~/static/icons/bars.png" class="logo"
+        /></a>
+      </div>
     </div>
-    <nav class="top">
+    <!-- Navbar on small screens -->
+    <div
+      id="navSmallScreen"
+      class="w3-display-container w3-hide-large w3-dropdown-content"
+      style="width: 100%"
+    >
       <div
         v-for="(item, itemIndex) of menuOptions"
         :key="'menu-item-' + itemIndex"
-        class="menu-item"
+        class="w3-xlarge"
       >
-        <nuxt-link class="landmark" :to="item.path">
+        <nuxt-link
+          class="w3-button"
+          :to="item.path"
+          style="width: 100%"
+          @click.native="openNav()"
+        >
           {{ item.name }}
         </nuxt-link>
       </div>
-    </nav>
+    </div>
   </header>
 </template>
 
@@ -23,6 +80,7 @@
 export default {
   data() {
     return {
+      areas: [],
       menuOptions: [
         {
           name: 'Areas',
@@ -43,60 +101,50 @@ export default {
       ],
     }
   },
+  async fetch() {
+    const { data } = await this.$axios.get(`${process.env.BASE_URL}/api/areas`)
+    this.areas = data
+  },
+  methods: {
+    openNav() {
+      const x = document.getElementById('navSmallScreen')
+      if (x.className.includes('w3-show')) {
+        this.closeNav()
+      } else {
+        x.className += ' w3-show'
+      }
+    },
+    closeNav() {
+      const x = document.getElementById('navSmallScreen')
+      x.className = x.className.replace('w3-show', '')
+    },
+  },
 }
 </script>
 
 <style>
-.header {
-  position: fixed; /* Set the navbar to fixed position */
-  top: 0; /* Position the navbar at the top of the page */
-  width: 100%; /* Full width */
+.logo img {
+  margin-left: 50px !important;
+  margin-right: 50px !important;
+  max-height: 100px !important;
+}
+.w3-dropdown-hover {
+  background-color: #1d4a8d !important;
+  color: white !important;
+}
+.w3-bar {
   height: 100px;
-  background: #0d2b66;
-  color: white;
-  font-size: 40px;
-  display: flex;
-  align-items: center;
 }
-.top {
-  float: right;
+.w3-dropdown-hover:hover > .w3-button:first-child,
+.w3-bar-block {
+  background-color: white !important;
+  color: black !important;
 }
-.menu-item {
-  text-align: center;
-  display: inline-block;
+.w3-display-container {
+  background-color: #1d4a8d !important;
+  color: white !important;
 }
-.landmark {
-  font-size: 25px;
-  padding: 20px;
-  color: white;
-  text-align: center;
-  font-family: 'Staatliches', cursive;
-  display: inline-block;
-  vertical-align: middle;
-  -webkit-transform: perspective(1px) translateZ(0);
-  transform: perspective(1px) translateZ(0);
-  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
-  -webkit-transition-duration: 0.3s;
-  transition-duration: 0.3s;
-  -webkit-transition-property: transform;
-  transition-property: transform;
-}
-.landmarks:hover,
-.landmarks:focus,
-.landmarks:active {
-  -webkit-transform: scale(0.9);
-  transform: scale(0.9);
-}
-.logo{
-    height: 100px;
-    width: 100px;
-}
-.logo img{
-  width: auto;
-  height: 100%;
-}
-.content {
-  margin-top: 30px;
-  height: 500px;
+.icon:hover {
+  background-color: #1d4a8d !important;
 }
 </style>

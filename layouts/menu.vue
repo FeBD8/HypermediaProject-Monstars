@@ -1,23 +1,21 @@
 <template>
-  <div class="main-page">
+  <div>
     <the-header></the-header>
     <div class="content">
       <Nuxt />
     </div>
-    <div class="footer">
-      © 2021 Monstar S.p.A.
-      Via Schiaffino 11  
-      20158 Milano, Italy
-    </div>
+    <the-footer></the-footer>
   </div>
 </template>
 
 <script>
-import TheHeader from "~/components/TheHeader.vue";
+import TheHeader from '~/components/TheHeader.vue'
+import TheFooter from '~/components/TheFooter.vue'
 
 export default {
   components: {
     TheHeader,
+    TheFooter,
   },
 }
 </script>
