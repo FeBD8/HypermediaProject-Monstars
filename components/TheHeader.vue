@@ -3,7 +3,7 @@
     <div class="w3-display-container">
       <div class="w3-bar">
         <div class="w3-bar-item logo w3-display-left">
-          <nuxt-link to="/" @click.native="closeNav()">
+          <nuxt-link class="w3-margin-left" to="/" @click.native="closeNav()">
             <img
               src="https://cutewallpaper.org/21/monstars-logo-space-jam/Monstars-Logo-LogoDix.png"
               class="logo"
@@ -16,39 +16,19 @@
             :key="'menu-item-' + itemIndex"
             class="w3-bar-item w3-xlarge"
           >
-            <div v-if="item.name === 'Areas'" class="w3-dropdown-hover">
-              <nuxt-link class="w3-button w3-hover-white" :to="item.path">
-                {{ item.name }}
-              </nuxt-link>
-              <div class="w3-bar-block w3-dropdown-content">
-                <div
-                  v-for="(area, areaIndex) of areas"
-                  :key="'area-' + areaIndex"
-                  class="w3-xlarge"
-                >
-                  <nuxt-link
-                    class="w3-bar-item w3-button"
-                    style="width: 100%"
-                    :to="item.path"
-                  >
-                    {{ area.name }}
-                  </nuxt-link>
-                </div>
-              </div>
-            </div>
-            <nuxt-link
-              v-else
-              class="w3-bar-item w3-button w3-hover-white"
-              :to="item.path"
-            >
-              {{ item.name }}
-            </nuxt-link>
+            <navdropdownbutton
+              v-if="item.name === 'Areas'"
+              :name="item.name"
+              :path="item.path"
+              :dropdowncontent="content"
+            ></navdropdownbutton>
+            <navbutton v-else :name="item.name" :path="item.path"> </navbutton>
           </div>
         </nav>
         <a
           class="w3-bar-item w3-button w3-hide-large w3-display-right icon"
           @click="openNav()"
-          ><img src="~/static/icons/bars.png" class="logo"
+          ><img src="~/static/icons/bars.png"
         /></a>
       </div>
     </div>
@@ -62,25 +42,30 @@
         v-for="(item, itemIndex) of menuOptions"
         :key="'menu-item-' + itemIndex"
         class="w3-xlarge"
+        style="text-align: center"
       >
-        <nuxt-link
-          class="w3-button"
-          :to="item.path"
-          style="width: 100%"
+        <navbutton
+          :name="item.name"
+          :path="item.path"
           @click.native="openNav()"
         >
-          {{ item.name }}
-        </nuxt-link>
+        </navbutton>
       </div>
     </div>
   </header>
 </template>
 
 <script>
+import navdropdownbutton from '~/components/navdropdownbutton.vue'
+import navbutton from '~/components/navbutton.vue'
 export default {
+  components: {
+    navdropdownbutton,
+    navbutton,
+  },
   data() {
     return {
-      areas: [],
+      content: [],
       menuOptions: [
         {
           name: 'Areas',
@@ -103,7 +88,7 @@ export default {
   },
   async fetch() {
     const { data } = await this.$axios.get(`${process.env.BASE_URL}/api/areas`)
-    this.areas = data
+    this.content = data
   },
   methods: {
     openNav() {
@@ -124,25 +109,15 @@ export default {
 
 <style>
 .logo img {
-  margin-left: 50px !important;
-  margin-right: 50px !important;
   max-height: 100px !important;
 }
-.w3-dropdown-hover {
-  background-color: #1d4a8d !important;
-  color: white !important;
-}
 .w3-bar {
-  height: 100px;
+  height: 80px !important;
 }
-.w3-dropdown-hover:hover > .w3-button:first-child,
-.w3-bar-block {
-  background-color: white !important;
-  color: black !important;
-}
-.w3-display-container {
-  background-color: #1d4a8d !important;
-  color: white !important;
+.w3-display-container,
+.w3-table {
+  background-color: #1d4a8d;
+  color: white;
 }
 .icon:hover {
   background-color: #1d4a8d !important;

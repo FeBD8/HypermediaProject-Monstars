@@ -16,9 +16,9 @@
 export default {}
 </script>
 
-<style>
+<style scoped>
 .w3-bar {
-  height: 100px;
+  height: 100px !important;
 }
 .w3-display-container {
   background-color: #1d4a8d !important;

@@ -34,6 +34,7 @@ function defineDatabaseStructure() {
       name: DataTypes.STRING,
       description: DataTypes.TEXT,
       image: DataTypes.STRING,
+      shortcut_image: DataTypes.STRING,
     },
     {
       underscored: true,
@@ -105,11 +106,13 @@ async function insertFakeData() {
       name: 'Security',
       description: '',
       image: '',
+      shortcut_image: ''
     })
     const area2 = await Area.create({
       name: 'Artificial Intelligence',
       description: '',
       image: '',
+      shortcut_image: '',
     })
   // Create 3 Person
   const person1 = await Person.create({
