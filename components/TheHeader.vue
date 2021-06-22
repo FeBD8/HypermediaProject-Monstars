@@ -2,13 +2,8 @@
   <header class="w3-top">
     <div class="w3-display-container">
       <section class="w3-bar">
-        <section class="w3-bar-item logo w3-display-left">
-          <nuxt-link class="w3-margin-left" to="/" @click.native="closeNav()">
-            <img
-              src="https://cutewallpaper.org/21/monstars-logo-space-jam/Monstars-Logo-LogoDix.png"
-              class="logo"
-            />
-          </nuxt-link>
+        <section class="w3-bar-item w3-display-left">
+          <the-logo class="w3-margin-left"></the-logo>
         </section>
         <nav class="w3-bar-item w3-display-right w3-hide-small w3-hide-medium">
           <div
@@ -16,13 +11,14 @@
             :key="'menu-item-' + itemIndex"
             class="w3-bar-item w3-xlarge"
           >
-            <navdropdownbutton
+            <nav-dropdown-button
               v-if="item.content"
               :name="item.name"
               :path="item.path"
               :dropdowncontent="item.content"
-            ></navdropdownbutton>
-            <navbutton v-else :name="item.name" :path="item.path"> </navbutton>
+            ></nav-dropdown-button>
+            <nav-button v-else :name="item.name" :path="item.path">
+            </nav-button>
           </div>
         </nav>
         <a
@@ -49,24 +45,26 @@
         class="w3-xlarge"
         style="text-align: center"
       >
-        <navbutton
+        <nav-button
           :name="item.name"
           :path="item.path"
           @click.native="openNav()"
         >
-        </navbutton>
+        </nav-button>
       </div>
     </nav>
   </header>
 </template>
 
 <script>
-import navdropdownbutton from '~/components/navdropdownbutton.vue'
-import navbutton from '~/components/navbutton.vue'
+import NavDropdownButton from '~/components/navigation/NavDropdownButton.vue'
+import NavButton from '~/components/navigation/NavButton.vue'
+import TheLogo from '~/components/TheLogo.vue'
 export default {
   components: {
-    navdropdownbutton,
-    navbutton,
+    NavDropdownButton,
+    NavButton,
+    TheLogo,
   },
   data() {
     return {
@@ -116,9 +114,9 @@ export default {
 }
 </script>
 
-<style>
-.logo img {
-  max-height: 100px !important;
+<style scoped>
+header {
+  font-family: 'Staatliches', cursive;
 }
 .w3-bar {
   height: 80px !important;

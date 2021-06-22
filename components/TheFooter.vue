@@ -1,24 +1,36 @@
 <template>
-  <header class="w3-bottom">
+  <footer class="w3-bottom">
     <div class="w3-display-container">
-      <div class="w3-bar">
+      <section class="w3-bar">
+        <the-logo class="logo"></the-logo>
         <div class="w3-bar-item w3-display-left">
-          <a class="w3-large">
-            © 2021 Monstar S.p.A. Via Schiaffino 11 20158 Milano, Italy</a
-          >
+          <p class="w3-large">
+            © 2021 Monstar S.p.A. Via Schiaffino 11 20158 Milano, Italy
+          </p>
         </div>
-      </div>
+      </section>
     </div>
-  </header>
+  </footer>
 </template>
 
 <script>
-export default {}
+import TheLogo from '~/components/TheLogo.vue'
+export default {
+  components: {
+    TheLogo,
+  },
+}
 </script>
 
 <style scoped>
+footer {
+  font-family: 'Staatliches', cursive;
+}
+.logo {
+  margin-left: 200px;
+}
 .w3-bar {
-  height: 100px !important;
+  height: 300px !important;
 }
 .w3-display-container {
   background-color: #1d4a8d !important;

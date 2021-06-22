@@ -2,7 +2,7 @@
   <!-- Card for the Areas navigation link, with image and name of the area -->
   <div class="w3-display-container" style="width: 100%">
     <nuxt-link
-      class="w3-xlarge w3-button"
+      class="w3-medium w3-button"
       :to="path"
       style="width: 100%; text-align: left"
     >
