@@ -106,13 +106,13 @@ async function insertFakeData() {
       name: 'Security',
       description: '',
       image: '',
-      shortcut_image: ''
+      shortcut_image: 'https://www.moviri.com/wp-content/uploads/2020/11/bl-icon-security@2x.png',
     })
     const area2 = await Area.create({
       name: 'Artificial Intelligence',
       description: '',
       image: '',
-      shortcut_image: '',
+      shortcut_image: 'https://cdn0.iconfinder.com/data/icons/adobe-application/100/Ai_Icon-256.png',
     })
   // Create 3 Person
   const person1 = await Person.create({

@@ -1,15 +1,15 @@
 <template>
   <header class="w3-top">
     <div class="w3-display-container">
-      <div class="w3-bar">
-        <div class="w3-bar-item logo w3-display-left">
+      <section class="w3-bar">
+        <section class="w3-bar-item logo w3-display-left">
           <nuxt-link class="w3-margin-left" to="/" @click.native="closeNav()">
             <img
               src="https://cutewallpaper.org/21/monstars-logo-space-jam/Monstars-Logo-LogoDix.png"
               class="logo"
             />
           </nuxt-link>
-        </div>
+        </section>
         <nav class="w3-bar-item w3-display-right w3-hide-small w3-hide-medium">
           <div
             v-for="(item, itemIndex) of menuOptions"
@@ -17,10 +17,10 @@
             class="w3-bar-item w3-xlarge"
           >
             <navdropdownbutton
-              v-if="item.name === 'Areas'"
+              v-if="item.content"
               :name="item.name"
               :path="item.path"
-              :dropdowncontent="content"
+              :dropdowncontent="item.content"
             ></navdropdownbutton>
             <navbutton v-else :name="item.name" :path="item.path"> </navbutton>
           </div>
@@ -30,12 +30,17 @@
           @click="openNav()"
           ><img src="~/static/icons/bars.png"
         /></a>
-      </div>
+      </section>
     </div>
     <!-- Navbar on small screens -->
-    <div
+    <nav
       id="navSmallScreen"
-      class="w3-display-container w3-hide-large w3-dropdown-content"
+      class="
+        w3-display-container
+        w3-hide-large
+        w3-dropdown-content
+        w3-animate-opacity
+      "
       style="width: 100%"
     >
       <div
@@ -51,7 +56,7 @@
         >
         </navbutton>
       </div>
-    </div>
+    </nav>
   </header>
 </template>
 
@@ -65,11 +70,11 @@ export default {
   },
   data() {
     return {
-      content: [],
       menuOptions: [
         {
           name: 'Areas',
           path: '/areas',
+          content: [],
         },
         {
           name: 'Products',
@@ -88,7 +93,11 @@ export default {
   },
   async fetch() {
     const { data } = await this.$axios.get(`${process.env.BASE_URL}/api/areas`)
-    this.content = data
+    this.menuOptions.forEach((elem, index) => {
+      if (elem.name === 'Areas') {
+        this.menuOptions[index].content = data
+      }
+    })
   },
   methods: {
     openNav() {

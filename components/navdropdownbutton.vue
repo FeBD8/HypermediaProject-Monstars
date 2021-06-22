@@ -1,5 +1,5 @@
 <template>
-  <div class="w3-dropdown-hover">
+  <section class="w3-dropdown-hover">
     <nuxt-link class="w3-button" :to="path">
       {{ name }}
     </nuxt-link>
@@ -10,11 +10,15 @@
         :key="'item-' + itemIndex"
         class="w3-cell-row"
       >
-        <navcard :name="item.name" :shortcutimage="item.shortcut_image">
+        <navcard
+          :name="item.name"
+          :shortcutimage="item.shortcut_image"
+          :path="path + '/' + item.id"
+        >
         </navcard>
       </div>
     </div>
-  </div>
+  </section>
 </template>
 
 <script>
@@ -32,7 +36,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .w3-dropdown-hover {
   background-color: #1d4a8d !important;
   color: white !important;
