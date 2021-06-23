@@ -1,25 +1,23 @@
 <template>
+  <!-- Dropdown button with the contents used in the navigation bar 
+  In the website is used for the Areas button s-->
   <section class="w3-dropdown-hover">
     <nuxt-link class="w3-button" :to="path">
-      {{ name }}
+      <h3>{{ name }}</h3>
     </nuxt-link>
-    <div class="w3-dropdown-content w3-animate-opacity">
-      <ul
+    <ul class="w3-dropdown-content w3-ul w3-animate-opacity">
+      <li
         v-for="(item, itemIndex) of dropdowncontent"
-        id="dropdown-row"
         :key="'item-' + itemIndex"
-        class="w3-ul"
       >
-        <li>
-          <nav-card
-            :name="item.name"
-            :shortcutimage="item.shortcut_image"
-            :path="path + '/' + item.id"
-          >
-          </nav-card>
-        </li>
-      </ul>
-    </div>
+        <nav-card
+          :name="item.name"
+          :shortcutimage="item.shortcut_image"
+          :path="path + '/' + item.id"
+        >
+        </nav-card>
+      </li>
+    </ul>
   </section>
 </template>
 
@@ -39,9 +37,6 @@ export default {
 </script>
 
 <style scoped>
-.w3-dropdown-content {
-  font-family: 'Montserrat', sans-serif;
-}
 .w3-dropdown-hover {
   background-color: #1d4a8d !important;
   color: white !important;
@@ -50,11 +45,7 @@ export default {
   background-color: #1d4a8d !important;
   color: white !important;
 }
-li:hover {
-  color: black !important;
-  background-color: #a0bae0 !important;
-}
-li {
-  padding: 0px;
+ul li {
+  padding: 0px !important;
 }
 </style>

@@ -1,12 +1,11 @@
 <template>
+  <!-- The footer of the website -->
   <footer class="w3-bottom">
     <div class="w3-display-container">
       <section class="w3-bar">
         <the-logo class="logo"></the-logo>
         <div class="w3-bar-item w3-display-left">
-          <p class="w3-large">
-            © 2021 Monstar S.p.A. Via Schiaffino 11 20158 Milano, Italy
-          </p>
+          <h3>© 2021 Monstar S.p.A. Via Schiaffino 11 20158 Milano, Italy</h3>
         </div>
       </section>
     </div>
@@ -23,9 +22,6 @@ export default {
 </script>
 
 <style scoped>
-footer {
-  font-family: 'Staatliches', cursive;
-}
 .logo {
   margin-left: 200px;
 }

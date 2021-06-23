@@ -20,4 +20,15 @@ export default {
 }
 </script>
 
-<style></style>
+<style>
+h1,
+h2,
+h3 {
+  font-family: 'Staatliches', cursive;
+}
+h4,
+h5,
+h6 {
+  font-family: 'Montserrat', sans-serif !important;
+}
+</style>

@@ -1,13 +1,20 @@
 <template>
-  <!-- Card for the Areas navigation link, with image and name of the area -->
-  <div class="w3-display-container" style="width: 100%">
+  <!-- Card for the dropdown navigation link, with image and name 
+  It is used in for the areas and their shortcut image -->
+  <div class="w3-display-container">
     <nuxt-link
-      class="w3-medium w3-button"
+      class="w3-button w3-padding-large"
       :to="path"
       style="width: 100%; text-align: left"
     >
-      <img :src="shortcutimage" style="margin-right: 10px" />
-      {{ name }}
+      <h6>
+        <img
+          :src="shortcutimage"
+          style="margin-right: 10px"
+          alt="Logo of the specific area"
+        />
+        {{ name }}
+      </h6>
     </nuxt-link>
   </div>
 </template>
@@ -31,7 +38,11 @@ img {
   background-color: white !important;
   color: black !important;
 }
+.w3-display-container:hover,
 .w3-button:hover {
   background-color: #a0bae0 !important;
+}
+.w3-padding-large {
+  padding: 15px 20px !important;
 }
 </style>
