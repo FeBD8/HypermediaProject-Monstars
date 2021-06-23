@@ -37,10 +37,7 @@ export default {
 </script>
 
 <style scoped>
-.w3-dropdown-hover {
-  background-color: transparent !important;
-  color: white !important;
-}
+.w3-dropdown-hover,
 .w3-dropdown-hover:hover > .w3-button {
   background-color: transparent !important;
   color: white !important;

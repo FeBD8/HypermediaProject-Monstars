@@ -2,26 +2,58 @@
   <!-- The footer of the website -->
   <footer class="w3-bottom w3-bar">
     <div class="w3-margin-left w3-margin-right">
-      <section class="w3-quarter">
+      <section class="w3-third">
         <ul class="w3-ul">
           <li class="w3-center">
             <the-logo></the-logo>
           </li>
           <li class="w3-center">
-            <p class="w3-padding-small">
-              ©2021 Monstar S.p.A. Via Schiaffino 11 20158 Milano, Italy
+            <p class="w3-padding-small w3-large">
+              ©2021 Monstar S.p.A. Piazza Leonardo da Vinci, 32 Milano, Italy
             </p>
           </li>
         </ul>
       </section>
-      <section class="w3-quarter">
-        <ul class="w3-ul">
+      <section class="w3-third">
+        <ul
+          v-for="(elemDropdown, elemDropdownIndex) of elemsWithDropdownContent"
+          :key="'item-' + elemDropdownIndex"
+          class="w3-ul"
+        >
           <li class="w3-center">
+            <nuxt-link
+              id="link-line"
+              :to="elemDropdown.path"
+              class="w3-button w3-xlarge"
+            >
+              {{ elemDropdown.name }}
+            </nuxt-link>
           </li>
+          <li
+            v-for="(contentItem, contentIndex) of elemDropdown.content"
+            id="content"
+            :key="'content-item-' + contentIndex"
+            class="w3-center"
+          >
+            <nuxt-link
+              :to="elemDropdown.path + '/' + contentItem.id"
+              class="w3-button w3-medium"
+            >
+              {{ contentItem.name }}
+            </nuxt-link>
+          </li>
+        </ul>
+      </section>
+      <section class="w3-third">
+        <ul
+          v-for="(menuItem, itemIndex) of menuElements"
+          :key="'item-' + itemIndex"
+          class="w3-ul"
+        >
           <li class="w3-center">
-            <p class="w3-padding-small">
-              ©2021 Monstar S.p.A. Via Schiaffino 11 20158 Milano, Italy
-            </p>
+            <nuxt-link :to="menuItem.path" class="w3-button w3-xlarge">
+              {{ menuItem.name }}
+            </nuxt-link>
           </li>
         </ul>
       </section>
@@ -38,27 +70,33 @@ export default {
   props: {
     menuOptions: { type: Array, default: () => [] },
   },
-  data() {
-    return {
-      areas: [],
-      products: [],
-    }
-  },
-  // Function used for fetching the data of the areas from the db for the ssr
-  async fetch() {
-    const { areasData } = await this.$axios.get(
-      `${process.env.BASE_URL}/api/areas`
-    )
-    this.areas = areasData
-    const { productsData } = await this.$axios.get(
-      `${process.env.BASE_URL}/api/products`
-    )
-    this.products = productsData
+  computed: {
+    elemsWithDropdownContent() {
+      const elems = []
+      this.menuOptions.forEach((item) => {
+        if (item.dropdown) elems.push(item)
+      })
+      return elems
+    },
+    menuElements() {
+      const elems = []
+      this.menuOptions.forEach((item) => {
+        if (!item.dropdown) elems.push(item)
+      })
+      return elems
+    },
   },
 }
 </script>
 
 <style scoped>
+#content {
+  font-family: 'Montserrat', sans-serif !important;
+}
+.w3-button:hover {
+  color: white !important;
+  background-color: transparent !important;
+}
 .w3-bar {
   background-color: #1d4a8d !important;
   color: white !important;
@@ -66,7 +104,7 @@ export default {
 .w3-ul li {
   border-bottom: none;
 }
-.w3-ul li:first-child {
+#link-line {
   border-bottom: 1px solid rgba(255, 255, 255, 0.438);
 }
 </style>

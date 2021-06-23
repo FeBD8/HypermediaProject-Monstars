@@ -17,10 +17,10 @@
               class="w3-bar-item"
             >
               <nav-dropdown-button
-                v-if="item.name === 'Areas'"
+                v-if="item.dropdown"
                 :name="item.name"
                 :path="item.path"
-                :dropdown-content="areas"
+                :dropdown-content="item.content"
               ></nav-dropdown-button>
               <nav-button v-else :name="item.name" :path="item.path">
               </nav-button>
@@ -73,16 +73,6 @@ export default {
   props: {
     menuOptions: { type: Array, default: () => [] },
   },
-  data() {
-    return {
-      areas: [],
-    }
-  },
-  // Function used for fetching the data of the areas from the db for the ssr
-  async fetch() {
-    const { data } = await this.$axios.get(`${process.env.BASE_URL}/api/areas`)
-    this.areas = data
-  },
   methods: {
     // Methods used for showing and hiding the navbar on small screen's devices
     openNav() {
@@ -102,9 +92,6 @@ export default {
 </script>
 
 <style scoped>
-header {
-  font-family: 'Staatliches', cursive;
-}
 .w3-bar,
 #navSmallScreen {
   background-color: #1d4a8d;

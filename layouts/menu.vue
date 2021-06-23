@@ -23,6 +23,8 @@ export default {
         {
           name: 'Areas',
           path: '/areas',
+          content: [],
+          dropdown: true,
         },
         {
           name: 'Products',
@@ -39,7 +41,21 @@ export default {
       ],
     }
   },
+  // Function used for fetching the data of the areas from the db for the ssr
+  async fetch() {
+    const { data } = await this.$axios.get(`${process.env.BASE_URL}/api/areas`)
+    this.menuOptions.forEach((elem, index) => {
+      if (elem.name === 'Areas') {
+        this.menuOptions[index].content = data
+      }
+    })
+  },
 }
 </script>
 
-<style></style>
+<style scoped>
+header,
+footer {
+  font-family: 'Staatliches', cursive !important;
+}
+</style>
