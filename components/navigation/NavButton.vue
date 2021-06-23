@@ -1,6 +1,6 @@
 <template>
   <nuxt-link id="nav-button" class="w3-button w3-xlarge" :to="path">
-    <h3>{{ name }}</h3>
+    {{ name }}
   </nuxt-link>
 </template>
 
@@ -14,9 +14,6 @@ export default {
 </script>
 
 <style scoped>
-h3 {
-  font-family: 'Staatliches', cursive;
-}
 #nav-button:hover {
   color: white !important;
   background-color: transparent !important;

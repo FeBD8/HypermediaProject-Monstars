@@ -3,18 +3,16 @@
   It is used in for the areas and their shortcut image -->
   <div class="w3-display-container">
     <nuxt-link
-      class="w3-button w3-padding-large"
+      class="w3-button w3-padding-large w3-large"
       :to="path"
       style="width: 100%; text-align: left"
     >
-      <h6>
-        <img
-          :src="shortcutimage"
-          style="margin-right: 10px"
-          alt="Logo of the specific area"
-        />
-        {{ name }}
-      </h6>
+      <img
+        :src="shortcutImage"
+        style="margin-right: 10px"
+        alt="Logo of the specific area"
+      />
+      {{ name }}
     </nuxt-link>
   </div>
 </template>
@@ -23,7 +21,7 @@
 export default {
   props: {
     name: { type: String, default: () => '' },
-    shortcutimage: { type: String, default: () => '' },
+    shortcutImage: { type: String, default: () => '' },
     path: { type: String, default: () => '' },
   },
 }
@@ -35,6 +33,7 @@ img {
   align-items: center;
 }
 .w3-display-container {
+  font-family: 'Montserrat', sans-serif !important;
   background-color: white !important;
   color: black !important;
 }

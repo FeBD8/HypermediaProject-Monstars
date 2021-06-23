@@ -1,10 +1,10 @@
 <template>
   <div>
-    <the-header></the-header>
+    <the-header :menu-options="menuOptions"></the-header>
     <div class="content">
       <Nuxt />
     </div>
-    <the-footer></the-footer>
+    <the-footer :menu-options="menuOptions"></the-footer>
   </div>
 </template>
 
@@ -17,18 +17,29 @@ export default {
     TheHeader,
     TheFooter,
   },
+  data() {
+    return {
+      menuOptions: [
+        {
+          name: 'Areas',
+          path: '/areas',
+        },
+        {
+          name: 'Products',
+          path: '/products',
+        },
+        {
+          name: 'Company',
+          path: '/company',
+        },
+        {
+          name: 'People',
+          path: '/people',
+        },
+      ],
+    }
+  },
 }
 </script>
 
-<style>
-h1,
-h2,
-h3 {
-  font-family: 'Staatliches', cursive;
-}
-h4,
-h5,
-h6 {
-  font-family: 'Montserrat', sans-serif !important;
-}
-</style>
+<style></style>

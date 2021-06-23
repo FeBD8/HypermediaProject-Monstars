@@ -1,10 +1,5 @@
 <template>
-  <div class="content">
-    <div id="description" class="logo_description">
-      Monstar is a multinational consulting and software group of companies,
-      helping customers harness the power of transformative technologies.
-    </div>
-  </div>
+  <div class="content"></div>
 </template>
 
 <script>
@@ -30,8 +25,5 @@ export default {
   width: 500px;
   padding-top: 55px;
   font-size: 20px;
-}
-.content {
-  background-color: black;
 }
 </style>
