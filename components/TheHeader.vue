@@ -2,13 +2,13 @@
   <!-- Header of the page of the company, with logo and the navigation bar composed of navigation button and navigation dropdown button 
   It contains both the navbar for large and small screen -->
 
-  <!-- Navigation bar on large screens -->
   <header class="w3-top">
     <div class="w3-bar">
       <li class="w3-bar-item w3-left w3-margin-left">
         <the-logo></the-logo>
       </li>
       <li class="w3-bar-item w3-display-right">
+        <!-- Navigation bar on large screens -->
         <nav class="w3-bar-item w3-hide-small w3-hide-medium">
           <li
             v-for="(menuItem, itemIndex) of menuOptions"
