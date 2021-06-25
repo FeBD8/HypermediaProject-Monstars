@@ -1,71 +1,91 @@
 <template>
   <!-- The footer of the website -->
   <footer class="w3-bottom w3-bar">
-    <div class="w3-margin-left w3-margin-right">
-      <section class="w3-third">
-        <ul class="w3-ul">
+    <div class="w3-bar-item center">
+      <div class="w3-bar-item">
+        <ul class="w3-ul w3-bar-item">
           <li class="w3-center">
             <the-logo></the-logo>
           </li>
           <li class="w3-center">
-            <p class="w3-padding-small w3-large">
+            <p id="inner" class="w3-padding-small w3-large">
               ©2021 Monstar S.p.A. Piazza Leonardo da Vinci, 32 Milano, Italy
             </p>
           </li>
         </ul>
-      </section>
-      <section class="w3-third">
-        <ul
-          v-for="(elemDropdown, elemDropdownIndex) of elemsWithDropdownContent"
-          :key="'item-' + elemDropdownIndex"
-          class="w3-ul"
-        >
-          <li class="w3-center">
-            <nuxt-link
-              id="link-line"
-              :to="elemDropdown.path"
-              class="w3-button w3-xlarge"
-            >
-              {{ elemDropdown.name }}
-            </nuxt-link>
-          </li>
-          <li
-            v-for="(contentItem, contentIndex) of elemDropdown.content"
-            id="content"
-            :key="'content-item-' + contentIndex"
-            class="w3-center"
+      </div>
+      <nav class="w3-bar-item w3-bar">
+        <div class="w3-bar-item margin-right">
+          <ul
+            v-for="(dropItem, itemIndex) of elemsWithDropdownContent"
+            :key="'drop-item-' + itemIndex"
+            class="w3-bar-item w3-ul w3-center"
+            style="width: 100%"
           >
-            <nuxt-link
-              :to="elemDropdown.path + '/' + contentItem.id"
-              class="w3-button w3-medium"
+            <li id="link-line">
+              <nav-button
+                :name="dropItem.name"
+                :path="dropItem.path"
+                class="w3-large"
+              >
+              </nav-button>
+            </li>
+            <li
+              v-for="(contentItem, contentIndex) of dropItem.content"
+              id="content"
+              :key="'content-item-' + contentIndex"
             >
-              {{ contentItem.name }}
-            </nuxt-link>
-          </li>
-        </ul>
-      </section>
-      <section class="w3-third">
-        <ul
-          v-for="(menuItem, itemIndex) of menuElements"
-          :key="'item-' + itemIndex"
-          class="w3-ul"
+              <nav-button
+                :name="contentItem.name"
+                :path="dropItem.path + '/' + contentItem.id"
+                class="w3-medium"
+              >
+              </nav-button>
+            </li>
+          </ul>
+        </div>
+        <nav-button
+          v-for="(menuItem, itemIndex) of elemsWithoutDropdownContent"
+          :key="'menu-item-' + itemIndex"
+          class="w3-bar-item w3-large w3-padding-top-32 margin-right"
+          :name="menuItem.name"
+          :path="menuItem.path"
         >
-          <li class="w3-center">
-            <nuxt-link :to="menuItem.path" class="w3-button w3-xlarge">
-              {{ menuItem.name }}
-            </nuxt-link>
+        </nav-button>
+        <ul class="w3-bar-item w3-ul w3-padding-top-24">
+          <li>
+            <p class="w3-large w3-center">Follow Us</p>
+          </li>
+          <li>
+            <a href="https://www.facebook.com/">
+              <img src="~/static/icons/facebook.png" class="w3-padding-small"
+            /></a>
+            <a href="https://www.instagram.com/">
+              <img
+                src="~/static/icons/instagram.png"
+                class="w3-padding-small"
+              />
+            </a>
+            <a href="https://www.twitter.com/">
+              <img src="~/static/icons/twitter.png" class="w3-padding-small" />
+            </a>
+            <a href="https://www.linkedin.com/">
+              <img src="~/static/icons/linkedin.png" class="w3-padding-small" />
+            </a>
           </li>
         </ul>
-      </section>
+      </nav>
     </div>
   </footer>
 </template>
 
 <script>
 import TheLogo from '~/components/TheLogo.vue'
+import NavButton from '~/components/navigation/NavButton.vue'
 export default {
   components: {
     TheLogo,
+    NavButton,
   },
   props: {
     menuOptions: { type: Array, default: () => [] },
@@ -78,7 +98,7 @@ export default {
       })
       return elems
     },
-    menuElements() {
+    elemsWithoutDropdownContent() {
       const elems = []
       this.menuOptions.forEach((item) => {
         if (!item.dropdown) elems.push(item)
@@ -90,6 +110,20 @@ export default {
 </script>
 
 <style scoped>
+.margin-right {
+  margin-right: 50px !important;
+}
+.center {
+  float: none;
+  margin: auto !important;
+  display: table;
+}
+#nav-button::after {
+  transition: none;
+}
+#nav-button:hover::after {
+  width: 0;
+}
 #content {
   font-family: 'Montserrat', sans-serif !important;
 }

@@ -2,7 +2,7 @@
   <!-- Dropdown button with the contents used in the navigation bar 
   In the website is used for the Areas button s-->
   <section class="w3-dropdown-hover">
-    <nuxt-link class="w3-button w3-xlarge" :to="path">
+    <nuxt-link class="w3-button" :to="path">
       {{ name }}
     </nuxt-link>
     <ul class="w3-dropdown-content w3-ul w3-animate-opacity">

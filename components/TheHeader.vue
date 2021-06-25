@@ -4,28 +4,32 @@
 
   <!-- Navigation bar on large screens -->
   <header class="w3-top">
-    <ul class="w3-bar w3-ul">
-      <li class="w3-left w3-margin-left">
+    <div class="w3-bar">
+      <li class="w3-bar-item w3-left w3-margin-left">
         <the-logo></the-logo>
       </li>
-      <li class="w3-display-right">
+      <li class="w3-bar-item w3-display-right">
         <nav class="w3-bar-item w3-hide-small w3-hide-medium">
-          <ul class="w3-ul">
-            <li
-              v-for="(item, itemIndex) of menuOptions"
-              :key="'menu-item-' + itemIndex"
-              class="w3-bar-item"
+          <li
+            v-for="(menuItem, itemIndex) of menuOptions"
+            :key="'menu-item-' + itemIndex"
+            class="w3-bar-item"
+          >
+            <nav-dropdown-button
+              v-if="menuItem.dropdown"
+              :name="menuItem.name"
+              :path="menuItem.path"
+              :dropdown-content="menuItem.content"
+              class="w3-xlarge"
+            ></nav-dropdown-button>
+            <nav-button
+              v-else
+              :name="menuItem.name"
+              :path="menuItem.path"
+              class="w3-xlarge"
             >
-              <nav-dropdown-button
-                v-if="item.dropdown"
-                :name="item.name"
-                :path="item.path"
-                :dropdown-content="item.content"
-              ></nav-dropdown-button>
-              <nav-button v-else :name="item.name" :path="item.path">
-              </nav-button>
-            </li>
-          </ul>
+            </nav-button>
+          </li>
         </nav>
       </li>
       <button
@@ -34,29 +38,29 @@
       >
         <img src="~/static/icons/bars.png" alt="Menu icon" />
       </button>
-    </ul>
-    <!-- Navigation bar on small screens -->
-    <nav
-      id="navSmallScreen"
-      class="w3-hide-large w3-dropdown-content w3-animate-opacity"
-      style="width: 100%"
-    >
-      <ul class="w3-ul">
-        <li
-          v-for="(item, itemIndex) of menuOptions"
-          :key="'menu-item-' + itemIndex"
-          class="w3-xlarge"
-          style="text-align: center"
-        >
-          <nav-button
-            :name="item.name"
-            :path="item.path"
-            @click.native="openNav()"
+      <!-- Navigation bar on small screens -->
+      <nav
+        id="navSmallScreen"
+        class="w3-hide-large w3-dropdown-content w3-animate-opacity"
+        style="width: 100%"
+      >
+        <ul class="w3-ul">
+          <li
+            v-for="(item, itemIndex) of menuOptions"
+            :key="'menu-item-' + itemIndex"
+            class="w3-xlarge"
+            style="text-align: center"
           >
-          </nav-button>
-        </li>
-      </ul>
-    </nav>
+            <nav-button
+              :name="item.name"
+              :path="item.path"
+              @click.native="openNav()"
+            >
+            </nav-button>
+          </li>
+        </ul>
+      </nav>
+    </div>
   </header>
 </template>
 

@@ -2,9 +2,9 @@
   <!-- Logo of the company with the link to the home page -->
   <nuxt-link to="/">
     <img
-      src="https://cutewallpaper.org/21/monstars-logo-space-jam/Monstars-Logo-LogoDix.png"
-      alt="Logo of the company Monstar"
-      class="logo"
+      src="~/static/icons/logo.png"
+      alt="Logo Monstar"
+      class="logo w3-padding-16"
     />
   </nuxt-link>
 </template>

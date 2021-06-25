@@ -1,5 +1,5 @@
 <template>
-  <nuxt-link id="nav-button" class="w3-button w3-xlarge" :to="path">
+  <nuxt-link id="nav-button" class="w3-button" :to="path">
     {{ name }}
   </nuxt-link>
 </template>
