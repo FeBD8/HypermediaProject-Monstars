@@ -2,7 +2,7 @@
   <!-- The footer of the website -->
   <footer class="w3-bottom w3-bar">
     <div class="w3-bar-item center">
-      <div class="w3-bar-item">
+      <section class="w3-bar-item">
         <ul class="w3-ul w3-bar-item">
           <li class="w3-center">
             <the-logo></the-logo>
@@ -13,7 +13,7 @@
             </p>
           </li>
         </ul>
-      </div>
+      </section>
       <nav class="w3-bar-item w3-bar">
         <div class="w3-bar-item margin-right">
           <ul
@@ -52,6 +52,8 @@
           :path="menuItem.path"
         >
         </nav-button>
+      </nav>
+      <section class="w3-bar-item">
         <ul class="w3-bar-item w3-ul w3-padding-top-24">
           <li>
             <p class="w3-large w3-center">Follow Us</p>
@@ -74,7 +76,7 @@
             </a>
           </li>
         </ul>
-      </nav>
+      </section>
     </div>
   </footer>
 </template>
