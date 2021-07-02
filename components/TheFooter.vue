@@ -1,6 +1,6 @@
 <template>
   <!-- The footer of the website with the method for responsiveness -->
-  <footer class="w3-bottom w3-bar">
+  <footer class="w3-bar">
     <div id="bar" class="w3-bar-item center">
       <!-- Logo section -->
       <section id="logo" class="w3-bar-item">

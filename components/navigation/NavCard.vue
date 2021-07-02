@@ -7,11 +7,7 @@
       :to="path"
       style="width: 100%; text-align: left"
     >
-      <img
-        :src="shortcutImage"
-        style="margin-right: 10px"
-        alt="Logo of the specific area"
-      />
+      <img :src="shortcutImage" style="margin-right: 10px" alt="Logo area" />
       {{ name }}
     </nuxt-link>
   </div>

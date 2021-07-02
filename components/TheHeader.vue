@@ -38,29 +38,29 @@
       >
         <img src="~/static/icons/bars.png" alt="Menu icon" />
       </button>
-      <!-- Navigation bar on small screens -->
-      <nav
-        id="navSmallScreen"
-        class="w3-hide-large w3-dropdown-content w3-animate-opacity"
-        style="width: 100%"
-      >
-        <ul class="w3-ul">
-          <li
-            v-for="(item, itemIndex) of menuOptions"
-            :key="'menu-item-' + itemIndex"
-            class="w3-xlarge"
-            style="text-align: center"
-          >
-            <nav-button
-              :name="item.name"
-              :path="item.path"
-              @click.native="openNav()"
-            >
-            </nav-button>
-          </li>
-        </ul>
-      </nav>
     </div>
+    <!-- Navigation bar on small screens -->
+    <nav
+      id="navSmallScreen"
+      class="w3-hide-large w3-dropdown-content w3-animate-opacity"
+      style="width: 100%"
+    >
+      <ul class="w3-ul">
+        <li
+          v-for="(item, itemIndex) of menuOptions"
+          :key="'menu-item-' + itemIndex"
+          class="w3-xlarge"
+          style="text-align: center"
+        >
+          <nav-button
+            :name="item.name"
+            :path="item.path"
+            @click.native="openNav()"
+          >
+          </nav-button>
+        </li>
+      </ul>
+    </nav>
   </header>
 </template>
 
