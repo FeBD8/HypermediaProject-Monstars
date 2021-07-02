@@ -1,5 +1,5 @@
 <template>
-  <nuxt-link id="nav-button" class="w3-button" :to="path">
+  <nuxt-link class="w3-button nav-button" :to="path">
     {{ name }}
   </nuxt-link>
 </template>
@@ -14,11 +14,11 @@ export default {
 </script>
 
 <style scoped>
-#nav-button:hover {
+.nav-button:hover {
   color: white !important;
   background-color: transparent !important;
 }
-#nav-button::after {
+.nav-button::after {
   content: '';
   display: block;
   width: 0;
@@ -26,7 +26,7 @@ export default {
   background: white;
   transition: width 0.3s;
 }
-#nav-button:hover::after {
+.nav-button:hover::after {
   width: 100%;
 }
 </style>

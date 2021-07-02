@@ -9,7 +9,7 @@
             <the-logo></the-logo>
           </li>
           <li class="w3-center">
-            <p class="w3-large">©2021 Monstar S.p.A.</p>
+            <p class="w3-large">©2021 Monstars S.p.A.</p>
             <p class="w3-large">Piazza Leonardo da Vinci, 32</p>
             <p class="w3-large">Milano, Italy</p>
           </li>
@@ -120,6 +120,9 @@ export default {
   mounted() {
     window.addEventListener('resize', this.changeElemsArrangement)
   },
+  beforeDestroy() {
+    window.removeEventListener('resize', this.changeElemsArrangement)
+  },
   methods: {
     // Method used for the responsiveness of the footer and the arrangement of its elements
     changeElemsArrangement() {
@@ -134,15 +137,13 @@ export default {
         social.getBoundingClientRect().width +
         100
       if (window.innerWidth <= barWidth) {
-        if (!logo.className.includes('center')) {
-          logo.className += ' center'
-          navLinkLarge.className += ' center'
-          social.className += ' center'
-        }
-      } else if (logo.className.includes('center')) {
-        logo.className = logo.className.replace('center', '')
-        navLinkLarge.className = navLinkLarge.className.replace('center', '')
-        social.className = social.className.replace('center', '')
+        logo.classList.add('center')
+        navLinkLarge.classList.add('center')
+        social.classList.add('center')
+      } else {
+        logo.classList.remove('center')
+        navLinkLarge.classList.remove('center')
+        social.classList.remove('center')
       }
     },
   },
@@ -164,10 +165,10 @@ export default {
   margin: auto !important;
   display: table;
 }
-#nav-button::after {
+.nav-button::after {
   transition: none;
 }
-#nav-button:hover::after {
+.nav-button:hover::after {
   width: 0;
 }
 #content {
