@@ -25,4 +25,7 @@ a {
   padding: 0px 0px !important;
   margin: 4px 8px !important;
 }
+a:hover {
+  opacity: 80%;
+}
 </style>

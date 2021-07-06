@@ -35,7 +35,7 @@ img {
 }
 .w3-display-container:hover,
 .w3-button:hover {
-  background-color: #a0bae0 !important;
+  background-color: #dbe7f8f8 !important;
 }
 .w3-padding-large {
   padding: 15px 20px !important;

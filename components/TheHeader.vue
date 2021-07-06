@@ -33,7 +33,10 @@
         </nav>
       </li>
       <button
-        class="w3-bar-item w3-button w3-hide-large w3-display-right icon"
+        class="
+          w3-bar-item w3-button w3-hide-large w3-display-right w3-ripple
+          icon
+        "
         @click="openNav()"
       >
         <img src="~/static/icons/bars.png" alt="Menu icon" />
@@ -96,7 +99,7 @@ export default {
     colorBarOnScroll() {
       const bar = document.getElementById('top-bar')
       if (document.documentElement.scrollTop !== 0) {
-        bar.style.backgroundColor = '#1d4a8d'
+        bar.style.backgroundColor = '#47546b'
       } else {
         bar.style.backgroundColor = 'transparent'
       }
@@ -114,11 +117,12 @@ export default {
 #navSmallScreen {
   width: 100%;
   background-color: white;
-  color: #1d4a8d;
+  color: #47546b;
   display: block;
   visibility: hidden;
   opacity: 0;
   transition: visibility 0s linear 0.5s, opacity 0.5s linear;
+  border-bottom: 1px solid #47546b65 !important;
 }
 .visible {
   visibility: visible !important;
@@ -126,11 +130,11 @@ export default {
   transition-delay: 0s !important;
 }
 .button-smallscreen:hover {
-  color: #1d4a8d !important;
+  color: #47546b !important;
   background-color: transparent !important;
 }
 .button-smallscreen::after {
-  background: #1d4a8d !important;
+  background: #47546b !important;
 }
 .icon {
   background-color: transparent !important;

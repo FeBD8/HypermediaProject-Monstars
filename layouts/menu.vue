@@ -33,12 +33,16 @@ export default {
           path: '/products',
         },
         {
-          name: 'Company',
-          path: '/company',
-        },
-        {
           name: 'People',
           path: '/people',
+        },
+        {
+          name: 'About',
+          path: '/about',
+        },
+        {
+          name: 'Contact',
+          path: '/contact',
         },
       ],
     }
@@ -57,9 +61,18 @@ export default {
 }
 </script>
 
-<style scoped>
+<style>
 header,
-footer {
-  font-family: 'Staatliches', cursive !important;
+footer,
+h1 {
+  font-family: 'Staatliches', 'cursive' !important;
+}
+p,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Montserrat', 'sans-serif' !important;
 }
 </style>

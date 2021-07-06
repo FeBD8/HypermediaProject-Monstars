@@ -15,6 +15,11 @@ export default {}
 
 <style scoped>
 .logo {
-  max-height: 100px !important;
+  max-height: 100px;
+}
+@media (max-width: 900px) {
+  .logo {
+    max-height: 80px !important;
+  }
 }
 </style>

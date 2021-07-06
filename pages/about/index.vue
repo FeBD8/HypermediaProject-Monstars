@@ -1,6 +1,6 @@
 <template>
   <div class="content">
-    <p>PRODUCTS PAGE</p>
+    <p>COMPANY PAGE</p>
   </div>
 </template>
 

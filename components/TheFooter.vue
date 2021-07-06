@@ -1,7 +1,7 @@
 <template>
   <!-- The footer of the website with the method for responsiveness -->
-  <footer class="w3-bar">
-    <div id="bar" class="w3-bar-item center">
+  <footer id="bottom-bar" class="w3-bar">
+    <div class="w3-bar-item center">
       <!-- Logo section -->
       <section id="logo" class="w3-bar-item">
         <ul class="w3-ul w3-bar-item">
@@ -127,22 +127,20 @@ export default {
     // Method used for the responsiveness of the footer and the arrangement of its elements
     changeElemsArrangement() {
       const logo = document.getElementById('logo')
-      const navLinkLarge = document.getElementById('navLinkLarge')
-      const navLinkSmall = document.getElementById('navLinkSmall')
+      const navLink = document.getElementById('navLinkLarge')
       const social = document.getElementById('social')
       const barWidth =
         logo.getBoundingClientRect().width +
-        navLinkLarge.getBoundingClientRect().width +
-        navLinkSmall.getBoundingClientRect().width +
+        navLink.getBoundingClientRect().width +
         social.getBoundingClientRect().width +
         100
       if (window.innerWidth <= barWidth) {
         logo.classList.add('center')
-        navLinkLarge.classList.add('center')
+        navLink.classList.add('center')
         social.classList.add('center')
-      } else {
+      } else if (window.innerWidth > 900) {
         logo.classList.remove('center')
-        navLinkLarge.classList.remove('center')
+        navLink.classList.remove('center')
         social.classList.remove('center')
       }
     },
@@ -151,6 +149,13 @@ export default {
 </script>
 
 <style scoped>
+p {
+  font-family: 'Staatliches', 'cursive' !important;
+}
+#bottom-bar {
+  background-color: #47546b !important;
+  color: white !important;
+}
 #menu,
 #dropdown {
   padding-left: 0px !important;
@@ -165,22 +170,11 @@ export default {
   margin: auto !important;
   display: table;
 }
-.nav-button::after {
-  transition: none;
-}
 .nav-button:hover::after {
   width: 0;
 }
 #content {
   font-family: 'Montserrat', sans-serif !important;
-}
-.w3-button:hover {
-  color: white !important;
-  background-color: transparent !important;
-}
-.w3-bar {
-  background-color: #1d4a8d !important;
-  color: white !important;
 }
 .w3-ul li {
   border-bottom: none;

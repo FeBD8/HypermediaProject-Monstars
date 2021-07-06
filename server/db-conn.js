@@ -53,20 +53,20 @@ function defineDatabaseStructure() {
   )
   // Creating the 1 -> N association between Person and Area in which they work
   Person.belongsTo(Area, {
-    as: "WorkingArea",
+    as: 'WorkingArea',
     foreignKey: {
       name: 'working_area_id',
       allowNull: false,
     },
   })
   // Creating the 1 -> N association between Person and Area for which they are responsible
-  Person.belongsTo(Area, { 
-    as: "AreaResp",
-    foreignKey: 'responsible_of_area_id' 
+  Person.belongsTo(Area, {
+    as: 'AreaResp',
+    foreignKey: 'responsible_of_area_id',
   })
   // Creating the 1 -> 1 association between Person and Product for which they are the reference for the assistance
   Product.belongsTo(Person, {
-    as: "ReferenceAssistant",
+    as: 'ReferenceAssistant',
     foreignKey: {
       name: 'reference_assistant_id',
       allowNull: false,
@@ -74,7 +74,7 @@ function defineDatabaseStructure() {
   })
   // Creating the 1 -> 1 association between Person and Product for which he/she is the product manager
   Product.belongsTo(Person, {
-    as: "ProductManager",
+    as: 'ProductManager',
     foreignKey: {
       name: 'product_manager_id',
       allowNull: false,
@@ -82,7 +82,7 @@ function defineDatabaseStructure() {
   })
   // Creating the 1 -> N association between Product and Area in which it belongs to
   Area.hasMany(Product, {
-    as: "Area",
+    as: 'Area',
     foreignKey: {
       name: 'area_id',
       allowNull: false,
@@ -101,51 +101,57 @@ function defineDatabaseStructure() {
  */
 async function insertFakeData() {
   const { Person, Area, Product } = db._tables
-    // Create 2 Areas
-    const area1 = await Area.create({
-      name: 'Security',
-      description: '',
-      image: '',
-      shortcut_image: 'https://www.moviri.com/wp-content/uploads/2020/11/bl-icon-security@2x.png',
-    })
-    const area2 = await Area.create({
-      name: 'Artificial Intelligence',
-      description: '',
-      image: '',
-      shortcut_image: 'https://cdn0.iconfinder.com/data/icons/adobe-application/100/Ai_Icon-256.png',
-    })
+  // Create 2 Areas
+  const area1 = await Area.create({
+    name: 'Security',
+    description: '',
+    image: '',
+    shortcut_image:
+      'https://www.moviri.com/wp-content/uploads/2020/11/bl-icon-security@2x.png',
+  })
+  const area2 = await Area.create({
+    name: 'Artificial Intelligence',
+    description: '',
+    image: '',
+    shortcut_image:
+      'https://cdn0.iconfinder.com/data/icons/adobe-application/100/Ai_Icon-256.png',
+  })
   // Create 3 Person
   const person1 = await Person.create({
     name: 'Luca',
     surname: 'Colombo',
     role: 'Software Engineer',
-    image: '',
+    image:
+      'https://www.moviri.com/wp-content/uploads/2020/12/matteo_fabiano2.jpg',
     working_area_id: area1.id,
     responsible_of_area_id: area1.id,
   })
   const person2 = await Person.create({
-    name: 'Riccardo',
-    surname: 'Zanaboni',
-    role: 'Software Engineer',
-    image: '',
-    working_area_id: area2.id,
-    responsible_of_area_id: area2.id,
+    name: 'Sara',
+    surname: 'Bianchi',
+    role: 'Security Expert',
+    image:
+      'https://www.moviri.com/wp-content/uploads/2020/12/Camilla-Stefani-1.jpg',
+    working_area_id: area1.id,
   })
   const person3 = await Person.create({
-    name: 'Fabio',
-    surname: 'Rossanigo',
-    role: 'Software Engineer',
-    image: '',
+    name: 'Riccardo',
+    surname: 'Zanaboni',
+    role: 'AI Expert',
+    image: 'https://www.moviri.com/wp-content/uploads/2021/04/enrico-maini.jpg',
     working_area_id: area2.id,
     responsible_of_area_id: area2.id,
   })
   const person4 = await Person.create({
-    name: 'Luigi',
-    surname: 'Bianchi',
-    role: 'Software Engineer',
-    image: '',
-    working_area_id: area1.id,
+    name: 'Fabio',
+    surname: 'Rossanigo',
+    role: 'Data Scientist',
+    image:
+      'https://www.moviri.com/wp-content/uploads/2020/12/Fabio-Violante-1.jpg',
+    working_area_id: area2.id,
+    responsible_of_area_id: area2.id,
   })
+
   // Create 2 Products
   const product1 = await Product.create({
     name: 'Security manager software',
