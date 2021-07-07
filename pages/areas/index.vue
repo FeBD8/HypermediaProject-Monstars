@@ -1,13 +1,7 @@
 <template>
   <div>
     <!-- Image Header -->
-    <div class="w3-display-container w3-animate-opacity">
-      <img
-        src="https://images.unsplash.com/photo-1484788984921-03950022c9ef?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1404&q=80"
-        alt="boat"
-        style="width: 100%; min-height: 350px; max-height: 600px"
-      />
-    </div>
+    <section class="image"></section>
     <div class="text">
       <h1>AREAS PAGE</h1>
       <p>
@@ -35,11 +29,16 @@
 
 <script>
 export default {
-  layout: 'menu',
+  layout: 'default',
 }
 </script>
 
 <style scoped>
+.image {
+  background-color: black;
+  height: 600px;
+  width: 100%;
+}
 p {
   max-width: 500px;
 }

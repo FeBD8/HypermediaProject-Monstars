@@ -1,5 +1,5 @@
 <template>
-  <!-- Header of the page of the company, with logo and the navigation bar composed of navigation button and navigation dropdown button 
+  <!-- Header of the page of the company, with logo and the navigation bar composed of navigation button and navigation dropdown button
   It contains both the navbar for large and small screen -->
 
   <header class="w3-top">
@@ -78,13 +78,13 @@ export default {
     menuOptions: { type: Array, default: () => [] },
   },
   beforeMount() {
-    this.colorBarOnScroll()
+    this.navBarOnScroll()
   },
   mounted() {
-    window.addEventListener('scroll', this.colorBarOnScroll)
+    window.addEventListener('scroll', this.navBarOnScroll)
   },
   beforeDestroy() {
-    window.removeEventListener('scroll', this.colorBarOnScroll)
+    window.removeEventListener('scroll', this.navBarOnScroll)
   },
   methods: {
     // Methods used for showing and hiding the navbar on small screen's devices
@@ -96,12 +96,24 @@ export default {
       const navBar = document.getElementById('navSmallScreen')
       navBar.classList.remove('visible')
     },
-    colorBarOnScroll() {
-      const bar = document.getElementById('top-bar')
+    navBarOnScroll() {
+      const header = document.getElementById('top-bar')
+      const footer = document.getElementById('bottom-bar')
+      const offset =
+        footer.offsetTop -
+        document.documentElement.scrollTop -
+        header.getBoundingClientRect().height
+
       if (document.documentElement.scrollTop !== 0) {
-        bar.style.backgroundColor = '#47546b'
+        if (offset < 0) {
+          header.classList.add('animate-hide')
+        } else {
+          header.classList.remove('animate-hide')
+        }
+        header.style.backgroundColor = '#47546b'
       } else {
-        bar.style.backgroundColor = 'transparent'
+        header.classList.remove('animate-hide')
+        header.style.backgroundColor = 'transparent'
       }
     },
   },
@@ -112,7 +124,9 @@ export default {
 #top-bar {
   background-color: transparent;
   color: white;
-  transition: background-color 0.5s linear;
+  visibility: visible;
+  opacity: 1;
+  transition: background-color 0.5s linear, opacity 0.5s linear;
 }
 #navSmallScreen {
   width: 100%;
@@ -123,6 +137,11 @@ export default {
   opacity: 0;
   transition: visibility 0s linear 0.5s, opacity 0.5s linear;
   border-bottom: 1px solid #47546b65 !important;
+}
+.animate-hide {
+  visibility: hidden !important;
+  opacity: 0 !important;
+  transition: visibility 0s linear 0.5s, opacity 0.5s linear !important;
 }
 .visible {
   visibility: visible !important;

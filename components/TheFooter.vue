@@ -9,9 +9,10 @@
             <the-logo></the-logo>
           </li>
           <li class="w3-center">
-            <p class="w3-large">©2021 Monstars S.p.A.</p>
-            <p class="w3-large">Piazza Leonardo da Vinci, 32</p>
-            <p class="w3-large">Milano, Italy</p>
+            <p class="w3-large">
+              ©2021 Monstars S.p.A.<br />Piazza Leonardo da Vinci, 32<br />Milano,
+              Italy
+            </p>
           </li>
         </ul>
       </section>
@@ -23,18 +24,18 @@
             :key="'drop-item-' + itemIndex"
             class="w3-bar-item w3-ul w3-center"
           >
-            <li id="link-line">
+            <li class="border-bottom zero-padding-top">
               <nav-button
                 :name="dropItem.name"
                 :path="dropItem.path"
-                class="w3-large"
+                class="w3-large zero-padding-top"
               >
               </nav-button>
             </li>
             <li
               v-for="(contentItem, contentIndex) of dropItem.content"
-              id="content"
-              :key="'content-item-' + contentIndex"
+              id="contentDrop"
+              :key="'contentDrop-item-' + contentIndex"
             >
               <nav-button
                 :name="contentItem.name"
@@ -48,9 +49,9 @@
         <div id="menu" class="w3-bar-item w3-bar">
           <nav-button
             v-for="(menuItem, itemIndex) of elemsWithoutDropdownContent"
-            id="menu-button"
+            id="menuButton"
             :key="'menu-item-' + itemIndex"
-            class="w3-bar-item w3-large w3-padding-top-24"
+            class="w3-bar-item w3-large"
             :name="menuItem.name"
             :path="menuItem.path"
           >
@@ -58,7 +59,10 @@
         </div>
       </nav>
       <!-- Navbar on small screen devices -->
-      <nav id="navLinkSmall" class="w3-bar-item w3-hide-large center">
+      <nav
+        id="navLinkSmall"
+        class="w3-bar-item w3-hide-large center border-bottom border-top"
+      >
         <ul class="w3-bar-item w3-ul">
           <li
             v-for="(item, itemIndex) of menuOptions"
@@ -71,12 +75,12 @@
         </ul>
       </nav>
       <!-- Social section -->
-      <section id="social" class="w3-bar-item">
-        <ul class="w3-bar-item w3-ul w3-padding-top-24">
-          <li class="w3-center">
-            <p class="w3-large">Follow Us</p>
+      <section id="social" class="w3-bar-item w3-padding-top-24">
+        <ul class="w3-bar-item w3-ul">
+          <li>
+            <p class="w3-large w3-center" style="margin: 0">Follow Us</p>
           </li>
-          <li class="w3-center">
+          <li class="w3-padding-24">
             <the-socials></the-socials>
           </li>
         </ul>
@@ -117,6 +121,9 @@ export default {
   beforeMount() {
     this.changeElemsArrangement()
   },
+  beforeUpdate() {
+    this.changeElemsArrangement()
+  },
   mounted() {
     window.addEventListener('resize', this.changeElemsArrangement)
   },
@@ -127,20 +134,22 @@ export default {
     // Method used for the responsiveness of the footer and the arrangement of its elements
     changeElemsArrangement() {
       const logo = document.getElementById('logo')
-      const navLink = document.getElementById('navLinkLarge')
+      const navLinkLarge = document.getElementById('navLinkLarge')
+      const navLinkSmall = document.getElementById('navLinkSmall')
       const social = document.getElementById('social')
       const barWidth =
         logo.getBoundingClientRect().width +
-        navLink.getBoundingClientRect().width +
+        navLinkLarge.getBoundingClientRect().width +
+        navLinkSmall.getBoundingClientRect().width +
         social.getBoundingClientRect().width +
-        100
+        200
       if (window.innerWidth <= barWidth) {
         logo.classList.add('center')
-        navLink.classList.add('center')
+        navLinkLarge.classList.add('center')
         social.classList.add('center')
-      } else if (window.innerWidth > 900) {
+      } else if (window.innerWidth > 901) {
         logo.classList.remove('center')
-        navLink.classList.remove('center')
+        navLinkLarge.classList.remove('center')
         social.classList.remove('center')
       }
     },
@@ -155,15 +164,20 @@ p {
 #bottom-bar {
   background-color: #47546b !important;
   color: white !important;
+  z-index: 1 !important;
+  position: absolute;
 }
-#menu,
-#dropdown {
-  padding-left: 0px !important;
-  padding-right: 0px !important;
-}
-#menu-button {
+#menuButton {
   margin-left: 20px !important;
   margin-right: 20px !important;
+}
+#social,
+#navLinkLarge {
+  padding-top: 32px !important;
+}
+#contentDrop {
+  font-family: 'Montserrat', sans-serif !important;
+  padding: 8px !important;
 }
 .center {
   float: none;
@@ -173,13 +187,16 @@ p {
 .nav-button:hover::after {
   width: 0;
 }
-#content {
-  font-family: 'Montserrat', sans-serif !important;
-}
 .w3-ul li {
   border-bottom: none;
 }
-#link-line {
-  border-bottom: 1px solid rgba(255, 255, 255, 0.438);
+.border-bottom {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.438) !important;
+}
+.border-top {
+  border-top: 1px solid rgba(255, 255, 255, 0.438) !important;
+}
+.zero-padding-top {
+  padding-top: 0 !important;
 }
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <div class="content">
+  <div>
     <section class="image"></section>
     <!-- Team Container -->
     <section class="w3-container w3-padding-16 w3-center">
@@ -9,7 +9,7 @@
       <br />
       <div class="team-container">
         <div class="w3-table">
-          <!-- In the table I create 1 row for each triplet of people and for each row put inside 3 people -->
+          <!-- In the table it creates 1 row for each triplet of people and for each row puts inside 3 people -->
           <div
             v-for="(i, iIndex) in rowCount"
             :key="'row-' + iIndex"
@@ -43,7 +43,7 @@ export default {
   components: {
     PersonCard,
   },
-  layout: 'menu',
+  layout: 'default',
   // Function used for fetching the data of the areas from the db for the ssr
   async asyncData({ $axios }) {
     const { data } = await $axios.get(`${process.env.BASE_URL}/api/people`)
@@ -81,8 +81,5 @@ export default {
   float: none;
   margin: auto !important;
   display: table;
-}
-.w3-ul li {
-  border-bottom: none;
 }
 </style>
