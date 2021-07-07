@@ -3,7 +3,7 @@
     <section class="image"></section>
     <!-- Team Container -->
     <section class="w3-container w3-padding-16 w3-center">
-      <div>
+      <div class="hide-animate">
         <h1 class="w3-xxxlarge">OUR TEAM</h1>
       </div>
       <br />
@@ -21,7 +21,7 @@
                 i * peoplePerRow
               )"
               :key="'person-' + personIndex"
-              class="w3-third"
+              class="w3-third hide-animate"
               :number="person.id"
               :name="person.name"
               :surname="person.surname"
@@ -73,7 +73,7 @@ export default {
 <style scoped>
 .image {
   background-color: black;
-  height: 600px;
+  height: 1000px;
   width: 100%;
 }
 .team-container {

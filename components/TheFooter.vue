@@ -118,13 +118,8 @@ export default {
       return elems
     },
   },
-  beforeMount() {
-    this.changeElemsArrangement()
-  },
-  beforeUpdate() {
-    this.changeElemsArrangement()
-  },
   mounted() {
+    this.changeElemsArrangement()
     window.addEventListener('resize', this.changeElemsArrangement)
   },
   beforeDestroy() {

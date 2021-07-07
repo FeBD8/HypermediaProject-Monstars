@@ -58,6 +58,28 @@ export default {
       }
     }
   },
+  mounted() {
+    this.animateComponents()
+    window.addEventListener('scroll', this.animateComponents)
+  },
+  beforeDestroy() {
+    window.removeEventListener('scroll', this.animateComponents)
+  },
+  methods: {
+    animateComponents() {
+      const elems = document.getElementsByClassName('hide-animate')
+      elems.forEach((elem) => {
+        const offset =
+          elem.offsetTop -
+          document.documentElement.scrollTop -
+          window.innerHeight +
+          100
+        if (offset < 0) {
+          elem.classList.add('animation-in')
+        }
+      })
+    },
+  },
 }
 </script>
 
@@ -74,5 +96,27 @@ h4,
 h5,
 h6 {
   font-family: 'Montserrat', 'sans-serif' !important;
+}
+.hide-animate {
+  visibility: hidden;
+}
+.animation-in {
+  visibility: visible !important;
+  animation-delay: 0.2s;
+  animation-name: fadeInUp;
+  animation-duration: 1s;
+  animation-fill-mode: both;
+}
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateY(20px);
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
 }
 </style>

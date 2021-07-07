@@ -3,7 +3,7 @@
     <intro-video
       src="https://www.moviri.com/wp-content/uploads/2020/12/Video-HP-01120_V1.mp4"
     ></intro-video>
-    <section id="content">
+    <section id="content" class="hide-animate">
       <h1>AREAS PAGE</h1>
       <p>
         Lorem ipsum dolor sit amet, consectetur adipisci elit, sed do eiusmod
