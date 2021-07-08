@@ -1,6 +1,6 @@
 <template>
   <!-- The footer of the website with the method for responsiveness -->
-  <footer id="bottom-bar" class="w3-bar">
+  <footer id="bottomBar" class="w3-bar">
     <div class="w3-bar-item center">
       <!-- Logo section -->
       <section id="logo" class="w3-bar-item">
@@ -156,10 +156,10 @@ export default {
 p {
   font-family: 'Staatliches', 'cursive' !important;
 }
-#bottom-bar {
+#bottomBar {
   background-color: #47546b !important;
   color: white !important;
-  z-index: 1 !important;
+  z-index: 3;
   position: absolute;
 }
 #menuButton {

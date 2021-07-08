@@ -59,26 +59,12 @@ export default {
     }
   },
   mounted() {
-    this.animateComponents()
-    window.addEventListener('scroll', this.animateComponents)
+    window.addEventListener('scroll', this.$animateComponents)
+    window.addEventListener('resize', this.$animateComponents)
   },
   beforeDestroy() {
-    window.removeEventListener('scroll', this.animateComponents)
-  },
-  methods: {
-    animateComponents() {
-      const elems = document.getElementsByClassName('hide-animate')
-      elems.forEach((elem) => {
-        const offset =
-          elem.offsetTop -
-          document.documentElement.scrollTop -
-          window.innerHeight +
-          100
-        if (offset < 0) {
-          elem.classList.add('animation-in')
-        }
-      })
-    },
+    window.removeEventListener('scroll', this.$animateComponents)
+    window.removeEventListener('resize', this.$animateComponents)
   },
 }
 </script>

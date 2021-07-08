@@ -1,10 +1,14 @@
 <template>
   <div>
-    <section class="image"></section>
+    <intro-video
+      :src="intro.src"
+      :title="intro.title"
+      :subtitle="intro.subtitle"
+    ></intro-video>
     <!-- Team Container -->
-    <section class="w3-container w3-padding-16 w3-center">
+    <section id="content" class="w3-container w3-padding-16 w3-center">
       <div class="hide-animate">
-        <h1 class="w3-xxxlarge">OUR TEAM</h1>
+        <h1 class="w3-xxxlarge">OUR TALENT</h1>
       </div>
       <br />
       <div class="team-container">
@@ -54,6 +58,13 @@ export default {
   },
   data() {
     return {
+      intro: {
+        title: 'Have you met our team?',
+        subtitle: `We’d like to introduce you to our family of brilliant, hard-working, lovely weirdos (in a good way!).
+        We dream big dreams and have the guts to go after them. Rumor has it we’re table tennis and foosball pros too, 
+        but you’ve got to see it for yourself.`,
+        src: 'https://bendingspoons.com/assets/video/team.mp4',
+      },
       /* 
       Number of items per row
       If you want to change this property, you must change also the CSS class 
@@ -67,15 +78,13 @@ export default {
       return Math.ceil(this.people.length / this.peoplePerRow)
     },
   },
+  mounted() {
+    this.$animateComponents()
+  },
 }
 </script>
 
 <style scoped>
-.image {
-  background-color: black;
-  height: 1000px;
-  width: 100%;
-}
 .team-container {
   max-width: 60%;
   float: none;

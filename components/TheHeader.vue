@@ -3,7 +3,7 @@
   It contains both the navbar for large and small screen -->
 
   <header class="w3-top">
-    <div id="top-bar" class="w3-bar">
+    <div id="topBar" class="w3-bar">
       <li class="w3-bar-item w3-left w3-margin-left">
         <the-logo @click.native="closeNav()"></the-logo>
       </li>
@@ -97,8 +97,8 @@ export default {
       navBar.classList.remove('visible')
     },
     navBarOnScroll() {
-      const header = document.getElementById('top-bar')
-      const footer = document.getElementById('bottom-bar')
+      const header = document.getElementById('topBar')
+      const footer = document.getElementById('bottomBar')
       const offset =
         footer.offsetTop -
         document.documentElement.scrollTop -
@@ -121,7 +121,7 @@ export default {
 </script>
 
 <style scoped>
-#top-bar {
+#topBar {
   background-color: transparent;
   color: white;
   visibility: visible;
@@ -137,6 +137,9 @@ export default {
   opacity: 0;
   transition: visibility 0s linear 0.5s, opacity 0.5s linear;
   border-bottom: 1px solid #47546b65 !important;
+}
+.w3-top {
+  z-index: 2;
 }
 .animate-hide {
   visibility: hidden !important;

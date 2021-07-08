@@ -1,16 +1,16 @@
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   ssr: true,
-  target: "server",
+  target: 'server',
   env: {
     //BASE_URL: 'https://test-polimi.herokuapp.com', // Production URL
-    BASE_URL: "", // Development URL
+    BASE_URL: '', // Development URL
     configurationId: '',
   },
   serverMiddleware: [
     {
-      path: "/api",
-      handler: "~/server/rest/api.js",
+      path: '/api',
+      handler: '~/server/rest/api.js',
     },
   ],
   head: {
@@ -25,18 +25,19 @@ export default {
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-      { rel: "preconnect", href: "https://fonts.gstatic.com"},
-      { href: "https://fonts.googleapis.com/css2?family=Montserrat:wght@500&family=Staatliches&display=swap", rel: "stylesheet"},
+      { rel: 'preconnect', href: 'https://fonts.gstatic.com' },
+      {
+        href: 'https://fonts.googleapis.com/css2?family=Montserrat:wght@500&family=Staatliches&display=swap',
+        rel: 'stylesheet',
+      },
     ],
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
-  css: [
-    '@/assets/css/w3.css',
-  ],
+  css: ['@/assets/css/w3.css'],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: [],
+  plugins: [{ src: '~/plugins/animation.js', mode: 'client' }],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
