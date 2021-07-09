@@ -43,7 +43,9 @@ function defineDatabaseStructure() {
   const Product = db.define(
     'product',
     {
-      name: DataTypes.STRING,
+      title: DataTypes.STRING,
+      subtitle: DataTypes.STRING,
+      logo: DataTypes.STRING,
       description: DataTypes.TEXT,
       image: DataTypes.STRING,
     },
@@ -154,17 +156,25 @@ async function insertFakeData() {
 
   // Create 2 Products
   const product1 = await Product.create({
-    name: 'Security manager software',
-    description: '',
-    image: '',
+    title: 'Cleafy',
+    subtitle: 'At your side, fighting against online fraud.',
+    logo: 'https://www.moviri.com/wp-content/uploads/elementor/thumbs/Cleafy-Logo-p4x9d3ef1luvofs4qsvcwnjxn2iil5g091wbunncw0.png',
+    description:
+      'Cleafy helps banks and financial institutions scale-up their fight against online fraud. Cleafy is the first solution to introduce full detection and response in online fraud prevention. A revolutionary technology that combines the most advanced fraud detection capabilities, with the possibility to set-up automated responses. All in one central platform.',
+    image:
+      'https://www.moviri.com/wp-content/uploads/2021/03/cleafy-dashboard.png',
     area_id: area1.id,
     product_manager_id: person1.id,
     reference_assistant_id: person4.id,
   })
   const product2 = await Product.create({
-    name: 'AI Tools',
-    description: '',
-    image: '',
+    title: 'Akamas',
+    subtitle: 'The Autonomous Performance Optimization AI.',
+    logo: 'https://www.moviri.com/wp-content/uploads/2020/11/akamas.png',
+    description:
+      'Akamas is a new, category-defining software that delivers autonomous and continuous performance optimization, powered by machine learning, extracting unprecedented levels of performance and cost savings from technology stacks.',
+    image:
+      'https://www.moviri.com/wp-content/uploads/2020/11/showcase-akamas1.png',
     area_id: area2.id,
     product_manager_id: person3.id,
     reference_assistant_id: person2.id,

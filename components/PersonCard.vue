@@ -6,7 +6,7 @@
       style="width: 100%"
     >
       <div>
-        <img :src="image" alt="Profile image" class="w3-center" />
+        <img :src="image" alt="Profile image" />
       </div>
       <div class="text-container">
         <h2 class="w3-xlarge">
@@ -21,7 +21,6 @@
 <script>
 export default {
   props: {
-    number: { type: Number, default: () => -1 },
     name: { type: String, default: () => '' },
     surname: { type: String, default: () => '' },
     image: { type: String, default: () => '' },

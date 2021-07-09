@@ -1,18 +1,19 @@
 <template>
+  <!-- Component for the introduction video of all the main pages.
+  It contains a video, a title, a subtitle and an arrow that bring the user to the main content of the page -->
   <section class="intro">
     <div class="video-container w3-animate-opacity">
       <video muted="" autoplay="" playsinline="" loop="">
         <source :src="src" type="video/mp4" />
+        The video cannot be loaded.
       </video>
     </div>
     <div class="background-overlay"></div>
     <div class="text-container center">
       <div class="w3-row hide-animate">
-        <div class="w3-col l8 m12 s12">
+        <div class="w3-col l8 m12 s12" style="line-height: normal">
           <h1>
-            <span class="w3-xxxlarge">
-              {{ title }}
-            </span>
+            <span class="w3-xxxlarge">{{ title }}</span>
           </h1>
         </div>
         <div class="w3-col l8 m12 s12 w3-right">
@@ -38,14 +39,17 @@ export default {
     subtitle: { type: String, default: () => '' },
   },
   methods: {
+    // This function scroll the page to the main content of the page. There should be one section in the page with id = 'content'
     scrollToContent() {
       const content = document.getElementById('content')
       const header = document.getElementById('topBar')
-      content.style['scroll-margin-top'] =
-        header.getBoundingClientRect().height + 'px'
-      content.scrollIntoView({
-        behavior: 'smooth',
-      })
+      if (content !== null) {
+        content.style['scroll-margin-top'] =
+          header.getBoundingClientRect().height + 'px'
+        content.scrollIntoView({
+          behavior: 'smooth',
+        })
+      }
     },
   },
 }
@@ -83,13 +87,14 @@ video {
   left: 50%;
 }
 .text-container {
+  white-space: pre-line;
   color: white;
   position: relative;
   z-index: 1;
 }
 .center {
   width: 50vw;
-  padding-top: 35vh;
+  padding-top: 25vh;
   float: none;
   margin: auto !important;
   display: table;
@@ -109,12 +114,6 @@ video {
   }
   .w3-col {
     text-align: center !important;
-  }
-  .w3-xxxlarge {
-    font-size: 30px !important;
-  }
-  .w3-large {
-    font-size: 15px !important;
   }
 }
 </style>

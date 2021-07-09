@@ -1,4 +1,5 @@
 <template>
+  <!-- People page composed by the introduction video and the team container with all the people -->
   <div>
     <intro-video
       :src="intro.src"
@@ -6,12 +7,12 @@
       :subtitle="intro.subtitle"
     ></intro-video>
     <!-- Team Container -->
-    <section id="content" class="w3-container w3-padding-16 w3-center">
-      <div class="hide-animate">
-        <h1 class="w3-xxxlarge">OUR TALENT</h1>
+    <section id="content" class="w3-container">
+      <div class="w3-center hide-animate">
+        <h1 class="w3-xxxlarge">OUR TALENTS</h1>
       </div>
       <br />
-      <div class="team-container">
+      <div class="team-container w3-padding-16">
         <div class="w3-table">
           <!-- In the table it creates 1 row for each triplet of people and for each row puts inside 3 people -->
           <div
@@ -26,7 +27,6 @@
               )"
               :key="'person-' + personIndex"
               class="w3-third hide-animate"
-              :number="person.id"
               :name="person.name"
               :surname="person.surname"
               :image="person.image"
@@ -48,7 +48,7 @@ export default {
     PersonCard,
   },
   layout: 'default',
-  // Function used for fetching the data of the areas from the db for the ssr
+  // Function used for fetching the data of the people from the db for the ssr
   async asyncData({ $axios }) {
     const { data } = await $axios.get(`${process.env.BASE_URL}/api/people`)
     const people = data
@@ -60,9 +60,8 @@ export default {
     return {
       intro: {
         title: 'Have you met our team?',
-        subtitle: `We’d like to introduce you to our family of brilliant, hard-working, lovely weirdos (in a good way!).
-        We dream big dreams and have the guts to go after them. Rumor has it we’re table tennis and foosball pros too, 
-        but you’ve got to see it for yourself.`,
+        subtitle:
+          'We’d like to introduce you to our family of brilliant, hard-working, lovely weirdos (in a good way!). We dream big dreams and have the guts to go after them. Rumor has it we’re table tennis and foosball pros too, but you’ve got to see it for yourself.',
         src: 'https://bendingspoons.com/assets/video/team.mp4',
       },
       /* 

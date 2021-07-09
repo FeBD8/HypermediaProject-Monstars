@@ -1,4 +1,5 @@
 <template>
+  <!-- Default layout composed by the header, the main content and the footer -->
   <div>
     <the-header :menu-options="menuOptions"></the-header>
     <div>
@@ -58,6 +59,7 @@ export default {
       }
     }
   },
+  // Add the listener for the scroll and resize in order to animate the components
   mounted() {
     window.addEventListener('scroll', this.$animateComponents)
     window.addEventListener('resize', this.$animateComponents)
@@ -83,6 +85,9 @@ h5,
 h6 {
   font-family: 'Montserrat', 'sans-serif' !important;
 }
+section#content {
+  padding: 48px 0;
+}
 .hide-animate {
   visibility: hidden;
 }
@@ -103,6 +108,14 @@ h6 {
     opacity: 1;
     -webkit-transform: translateY(0);
     transform: translateY(0);
+  }
+}
+@media (max-width: 901px) {
+  .w3-xxxlarge {
+    font-size: 30px !important;
+  }
+  .w3-large {
+    font-size: 15px !important;
   }
 }
 </style>

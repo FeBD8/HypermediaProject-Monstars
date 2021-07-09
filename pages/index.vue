@@ -6,7 +6,7 @@
       :subtitle="intro.subtitle"
     ></intro-video>
     <section id="content" class="hide-animate">
-      <h1>AREAS PAGE</h1>
+      <h1>HOME PAGE</h1>
       <p>
         Lorem ipsum dolor sit amet, consectetur adipisci elit, sed do eiusmod
         tempor incidunt ut labore et ssdolore magna aliqua. Ut enim ad minim
@@ -42,8 +42,8 @@ export default {
     return {
       intro: {
         title: 'Hack The Future',
-        subtitle: `We create our own tech products, used and loved by millions all around the world.
-      Our primary focus is on artificial intelligence and security, but we' ve got our sights set on other tech fields too.`,
+        subtitle:
+          'We create our own tech products, used and loved by millions all around the world. Our primary focus is on artificial intelligence and security, but we have got our sights set on other tech fields too.',
         src: 'https://www.moviri.com/wp-content/uploads/2020/12/Video-HP-01120_V1.mp4',
       },
     }
