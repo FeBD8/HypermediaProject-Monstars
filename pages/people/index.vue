@@ -2,7 +2,8 @@
   <!-- People page composed by the introduction video and the team container with all the people -->
   <div>
     <intro-video
-      :src="intro.src"
+      :video="intro.video"
+      :poster="intro.poster"
       :title="intro.title"
       :subtitle="intro.subtitle"
     ></intro-video>
@@ -62,7 +63,8 @@ export default {
         title: 'Have you met our team?',
         subtitle:
           'We’d like to introduce you to our family of brilliant, hard-working, lovely weirdos (in a good way!). We dream big dreams and have the guts to go after them. Rumor has it we’re table tennis and foosball pros too, but you’ve got to see it for yourself.',
-        src: 'https://bendingspoons.com/assets/video/team.mp4',
+        video: 'https://bendingspoons.com/assets/video/team.mp4',
+        poster: 'https://bendingspoons.com/assets/video/team.jpg',
       },
       /* 
       Number of items per row

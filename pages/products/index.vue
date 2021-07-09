@@ -2,7 +2,8 @@
   <div>
     <!-- Products page composed by the introduction video and the list of all the products -->
     <intro-video
-      :src="intro.src"
+      :video="intro.video"
+      :poster="intro.poster"
       :title="intro.title"
       :subtitle="intro.subtitle"
     ></intro-video>
@@ -13,7 +14,7 @@
       </div>
       <br />
       <div class="w3-padding-16">
-        <product-card
+        <list-card
           v-for="(product, productIndex) in products"
           :key="'product-' + productIndex"
           class="hide-animate"
@@ -25,17 +26,17 @@
           :description="product.description"
           :path="$route.path + '/' + product.id"
         >
-        </product-card>
+        </list-card>
       </div>
     </section>
   </div>
 </template>
 
 <script>
-import ProductCard from '~/components/ProductCard.vue'
+import ListCard from '~/components/ListCard.vue'
 export default {
   components: {
-    ProductCard,
+    ListCard,
   },
   layout: 'default',
   // Function used for fetching the data of the products from the db for the ssr
@@ -52,7 +53,8 @@ export default {
         title: 'Conquering the world,\nOne innovation at a time',
         subtitle:
           'We have a passion for creating products that lots of people all over the world will use. So far, we’ve focused on artificial intelligence and security: many products and millions of customers are just the beginning. Below, you’ll find our products.',
-        src: 'https://bendingspoons.com/assets/video/products.mp4',
+        video: 'https://bendingspoons.com/assets/video/products.mp4',
+        poster: 'https://bendingspoons.com/assets/video/products.jpg',
       },
     }
   },

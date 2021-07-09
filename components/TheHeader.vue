@@ -1,7 +1,6 @@
 <template>
   <!-- Header of the page of the company, with logo and the navigation bar composed of navigation button and navigation dropdown button
   It contains both the navbar for large and small screen -->
-
   <header class="w3-top">
     <div id="topBar" class="w3-bar">
       <li class="w3-bar-item w3-left w3-margin-left">
@@ -43,8 +42,12 @@
       </button>
     </div>
     <!-- Navigation bar on small screens -->
-    <nav id="navSmallScreen" class="w3-hide-large w3-dropdown-content">
-      <ul class="w3-ul">
+    <nav
+      id="navSmallScreen"
+      class="w3-hide-large w3-dropdown-content"
+      style="display: flex; flex-direction: column"
+    >
+      <ul class="w3-ul" style="flex-grow: 1; overflow: scroll">
         <li
           v-for="(item, itemIndex) of menuOptions"
           :key="'menu-item-' + itemIndex"
@@ -82,20 +85,25 @@ export default {
   },
   mounted() {
     window.addEventListener('scroll', this.navBarOnScroll)
+    window.addEventListener('resize', this.navBarSmallScreenScroll)
   },
   beforeDestroy() {
     window.removeEventListener('scroll', this.navBarOnScroll)
+    window.removeEventListener('resize', this.navBarSmallScreenScroll)
   },
   methods: {
     // Methods used for showing and hiding the navbar on small screen's devices
     openNav() {
       const navBar = document.getElementById('navSmallScreen')
       navBar.classList.toggle('visible')
+      this.navBarSmallScreenScroll()
     },
     closeNav() {
       const navBar = document.getElementById('navSmallScreen')
       navBar.classList.remove('visible')
     },
+    /* This function is used for showing and hiding the header when the footer is reached and it colors the top bar after
+    the user has scrolled down the page */
     navBarOnScroll() {
       const header = document.getElementById('topBar')
       const footer = document.getElementById('bottomBar')
@@ -115,6 +123,14 @@ export default {
         header.classList.remove('animate-hide')
         header.style.backgroundColor = 'transparent'
       }
+    },
+    /* This function allows the generation of the scrollable menu on small screen devices when the screen height
+    is too small for showing all the contents */
+    navBarSmallScreenScroll() {
+      const navBar = document.getElementById('navSmallScreen')
+      const topBar = document.getElementById('topBar')
+      navBar.style.maxHeight =
+        window.innerHeight - topBar.getBoundingClientRect().height + 'px'
     },
   },
 }

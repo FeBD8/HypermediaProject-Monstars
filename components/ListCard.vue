@@ -1,9 +1,9 @@
 <template>
-  <!-- Component for the product list.
-  It contains a logo, a title, a subtitle, an image and a brief description of the product.
+  <!-- Component for the product and the area list.
+  It contains a logo, a title, a subtitle, an image and a brief description.
   The number is used in large screen devices to display alternatively the image and the text between different rows. -->
   <div :id="'productRow' + num" class="w3-row w3-padding-32">
-    <div class="product-container">
+    <div class="container">
       <div v-if="num % 2 !== 0" class="center w3-padding-large">
         <img :src="image" alt="Screenshot product interface" />
       </div>
@@ -11,12 +11,14 @@
         <img :src="image" alt="Screenshot product interface" />
       </div>
       <div class="center w3-padding-large">
-        <div class="text-container">
+        <div>
           <div class="logo">
-            <img :src="logo" alt="Product logo" />
+            <img v-if="logo !== ''" :src="logo" alt="Product logo" />
           </div>
+          <h2 v-if="logo === ''" class="w3-xxlarge">{{ title }}</h2>
           <h3 class="w3-xlarge">{{ subtitle }}</h3>
           <p>{{ description }}</p>
+          <br />
           <nuxt-link :to="path"
             ><button class="w3-button w3-round-xxlarge w3-border">
               <b>Go to {{ title }}</b>
@@ -58,6 +60,10 @@ export default {
 </script>
 
 <style scoped>
+h2 {
+  font-family: 'Staatliches', 'cursive' !important;
+  color: #47546b;
+}
 img {
   height: auto !important;
   max-width: 100% !important;
@@ -80,7 +86,7 @@ img {
   background-color: transparent !important;
   color: #47546b !important;
 }
-.product-container {
+.container {
   max-width: 70%;
   float: none;
   margin: auto !important;
@@ -92,7 +98,7 @@ img {
   display: grid;
 }
 @media (max-width: 901px) {
-  .product-container {
+  .container {
     grid-template-columns: 1fr;
   }
 }

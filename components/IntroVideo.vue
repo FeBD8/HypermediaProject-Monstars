@@ -3,8 +3,8 @@
   It contains a video, a title, a subtitle and an arrow that bring the user to the main content of the page -->
   <section class="intro">
     <div class="video-container w3-animate-opacity">
-      <video muted="" autoplay="" playsinline="" loop="">
-        <source :src="src" type="video/mp4" />
+      <video muted="" autoplay="" playsinline="" loop="" :poster="poster">
+        <source :src="video" type="video/mp4" />
         The video cannot be loaded.
       </video>
     </div>
@@ -13,7 +13,7 @@
       <div class="w3-row hide-animate">
         <div class="w3-col l8 m12 s12" style="line-height: normal">
           <h1>
-            <span class="w3-xxxlarge">{{ title }}</span>
+            <span class="w3-xxxlarge" style="color: white">{{ title }}</span>
           </h1>
         </div>
         <div class="w3-col l8 m12 s12 w3-right">
@@ -34,7 +34,8 @@
 <script>
 export default {
   props: {
-    src: { type: String, default: () => '' },
+    video: { type: String, default: () => '' },
+    poster: { type: String, default: () => '' },
     title: { type: String, default: () => '' },
     subtitle: { type: String, default: () => '' },
   },

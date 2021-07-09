@@ -32,6 +32,7 @@ function defineDatabaseStructure() {
     'area',
     {
       name: DataTypes.STRING,
+      subtitle: DataTypes.STRING,
       description: DataTypes.TEXT,
       image: DataTypes.STRING,
       shortcut_image: DataTypes.STRING,
@@ -106,15 +107,20 @@ async function insertFakeData() {
   // Create 2 Areas
   const area1 = await Area.create({
     name: 'Security',
-    description: '',
-    image: '',
+    subtitle: 'Partnering with customers to manage digital risk.',
+    description: `We are unique among IT security consulting firms. We combine security technology engineering, 
+    intelligence expertise and our data science DNA to help companies manage digital risk end-to-end.`,
+    image: 'https://www.moviri.com/wp-content/uploads/2020/12/picture-0143.png',
     shortcut_image:
       'https://www.moviri.com/wp-content/uploads/2020/11/bl-icon-security@2x.png',
   })
   const area2 = await Area.create({
     name: 'Artificial Intelligence',
-    description: '',
-    image: '',
+    subtitle:
+      'Autonomous optimization driven by machine learning and automation.',
+    description: `The complexity of modern technology stacks and application pipelines requires end-to-end automation. 
+    We use machine learning techniques and the right tooling to create automated, full-stack, closed-loop performance engineering solutions.`,
+    image: 'https://www.moviri.com/wp-content/uploads/2020/12/picture-0190.png',
     shortcut_image:
       'https://cdn0.iconfinder.com/data/icons/adobe-application/100/Ai_Icon-256.png',
   })
@@ -159,8 +165,10 @@ async function insertFakeData() {
     title: 'Cleafy',
     subtitle: 'At your side, fighting against online fraud.',
     logo: 'https://www.moviri.com/wp-content/uploads/elementor/thumbs/Cleafy-Logo-p4x9d3ef1luvofs4qsvcwnjxn2iil5g091wbunncw0.png',
-    description:
-      'Cleafy helps banks and financial institutions scale-up their fight against online fraud. Cleafy is the first solution to introduce full detection and response in online fraud prevention. A revolutionary technology that combines the most advanced fraud detection capabilities, with the possibility to set-up automated responses. All in one central platform.',
+    description: `Cleafy helps banks and financial institutions scale-up their fight against online fraud. 
+      Cleafy is the first solution to introduce full detection and response in online fraud prevention. 
+      A revolutionary technology that combines the most advanced fraud detection capabilities, with the possibility to set-up automated responses. 
+      All in one central platform.`,
     image:
       'https://www.moviri.com/wp-content/uploads/2021/03/cleafy-dashboard.png',
     area_id: area1.id,
@@ -171,8 +179,8 @@ async function insertFakeData() {
     title: 'Akamas',
     subtitle: 'The Autonomous Performance Optimization AI.',
     logo: 'https://www.moviri.com/wp-content/uploads/2020/11/akamas.png',
-    description:
-      'Akamas is a new, category-defining software that delivers autonomous and continuous performance optimization, powered by machine learning, extracting unprecedented levels of performance and cost savings from technology stacks.',
+    description: `Akamas is a new, category-defining software that delivers autonomous and continuous performance optimization, 
+      powered by machine learning, extracting unprecedented levels of performance and cost savings from technology stacks.`,
     image:
       'https://www.moviri.com/wp-content/uploads/2020/11/showcase-akamas1.png',
     area_id: area2.id,

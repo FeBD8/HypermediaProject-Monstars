@@ -1,7 +1,8 @@
 <template>
   <div>
     <intro-video
-      :src="intro.src"
+      :video="intro.video"
+      :poster="intro.poster"
       :title="intro.title"
       :subtitle="intro.subtitle"
     ></intro-video>
@@ -44,7 +45,9 @@ export default {
         title: 'Hack The Future',
         subtitle:
           'We create our own tech products, used and loved by millions all around the world. Our primary focus is on artificial intelligence and security, but we have got our sights set on other tech fields too.',
-        src: 'https://www.moviri.com/wp-content/uploads/2020/12/Video-HP-01120_V1.mp4',
+        video:
+          'https://www.moviri.com/wp-content/uploads/2020/12/Video-HP-01120_V1.mp4',
+        poster: 'https://bendingspoons.com/assets/video/home.jpg',
       },
     }
   },

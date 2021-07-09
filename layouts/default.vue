@@ -77,6 +77,9 @@ footer,
 h1 {
   font-family: 'Staatliches', 'cursive' !important;
 }
+h1 {
+  color: #0d2b66 !important;
+}
 p,
 h2,
 h3,
@@ -113,6 +116,9 @@ section#content {
 @media (max-width: 901px) {
   .w3-xxxlarge {
     font-size: 30px !important;
+  }
+  .w3-xlarge {
+    font-size: 20px !important;
   }
   .w3-large {
     font-size: 15px !important;
