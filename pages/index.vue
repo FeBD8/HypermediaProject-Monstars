@@ -42,9 +42,9 @@ export default {
   data() {
     return {
       intro: {
-        title: 'Hack The Future',
+        title: 'Transforming business\nOne company at a time',
         subtitle:
-          'We create our own tech products, used and loved by millions all around the world. Our primary focus is on artificial intelligence and security, but we have got our sights set on other tech fields too.',
+          'Monstar is a multinational consulting and software group of companies, helping customers harness the power of transformative technologies. We specialize in artificial intelligence and security, but we are exploring new frontiers of technology.',
         video:
           'https://www.moviri.com/wp-content/uploads/2020/12/Video-HP-01120_V1.mp4',
         poster: 'https://bendingspoons.com/assets/video/home.jpg',

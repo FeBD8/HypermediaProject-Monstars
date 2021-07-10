@@ -59,7 +59,7 @@ export default {
       }
     }
   },
-  // Add the listener for the scroll and resize in order to animate the components
+  // Add the listener when scroll and resize in order to animate the components
   mounted() {
     window.addEventListener('scroll', this.$animateComponents)
     window.addEventListener('resize', this.$animateComponents)

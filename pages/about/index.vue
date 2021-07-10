@@ -1,7 +1,8 @@
 <template>
   <div>
     <intro-video
-      :src="intro.src"
+      :video="intro.video"
+      :poster="intro.poster"
       :title="intro.title"
       :subtitle="intro.subtitle"
     ></intro-video>
@@ -21,9 +22,11 @@ export default {
   data() {
     return {
       intro: {
-        title: '',
-        subtitle: '',
-        src: '',
+        title: 'These are the values\nwe believe in',
+        subtitle:
+          'Monstars is founded on values we all share and are ready to stand for. They bring us together well beyond our current products and technologies. They’ve defined our identity since the beginning, and they’ll continue to do so, no matter how our business evolves.',
+        video: 'https://bendingspoons.com/assets/video/home.mp4',
+        poster: 'https://bendingspoons.com/assets/video/manifesto.jpg',
       },
     }
   },

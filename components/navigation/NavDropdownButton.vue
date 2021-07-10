@@ -2,9 +2,7 @@
   <!-- Dropdown button with the contents used in the navigation bar 
   In the website is used for the Areas button s-->
   <section class="w3-dropdown-hover">
-    <nuxt-link class="w3-button" :to="path">
-      {{ name }}
-    </nuxt-link>
+    <nav-button :name="name" :path="path"></nav-button>
     <ul class="w3-dropdown-content w3-ul w3-animate-opacity">
       <li
         v-for="(item, itemIndex) of dropdownContent"
@@ -23,10 +21,12 @@
 
 <script>
 import NavCard from '~/components/navigation/NavCard.vue'
+import NavButton from '~/components/navigation/NavButton.vue'
 
 export default {
   components: {
     NavCard,
+    NavButton,
   },
   props: {
     name: { type: String, default: () => '' },

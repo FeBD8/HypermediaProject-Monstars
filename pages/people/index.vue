@@ -10,7 +10,7 @@
     <!-- Team Container -->
     <section id="content" class="w3-container">
       <div class="w3-center hide-animate">
-        <h1 class="w3-xxxlarge">OUR TALENTS</h1>
+        <h1 class="w3-xxxlarge">OUR TEAM</h1>
       </div>
       <br />
       <div class="team-container w3-padding-16">

@@ -2,7 +2,8 @@
   <div>
     <!-- Areas page composed by the introduction video and the list of all the areas of the company -->
     <intro-video
-      :src="intro.src"
+      :video="intro.video"
+      :poster="intro.poster"
       :title="intro.title"
       :subtitle="intro.subtitle"
     ></intro-video>
@@ -48,9 +49,11 @@ export default {
   data() {
     return {
       intro: {
-        title: '',
-        subtitle: '',
-        src: '',
+        title: 'Hack The Future',
+        subtitle:
+          'We create our own tech products, used and loved by millions all around the world. Our primary focus is on artificial intelligence and security, but we have got our sights set on other tech fields too.',
+        video: 'https://bendingspoons.com/assets/video/technologies.mp4',
+        poster: 'https://bendingspoons.com/assets/video/technologies.jpg',
       },
     }
   },

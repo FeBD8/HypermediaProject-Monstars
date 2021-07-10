@@ -9,9 +9,10 @@
       </video>
     </div>
     <div class="background-overlay"></div>
-    <div class="text-container center">
-      <div class="w3-row hide-animate">
+    <div id="text" class="text-container center">
+      <div class="w3-row hide-animate animation-in">
         <div class="w3-col l8 m12 s12" style="line-height: normal">
+          <p class="w3-xlarge">{{ pathName }}</p>
           <h1>
             <span class="w3-xxxlarge" style="color: white">{{ title }}</span>
           </h1>
@@ -23,7 +24,7 @@
         </div>
       </div>
     </div>
-    <div class="scrolldown-icon">
+    <div id="scrollIcon" class="scrolldown-icon">
       <button @click="scrollToContent()">
         <img src="~/static/icons/arrow.png" alt="Scrolldown icon" />
       </button>
@@ -39,6 +40,22 @@ export default {
     title: { type: String, default: () => '' },
     subtitle: { type: String, default: () => '' },
   },
+  computed: {
+    pathName() {
+      if (this.$route.name === 'index') {
+        return 'HOME'
+      }
+      return this.$route.name.toUpperCase()
+    },
+  },
+  // Add the listener when resize in order to hide the arrow when the text overlaps
+  mounted() {
+    window.addEventListener('resize', this.showArrow)
+    this.showArrow()
+  },
+  beforeDestroy() {
+    window.removeEventListener('resize', this.showArrow)
+  },
   methods: {
     // This function scroll the page to the main content of the page. There should be one section in the page with id = 'content'
     scrollToContent() {
@@ -50,6 +67,18 @@ export default {
         content.scrollIntoView({
           behavior: 'smooth',
         })
+      }
+    },
+    // This function hide the arrow for scrolling to the content when the text overlaps on small screens
+    showArrow() {
+      const text = document.getElementById('text')
+      const arrow = document.getElementById('scrollIcon')
+      if (
+        text.getBoundingClientRect().bottom > arrow.getBoundingClientRect().top
+      ) {
+        arrow.style.visibility = 'hidden'
+      } else {
+        arrow.style.visibility = 'visible'
       }
     },
   },
@@ -100,6 +129,11 @@ video {
   margin: auto !important;
   display: table;
 }
+h1,
+p {
+  margin-top: 0 !important;
+  margin-bottom: 10px;
+}
 @media (max-width: 600px) {
   section.intro {
     min-height: 60vh;
@@ -107,6 +141,9 @@ video {
   .center {
     width: 90vw;
     padding-top: 15vh;
+  }
+  h1 {
+    line-height: 90%;
   }
 }
 @media (max-width: 901px) {
