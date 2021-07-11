@@ -1,6 +1,6 @@
 <template>
   <!-- Logo of the company with the link to the home page -->
-  <nuxt-link to="/">
+  <nuxt-link to="/" @click.native="$scrollToTop()">
     <img
       src="~/static/icons/logo.png"
       alt="Logo Monstar"

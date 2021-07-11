@@ -1,11 +1,13 @@
 <template>
   <div>
-    <intro-video
-      :video="intro.video"
-      :poster="intro.poster"
-      :title="intro.title"
-      :subtitle="intro.subtitle"
-    ></intro-video>
+    <section class="intro">
+      <intro-video
+        :video="intro.video"
+        :poster="intro.poster"
+        :title="intro.title"
+        :subtitle="intro.subtitle"
+      ></intro-video>
+    </section>
     <section id="content" class="hide-animate">
       <h1>HOME PAGE</h1>
       <p>
@@ -52,7 +54,7 @@ export default {
     }
   },
   mounted() {
-    this.$animateComponents()
+    this.$showComponentsInViewport()
   },
 }
 </script>

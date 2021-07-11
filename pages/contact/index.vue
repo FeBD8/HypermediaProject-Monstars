@@ -1,11 +1,13 @@
 <template>
   <div>
-    <intro-video
-      :video="intro.video"
-      :poster="intro.poster"
-      :title="intro.title"
-      :subtitle="intro.subtitle"
-    ></intro-video>
+    <section class="intro">
+      <intro-video
+        :video="intro.video"
+        :poster="intro.poster"
+        :title="intro.title"
+        :subtitle="intro.subtitle"
+      ></intro-video>
+    </section>
     <!-- Team Container -->
     <section id="content" class="w3-container w3-padding-16 w3-center">
       <div class="hide-animate">
@@ -31,7 +33,7 @@ export default {
     }
   },
   mounted() {
-    this.$animateComponents()
+    this.$showComponentsInViewport()
   },
 }
 </script>

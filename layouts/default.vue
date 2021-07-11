@@ -63,10 +63,12 @@ export default {
   mounted() {
     window.addEventListener('scroll', this.$animateComponents)
     window.addEventListener('resize', this.$animateComponents)
+    window.addEventListener('load', this.$animateComponents)
   },
   beforeDestroy() {
     window.removeEventListener('scroll', this.$animateComponents)
     window.removeEventListener('resize', this.$animateComponents)
+    window.removeEventListener('load', this.$animateComponents)
   },
 }
 </script>
@@ -91,6 +93,10 @@ h6 {
 section#content {
   padding: 48px 0;
 }
+.intro {
+  min-height: 100vh;
+  position: relative;
+}
 .hide-animate {
   visibility: hidden;
 }
@@ -111,6 +117,11 @@ section#content {
     opacity: 1;
     -webkit-transform: translateY(0);
     transform: translateY(0);
+  }
+}
+@media (max-width: 600px) {
+  .intro {
+    min-height: 60vh;
   }
 }
 @media (max-width: 901px) {

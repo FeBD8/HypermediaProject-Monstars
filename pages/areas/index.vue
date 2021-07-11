@@ -1,12 +1,14 @@
 <template>
   <div>
     <!-- Areas page composed by the introduction video and the list of all the areas of the company -->
-    <intro-video
-      :video="intro.video"
-      :poster="intro.poster"
-      :title="intro.title"
-      :subtitle="intro.subtitle"
-    ></intro-video>
+    <section class="intro">
+      <intro-video
+        :video="intro.video"
+        :poster="intro.poster"
+        :title="intro.title"
+        :subtitle="intro.subtitle"
+      ></intro-video>
+    </section>
     <!-- Areas Container -->
     <section id="content" class="w3-container">
       <div class="w3-center hide-animate">
@@ -58,7 +60,7 @@ export default {
     }
   },
   mounted() {
-    this.$animateComponents()
+    this.$showComponentsInViewport()
   },
 }
 </script>

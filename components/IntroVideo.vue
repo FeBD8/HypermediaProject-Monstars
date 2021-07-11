@@ -1,7 +1,7 @@
 <template>
   <!-- Component for the introduction video of all the main pages.
   It contains a video, a title, a subtitle and an arrow that bring the user to the main content of the page -->
-  <section class="intro">
+  <div>
     <div class="video-container w3-animate-opacity">
       <video muted="" autoplay="" playsinline="" loop="" :poster="poster">
         <source :src="video" type="video/mp4" />
@@ -10,7 +10,7 @@
     </div>
     <div class="background-overlay"></div>
     <div id="text" class="text-container center">
-      <div class="w3-row hide-animate animation-in">
+      <div class="w3-row animation-in">
         <div class="w3-col l8 m12 s12" style="line-height: normal">
           <p class="w3-xlarge">{{ pathName }}</p>
           <h1>
@@ -29,7 +29,7 @@
         <img src="~/static/icons/arrow.png" alt="Scrolldown icon" />
       </button>
     </div>
-  </section>
+  </div>
 </template>
 
 <script>
@@ -90,10 +90,6 @@ button {
   background-color: transparent;
   border: none;
 }
-section.intro {
-  min-height: 100vh;
-  position: relative;
-}
 .video-container {
   height: 100%;
   position: absolute;
@@ -135,9 +131,6 @@ p {
   margin-bottom: 10px;
 }
 @media (max-width: 600px) {
-  section.intro {
-    min-height: 60vh;
-  }
   .center {
     width: 90vw;
     padding-top: 15vh;

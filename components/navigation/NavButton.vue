@@ -1,5 +1,10 @@
 <template>
-  <nuxt-link id="button" class="w3-button nav-button" :to="path">
+  <nuxt-link
+    id="button"
+    class="w3-button nav-button"
+    :to="path"
+    @click.native="$scrollToTop()"
+  >
     {{ name }}
   </nuxt-link>
 </template>
@@ -29,14 +34,10 @@ export default {
 .nav-button:hover::after {
   width: 100%;
 }
-.nuxt-link-active {
-  color: rgb(15, 233, 233);
-}
 .nuxt-link-active:after {
   content: '';
   display: block;
   width: 100%;
   height: 1px;
-  background: rgb(15, 233, 233);
 }
 </style>

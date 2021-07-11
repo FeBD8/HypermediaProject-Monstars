@@ -194,4 +194,10 @@ p {
 .zero-padding-top {
   padding-top: 0 !important;
 }
+.nuxt-link-active {
+  color: white;
+}
+.nuxt-link-active:after {
+  background: transparent;
+}
 </style>
