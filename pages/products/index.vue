@@ -16,19 +16,24 @@
       </div>
       <br />
       <div class="w3-padding-16">
-        <list-card
+        <div
           v-for="(product, productIndex) in products"
+          :id="'listRow' + productIndex"
           :key="'product-' + productIndex"
-          class="hide-animate"
-          :num="product.id"
-          :title="product.title"
-          :subtitle="product.subtitle"
-          :logo="product.logo"
-          :image="product.image"
-          :description="product.description"
-          :path="$route.path + '/' + product.id"
+          class="w3-row margin-bottom-large hide-animate"
         >
-        </list-card>
+          <list-card
+            :num="product.id"
+            :title="product.name"
+            :subtitle="product.subtitle"
+            :logo="product.logo"
+            :image="product.image"
+            :alt="'Screenshot of the ' + product.title + ' interface'"
+            :description="product.description"
+            :path="$route.path + '/' + product.id"
+          >
+          </list-card>
+        </div>
       </div>
     </section>
   </div>
@@ -36,9 +41,11 @@
 
 <script>
 import ListCard from '~/components/ListCard.vue'
+import IntroVideo from '~/components/IntroVideo.vue'
 export default {
   components: {
     ListCard,
+    IntroVideo,
   },
   layout: 'default',
   // Function used for fetching the data of the products from the db for the ssr
@@ -62,6 +69,13 @@ export default {
   },
   mounted() {
     this.$showComponentsInViewport()
+    // This is used to change the background color of consecutive rows
+    // const productRow = document.getElementById('listRow' + this.num)
+    // if (this.num % 2 !== 0) {
+    //   productRow.style.backgroundColor = '#f2f2f2'
+    // } else {
+    //   productRow.style.backgroundColor = 'trasparent'
+    // }
   },
 }
 </script>

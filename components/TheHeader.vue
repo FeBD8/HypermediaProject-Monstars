@@ -14,31 +14,43 @@
             :key="'menu-item-' + itemIndex"
             class="w3-bar-item"
           >
-            <nav-dropdown-button
-              v-if="menuItem.dropdown"
-              :name="menuItem.name"
-              :path="menuItem.path"
-              :dropdown-content="menuItem.content"
-              class="w3-xlarge"
-            ></nav-dropdown-button>
+            <section v-if="menuItem.dropdown" class="w3-dropdown-hover">
+              <nav-button
+                class="
+                  nav-button
+                  w3-xlarge w3-padding-32
+                  underline-animation-light
+                "
+                :name="menuItem.name"
+                :path="menuItem.path"
+              ></nav-button>
+              <nav-dropdown-button
+                :path="menuItem.path"
+                :dropdown-content="menuItem.content"
+                class="w3-xlarge"
+              >
+              </nav-dropdown-button>
+            </section>
             <nav-button
               v-else
               :name="menuItem.name"
               :path="menuItem.path"
-              class="w3-xlarge"
+              class="
+                nav-button
+                w3-xlarge w3-padding-32
+                underline-animation-light
+              "
             >
             </nav-button>
           </li>
         </nav>
       </li>
       <button
-        class="
-          w3-bar-item w3-button w3-hide-large w3-display-right w3-ripple
-          icon
-        "
+        class="w3-bar-item w3-button w3-hide-large w3-display-right w3-ripple"
         @click="openNav()"
       >
-        <img src="~/static/icons/bars.png" alt="Menu icon" />
+        <img v-if="top" src="~/static/icons/bars_white.png" alt="Menu icon" />
+        <img v-else src="~/static/icons/bars_dark.png" alt="Menu icon" />
       </button>
     </div>
     <!-- Navigation bar on small screens -->
@@ -51,13 +63,12 @@
         <li
           v-for="(item, itemIndex) of menuOptions"
           :key="'menu-item-' + itemIndex"
-          class="w3-xlarge"
           style="text-align: center"
         >
           <nav-button
             :name="item.name"
             :path="item.path"
-            class="button-smallscreen"
+            class="w3-xlarge underline-animation-dark"
             @click.native="openNav()"
           >
           </nav-button>
@@ -79,6 +90,11 @@ export default {
   },
   props: {
     menuOptions: { type: Array, default: () => [] },
+  },
+  data() {
+    return {
+      top: true,
+    }
   },
   beforeMount() {
     this.navBarOnScroll()
@@ -107,21 +123,38 @@ export default {
     navBarOnScroll() {
       const header = document.getElementById('topBar')
       const footer = document.getElementById('bottomBar')
+      const navButtons = document.getElementsByClassName('nav-button')
+      const navSmallScreen = document.getElementById('navSmallScreen')
       const offset =
         footer.offsetTop -
         document.documentElement.scrollTop -
-        header.getBoundingClientRect().height
-
+        header.getBoundingClientRect().height -
+        navSmallScreen.getBoundingClientRect().height
       if (document.documentElement.scrollTop !== 0) {
         if (offset < 0) {
-          header.classList.add('animate-hide')
+          this.closeNav()
+          header.classList.add('hide')
         } else {
-          header.classList.remove('animate-hide')
+          header.classList.remove('hide')
         }
-        header.style.backgroundColor = '#47546b'
+        header.style.backgroundColor = 'white'
+        header.style.color = '#041a47'
+        header.classList.add('w3-border-bottom')
+        navButtons.forEach((btn) => {
+          btn.classList.remove('underline-animation-light')
+          btn.classList.add('underline-animation-dark')
+        })
+        this.top = false
       } else {
-        header.classList.remove('animate-hide')
+        header.classList.remove('hide')
+        header.classList.remove('w3-border-bottom')
+        header.style.color = 'white'
         header.style.backgroundColor = 'transparent'
+        navButtons.forEach((btn) => {
+          btn.classList.remove('underline-animation-dark')
+          btn.classList.add('underline-animation-light')
+        })
+        this.top = true
       }
     },
     /* This function allows the generation of the scrollable menu on small screen devices when the screen height
@@ -142,22 +175,28 @@ export default {
   color: white;
   visibility: visible;
   opacity: 1;
-  transition: background-color 0.5s linear, opacity 0.5s linear;
+  transition: background-color 0.5s linear, opacity 0.5s linear,
+    border-bottom 0.5s linear;
 }
 #navSmallScreen {
   width: 100%;
   background-color: white;
-  color: #47546b;
+  color: #041a47;
   display: block;
   visibility: hidden;
   opacity: 0;
   transition: visibility 0s linear 0.5s, opacity 0.5s linear;
   border-bottom: 1px solid #47546b65 !important;
 }
+.w3-dropdown-hover,
+.w3-dropdown-hover:hover > .w3-button {
+  background-color: transparent !important;
+  color: inherit !important;
+}
 .w3-top {
   z-index: 2;
 }
-.animate-hide {
+.hide {
   visibility: hidden !important;
   opacity: 0 !important;
   transition: visibility 0s linear 0.5s, opacity 0.5s linear !important;
@@ -166,19 +205,6 @@ export default {
   visibility: visible !important;
   opacity: 1 !important;
   transition-delay: 0s !important;
-}
-.button-smallscreen:hover {
-  color: #47546b !important;
-  background-color: transparent !important;
-}
-.button-smallscreen::after {
-  background: #47546b !important;
-}
-.icon {
-  background-color: transparent !important;
-}
-.icon:hover {
-  background-color: transparent !important;
 }
 .w3-ul li {
   padding: 8px 16px;

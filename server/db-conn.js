@@ -44,7 +44,7 @@ function defineDatabaseStructure() {
   const Product = db.define(
     'product',
     {
-      title: DataTypes.STRING,
+      name: DataTypes.STRING,
       subtitle: DataTypes.STRING,
       logo: DataTypes.STRING,
       description: DataTypes.TEXT,
@@ -54,22 +54,46 @@ function defineDatabaseStructure() {
       underscored: true,
     }
   )
-  // Creating the 1 -> N association between Person and Area in which they work
+  const AreaDetail = db.define(
+    'areaDetail',
+    {
+      title: DataTypes.STRING,
+      subtitle: DataTypes.STRING,
+      description: DataTypes.TEXT,
+      image: DataTypes.STRING,
+    },
+    {
+      underscored: true,
+    }
+  )
+  const ProductDetail = db.define(
+    'productDetail',
+    {
+      title: DataTypes.STRING,
+      subtitle: DataTypes.STRING,
+      description: DataTypes.TEXT,
+      image: DataTypes.STRING,
+    },
+    {
+      underscored: true,
+    }
+  )
+  // Creating the 1 -> 1 association between Person and Area in which they work
   Person.belongsTo(Area, {
-    as: 'WorkingArea',
+    as: 'working_area',
     foreignKey: {
       name: 'working_area_id',
       allowNull: false,
     },
   })
-  // Creating the 1 -> N association between Person and Area for which they are responsible
+  // Creating the 1 -> 1 association between Person and Area for which they are responsible
   Person.belongsTo(Area, {
-    as: 'AreaResp',
+    as: 'responsible_of_area',
     foreignKey: 'responsible_of_area_id',
   })
   // Creating the 1 -> 1 association between Person and Product for which they are the reference for the assistance
   Product.belongsTo(Person, {
-    as: 'ReferenceAssistant',
+    as: 'reference_assistant',
     foreignKey: {
       name: 'reference_assistant_id',
       allowNull: false,
@@ -77,7 +101,7 @@ function defineDatabaseStructure() {
   })
   // Creating the 1 -> 1 association between Person and Product for which he/she is the product manager
   Product.belongsTo(Person, {
-    as: 'ProductManager',
+    as: 'product_manager',
     foreignKey: {
       name: 'product_manager_id',
       allowNull: false,
@@ -85,9 +109,25 @@ function defineDatabaseStructure() {
   })
   // Creating the 1 -> N association between Product and Area in which it belongs to
   Area.hasMany(Product, {
-    as: 'Area',
+    as: 'membership_area',
     foreignKey: {
       name: 'area_id',
+      allowNull: false,
+    },
+  })
+  // Creating the 1 -> N association between Area and Detail that it has for its description
+  Area.hasMany(AreaDetail, {
+    as: 'area_details',
+    foreignKey: {
+      name: 'area_id',
+      allowNull: false,
+    },
+  })
+  // Creating the 1 -> N association between Product and Detail that it has for its description
+  Product.hasMany(ProductDetail, {
+    as: 'product_details',
+    foreignKey: {
+      name: 'product_id',
       allowNull: false,
     },
   })
@@ -96,6 +136,8 @@ function defineDatabaseStructure() {
     Person,
     Area,
     Product,
+    AreaDetail,
+    ProductDetail,
   }
 }
 
@@ -103,7 +145,7 @@ function defineDatabaseStructure() {
  * Function to insert some fake info in the database
  */
 async function insertFakeData() {
-  const { Person, Area, Product } = db._tables
+  const { Person, Area, Product, AreaDetail, ProductDetail } = db._tables
   // Create 2 Areas
   const area1 = await Area.create({
     name: 'Security',
@@ -124,7 +166,7 @@ async function insertFakeData() {
     shortcut_image:
       'https://cdn0.iconfinder.com/data/icons/adobe-application/100/Ai_Icon-256.png',
   })
-  // Create 3 Person
+  // Create 4 Person
   const person1 = await Person.create({
     name: 'Luca',
     surname: 'Colombo',
@@ -162,7 +204,7 @@ async function insertFakeData() {
 
   // Create 2 Products
   const product1 = await Product.create({
-    title: 'Cleafy',
+    name: 'Cleafy',
     subtitle: 'At your side, fighting against online fraud.',
     logo: 'https://www.moviri.com/wp-content/uploads/elementor/thumbs/Cleafy-Logo-p4x9d3ef1luvofs4qsvcwnjxn2iil5g091wbunncw0.png',
     description: `Cleafy helps banks and financial institutions scale-up their fight against online fraud. 
@@ -176,7 +218,7 @@ async function insertFakeData() {
     reference_assistant_id: person4.id,
   })
   const product2 = await Product.create({
-    title: 'Akamas',
+    name: 'Akamas',
     subtitle: 'The Autonomous Performance Optimization AI.',
     logo: 'https://www.moviri.com/wp-content/uploads/2020/11/akamas.png',
     description: `Akamas is a new, category-defining software that delivers autonomous and continuous performance optimization, 
@@ -186,6 +228,161 @@ async function insertFakeData() {
     area_id: area2.id,
     product_manager_id: person3.id,
     reference_assistant_id: person2.id,
+  })
+  // Create some Details for area 1
+  const areaDetail1 = await AreaDetail.create({
+    title: 'Continuous Monitoring & Risk Evaluation',
+    subtitle: 'Real-time security data collection and analysis.',
+    description: `We leverage frameworks and standards such as MITRE to design systems that collect, 
+    normalize and analyze security data in real-time. We use intelligence tools to generate insights that limit risk exposure, 
+    while reducing operational effort.`,
+    image: 'https://www.moviri.com/wp-content/uploads/2020/12/picture-0220.png',
+    area_id: area1.id,
+  })
+  const areaDetail2 = await AreaDetail.create({
+    title: 'Digital Identity for Critical Services',
+    subtitle: 'Visibility and control of privileged and 3rd-party access.',
+    description: `We provide the tools to ensure that all users and all device access activities are visible and controllable. 
+    We also support governance processes to control critical access, such as access by privileged parties or by third-parties, 
+    both to services and to data.`,
+    image: 'https://www.moviri.com/wp-content/uploads/2020/12/picture-0143.png',
+    area_id: area1.id,
+  })
+  const areaDetail3 = await AreaDetail.create({
+    title: 'Cloud Security Zero-Trust Architecture',
+    subtitle: 'Cloud and multi-cloud policies enforcement and monitoring.',
+    description: `As companies migrate services and data to the cloud, we have a range of solutions for cloud native application and infrastructure, 
+    risk monitoring of cloud traffic and multi-cloud integrations, security enforcement, continuous monitoring for cloud native services, 
+    SASE and CASB implementation, containers and serverless security.`,
+    image: 'https://www.moviri.com/wp-content/uploads/2020/12/picture-0380.png',
+    area_id: area1.id,
+  })
+  const areaDetail4 = await AreaDetail.create({
+    title: 'Cyber & Enterprise Risk Integration',
+    subtitle: 'Cybersecurity integration with ERM systems and frameworks.',
+    description: `We offer solutions specifically designed to help enterprises meet regulatory and governance challenges, 
+    including enterprise risk management and compliance around a variety of governance frameworks.`,
+    image: 'https://www.moviri.com/wp-content/uploads/2020/12/picture-0385.png',
+    area_id: area1.id,
+  })
+  const areaDetail5 = await AreaDetail.create({
+    title: 'AI-Based Fraud & Threat Intelligence',
+    subtitle: 'Advanced threat intelligence and fraud investigation.',
+    description: `With our threat analysis and response orchestration solution, we create early detection systems for threats. 
+    We also create automatic orchestration response solutions that actively react to attack campaigns in a scalable way.`,
+    image: 'https://www.moviri.com/wp-content/uploads/2020/12/picture-0187.png',
+    area_id: area1.id,
+  })
+  // Create some Details for area 2
+  const areaDetail6 = await AreaDetail.create({
+    title: 'Continuous Monitoring & Risk Evaluation',
+    subtitle: 'Real-time security data collection and analysis.',
+    description: `We leverage frameworks and standards such as MITRE to design systems that collect, 
+    normalize and analyze security data in real-time. We use intelligence tools to generate insights that limit risk exposure, 
+    while reducing operational effort.`,
+    image:
+      'https://www.moviri.com/wp-content/uploads/2020/12/cloud-optimization.png',
+    area_id: area2.id,
+  })
+  const areaDetail7 = await AreaDetail.create({
+    title: 'Digital Identity for Critical Services',
+    subtitle: 'Visibility and control of privileged and 3rd-party access.',
+    description: `We provide the tools to ensure that all users and all device access activities are visible and controllable. 
+    We also support governance processes to control critical access, such as access by privileged parties or by third-parties, 
+    both to services and to data.`,
+    image: 'https://www.moviri.com/wp-content/uploads/2020/12/picture-0137.png',
+    area_id: area2.id,
+  })
+  const areaDetail8 = await AreaDetail.create({
+    title: 'Cloud Security Zero-Trust Architecture',
+    subtitle: 'Cloud and multi-cloud policies enforcement and monitoring.',
+    description: `As companies migrate services and data to the cloud, we have a range of solutions for cloud native application and infrastructure, 
+    risk monitoring of cloud traffic and multi-cloud integrations, security enforcement, continuous monitoring for cloud native services, 
+    SASE and CASB implementation, containers and serverless security.`,
+    image: 'https://www.moviri.com/wp-content/uploads/2020/12/picture-0191.png',
+    area_id: area2.id,
+  })
+  const areaDetail9 = await AreaDetail.create({
+    title: 'Cyber & Enterprise Risk Integration',
+    subtitle: 'Cybersecurity integration with ERM systems and frameworks.',
+    description: `We offer solutions specifically designed to help enterprises meet regulatory and governance challenges, 
+    including enterprise risk management and compliance around a variety of governance frameworks.`,
+    image: 'https://www.moviri.com/wp-content/uploads/2020/12/picture-0190.png',
+    area_id: area2.id,
+  })
+  const areaDetail10 = await AreaDetail.create({
+    title: 'AI-Based Fraud & Threat Intelligence',
+    subtitle: 'Advanced threat intelligence and fraud investigation.',
+    description: `With our threat analysis and response orchestration solution, we create early detection systems for threats. 
+    We also create automatic orchestration response solutions that actively react to attack campaigns in a scalable way.`,
+    image: 'https://www.moviri.com/wp-content/uploads/2020/12/picture-0018.png',
+    area_id: area2.id,
+  })
+  // Create some Details for product 1
+  const productDetail1 = await ProductDetail.create({
+    title: '',
+    subtitle: '',
+    description: ``,
+    image: '',
+    product_id: product1.id,
+  })
+  const productDetail2 = await ProductDetail.create({
+    title: '',
+    subtitle: '',
+    description: ``,
+    image: '',
+    product_id: product1.id,
+  })
+  const productDetail3 = await ProductDetail.create({
+    title: '',
+    subtitle: '',
+    description: ``,
+    image: '',
+    product_id: product1.id,
+  })
+  const productDetail4 = await ProductDetail.create({
+    title: '',
+    subtitle: '',
+    description: ``,
+    image: '',
+    product_id: product1.id,
+  })
+  // Create some Details for product 2
+  const productDetail5 = await ProductDetail.create({
+    title: 'CLOUD EFFICIENCY',
+    subtitle: 'Optimize cloud cost AND performance',
+    description: `Cloud cost optimization solutions and vendor tools focus on cost efficiency at the expense of real application performance. 
+    Leverage Akamas AI-powered optimization to explore the cheapest Amazon EC2, GCP, and Microsoft Azure options, 
+    while also maximizing end-to-end service performance.`,
+    image: 'https://www.akamas.io/wp-content/uploads/2021/05/cloud_efficiency@2x.png',
+    product_id: product2.id,
+  })
+  const productDetail6 = await ProductDetail.create({
+    title: 'BIG DATA',
+    subtitle: 'Optimize Spark jobs at enterprise scale',
+    description: `Configuring Spark for maximum job performance is more art than science. Job size, data volumes, 
+    and other factors impact completion time and ability to stay within execution windows. Leverage Akamas goal-driven optimization to configure Spark, 
+    AWS EMR, and Google DataProc to minimize resource usage, maximize applications performance, reduce costs and meet SLOs.`,
+    image: 'https://www.akamas.io/wp-content/uploads/2021/04/big-data@2x.png',
+    product_id: product2.id,
+  })
+  const productDetail7 = await ProductDetail.create({
+    title: 'DATABASE OPTIMIZATION',
+    subtitle: 'Automate DB tuning for higher performance',
+    description: `MongoDB, MySQL, PostgreSQL have hundreds of parameters that impact application performance. 
+    Manual tuning is time consuming and overburdens DBAs. Leverage Akamas autonomous optimization to maximize application throughput, 
+    while reducing the cost of database licenses and cloud services such as Amazon RDS, Microsoft Azure Database, Google Cloud SQL.`,
+    image: 'https://www.akamas.io/wp-content/uploads/2021/05/database_optimization@2x.png',
+    product_id: product2.id,
+  })
+  const productDetail8 = await ProductDetail.create({
+    title: 'JAVA TUNING',
+    subtitle: 'Tame the JVM',
+    description: `JVM performance optimization challenges even the most experienced Java experts. 
+    Manually tuning hundreds of JVM parameters is time consuming and does not ensure adequate response times or minimum resource usage. 
+    Leverage Akamas out-of-the-box JVM optimization pack to automatically maximize the performance and resilience of your Java applications.`,
+    image: 'https://www.akamas.io/wp-content/uploads/2021/04/illustrazione1@2x.png',
+    product_id: product2.id,
   })
 }
 

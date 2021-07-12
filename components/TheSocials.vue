@@ -1,4 +1,5 @@
 <template>
+  <!-- It contains the socials buttons and links of the company -->
   <div class="w3-bar" style="text-align: center">
     <a class="w3-bar-item" href="https://www.facebook.com/">
       <img src="~/static/icons/facebook.png"

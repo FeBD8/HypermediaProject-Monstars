@@ -1,0 +1,123 @@
+header,
+footer,
+h1,
+h2,
+h3 {
+  font-family: 'Staatliches', 'cursive' !important;
+}
+h1,
+h2,
+h3 {
+  color: #0d2b66 !important;
+  line-height: normal;
+  padding-bottom: 10px;
+}
+h4,
+h5,
+h6 {
+  color: #47546b !important;
+  line-height: normal;
+  padding-bottom: 10px;
+}
+p,
+h4,
+h5,
+h6 {
+  font-family: 'Montserrat', 'sans-serif' !important;
+}
+#content {
+  padding: 48px 0;
+}
+.intro {
+  min-height: 100vh;
+  position: relative;
+}
+.horizontally-centered {
+  float: none;
+  margin: auto !important;
+  display: grid;
+}
+.vertically-centered {
+  align-items: center;
+  display: grid;
+}
+.border-bottom {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.438) !important;
+}
+.border-top {
+  border-top: 1px solid rgba(255, 255, 255, 0.438) !important;
+}
+.underline-animation-dark::after {
+  content: '';
+  display: block;
+  width: 0;
+  height: 1px;
+  background: #041a47;
+  transition: width 0.3s;
+}
+.underline-animation-dark:hover::after {
+  width: 100%;
+  background: #041a47 !important;
+}
+.underline-animation-light::after {
+  content: '';
+  display: block;
+  width: 0;
+  height: 1px;
+  background: white;
+  transition: width 0.3s;
+}
+.underline-animation-light:hover::after {
+  width: 100%;
+  background: white !important;
+}
+.zero-padding-top {
+  padding-top: 0 !important;
+}
+.margin-bottom-large {
+  margin-bottom: 50px !important;
+}
+.hide-animate {
+  visibility: hidden;
+}
+.animation-in {
+  visibility: visible !important;
+  animation-delay: 0.2s;
+  animation-name: fadeInUp;
+  animation-duration: 1s;
+  animation-fill-mode: both;
+}
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateY(20px);
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
+}
+@media (max-width: 600px) {
+  .intro {
+    min-height: 60vh;
+  }
+  h1 {
+    line-height: 90%;
+  }
+}
+@media (max-width: 1000px) {
+  .w3-xxxlarge {
+    font-size: 30px !important;
+  }
+  .w3-xxlarge {
+    font-size: 26px !important;
+  }
+  .w3-xlarge {
+    font-size: 18px !important;
+  }
+  .w3-large {
+    font-size: 15px !important;
+  }
+}

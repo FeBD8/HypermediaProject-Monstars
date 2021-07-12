@@ -9,7 +9,7 @@
       </video>
     </div>
     <div class="background-overlay"></div>
-    <div id="text" class="text-container center">
+    <div id="text" class="text-container horizontally-centered">
       <div class="w3-row animation-in">
         <div class="w3-col l8 m12 s12" style="line-height: normal">
           <p class="w3-xlarge">{{ pathName }}</p>
@@ -113,17 +113,12 @@ video {
   left: 50%;
 }
 .text-container {
+  width: 50vw;
+  padding-top: 25vh;
   white-space: pre-line;
   color: white;
   position: relative;
   z-index: 1;
-}
-.center {
-  width: 50vw;
-  padding-top: 25vh;
-  float: none;
-  margin: auto !important;
-  display: table;
 }
 h1,
 p {
@@ -131,16 +126,13 @@ p {
   margin-bottom: 10px;
 }
 @media (max-width: 600px) {
-  .center {
+  .text-container {
     width: 90vw;
     padding-top: 15vh;
   }
-  h1 {
-    line-height: 90%;
-  }
 }
-@media (max-width: 901px) {
-  .center {
+@media (max-width: 1000px) {
+  .text-container {
     width: 90vw;
   }
   .w3-col {

@@ -9,7 +9,7 @@ async function init() {
   // Call the init function that returns the Database
   const db = await initializeDatabase()
   // Let's extract all the objects we need to perform queries inside the endpoints
-  const { Person, Area, Product } = db._tables
+  const { Person, Area, Product, AreaDetail, ProductDetail } = db._tables
   // API to get all the people
   app.get('/people', async (req, res) => {
     const people = await Person.findAll()
@@ -34,11 +34,11 @@ async function init() {
       include: [
         {
           model: Area,
-          as: 'WorkingArea',
+          as: 'working_area',
         },
         {
           model: Area,
-          as: 'AreaResp',
+          as: 'area_resp',
         },
       ],
     })
@@ -53,18 +53,22 @@ async function init() {
       include: [
         {
           model: Person,
-          as: 'ReferenceAssistant',
+          as: 'reference_assistant',
         },
         {
           model: Person,
-          as: 'ProductManager',
+          as: 'product_manager',
+        },
+        {
+          model: ProductDetail,
+          as: 'product_details',
         },
       ],
     })
     return res.json(product)
   })
   // API to get an area by ID.
-  // This will return also the Products
+  // This will return also the Products and the Details
   app.get('/areas/:id', async (req, res) => {
     const { id } = req.params
     const area = await Area.findOne({
@@ -72,7 +76,11 @@ async function init() {
       include: [
         {
           model: Product,
-          as: 'Area',
+          as: 'membership_area',
+        },
+        {
+          model: AreaDetail,
+          as: 'area_details',
         },
       ],
     })

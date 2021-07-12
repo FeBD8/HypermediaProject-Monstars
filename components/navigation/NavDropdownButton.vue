@@ -1,35 +1,25 @@
 <template>
   <!-- Dropdown button with the contents used in the navigation bar 
   In the website is used for the Areas button s-->
-  <section class="w3-dropdown-hover">
-    <nav-button :name="name" :path="path"></nav-button>
-    <ul class="w3-dropdown-content w3-ul w3-animate-opacity">
-      <li
-        v-for="(item, itemIndex) of dropdownContent"
-        :key="'item-' + itemIndex"
+  <ul class="w3-dropdown-content w3-ul w3-animate-opacity">
+    <li v-for="(item, itemIndex) of dropdownContent" :key="'item-' + itemIndex">
+      <nav-card
+        :name="item.name"
+        :shortcut-image="item.shortcut_image"
+        :path="path + '/' + item.id"
       >
-        <nav-card
-          :name="item.name"
-          :shortcut-image="item.shortcut_image"
-          :path="path + '/' + item.id"
-        >
-        </nav-card>
-      </li>
-    </ul>
-  </section>
+      </nav-card>
+    </li>
+  </ul>
 </template>
 
 <script>
 import NavCard from '~/components/navigation/NavCard.vue'
-import NavButton from '~/components/navigation/NavButton.vue'
-
 export default {
   components: {
     NavCard,
-    NavButton,
   },
   props: {
-    name: { type: String, default: () => '' },
     path: { type: String, default: () => '' },
     dropdownContent: { type: Array, default: () => [] },
   },
@@ -37,11 +27,6 @@ export default {
 </script>
 
 <style scoped>
-.w3-dropdown-hover,
-.w3-dropdown-hover:hover > .w3-button {
-  background-color: transparent !important;
-  color: white !important;
-}
 ul li {
   padding: 0px !important;
 }

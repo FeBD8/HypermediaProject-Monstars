@@ -1,4 +1,5 @@
 <template>
+  <!-- Card for the people page. It contains an image, the full name and the role of the person. -->
   <div>
     <nuxt-link
       class="w3-button w3-padding-32 zoom"

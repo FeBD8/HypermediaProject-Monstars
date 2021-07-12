@@ -74,65 +74,12 @@ export default {
 </script>
 
 <style>
-header,
-footer,
-h1 {
-  font-family: 'Staatliches', 'cursive' !important;
+.w3-button:hover {
+  color: inherit !important;
+  background-color: transparent !important;
 }
-h1 {
-  color: #0d2b66 !important;
-}
-p,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family: 'Montserrat', 'sans-serif' !important;
-}
-section#content {
-  padding: 48px 0;
-}
-.intro {
-  min-height: 100vh;
-  position: relative;
-}
-.hide-animate {
-  visibility: hidden;
-}
-.animation-in {
-  visibility: visible !important;
-  animation-delay: 0.2s;
-  animation-name: fadeInUp;
-  animation-duration: 1s;
-  animation-fill-mode: both;
-}
-@keyframes fadeInUp {
-  0% {
-    opacity: 0;
-    -webkit-transform: translateY(20px);
-    transform: translateY(20px);
-  }
-  100% {
-    opacity: 1;
-    -webkit-transform: translateY(0);
-    transform: translateY(0);
-  }
-}
-@media (max-width: 600px) {
-  .intro {
-    min-height: 60vh;
-  }
-}
-@media (max-width: 901px) {
-  .w3-xxxlarge {
-    font-size: 30px !important;
-  }
-  .w3-xlarge {
-    font-size: 20px !important;
-  }
-  .w3-large {
-    font-size: 15px !important;
-  }
+.w3-button {
+  color: inherit !important;
+  background-color: transparent !important;
 }
 </style>

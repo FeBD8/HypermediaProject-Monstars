@@ -1,7 +1,7 @@
 <template>
   <!-- The footer of the website with the method for responsiveness -->
   <footer id="bottomBar" class="w3-bar">
-    <div class="w3-bar-item center">
+    <div class="w3-bar-item horizontally-centered">
       <!-- Logo section -->
       <section id="logo" class="w3-bar-item">
         <ul class="w3-ul w3-bar-item">
@@ -61,7 +61,11 @@
       <!-- Navbar on small screen devices -->
       <nav
         id="navLinkSmall"
-        class="w3-bar-item w3-hide-large center border-bottom border-top"
+        class="
+          w3-bar-item w3-hide-large
+          horizontally-centered
+          border-bottom border-top
+        "
       >
         <ul class="w3-bar-item w3-ul">
           <li
@@ -139,13 +143,13 @@ export default {
         social.getBoundingClientRect().width +
         200
       if (window.innerWidth <= barWidth) {
-        logo.classList.add('center')
-        navLinkLarge.classList.add('center')
-        social.classList.add('center')
-      } else if (window.innerWidth > 901) {
-        logo.classList.remove('center')
-        navLinkLarge.classList.remove('center')
-        social.classList.remove('center')
+        logo.classList.add('horizontally-centered')
+        navLinkLarge.classList.add('horizontally-centered')
+        social.classList.add('horizontally-centered')
+      } else if (window.innerWidth > 1001) {
+        logo.classList.remove('horizontally-centered')
+        navLinkLarge.classList.remove('horizontally-centered')
+        social.classList.remove('horizontally-centered')
       }
     },
   },
@@ -155,9 +159,10 @@ export default {
 <style scoped>
 p {
   font-family: 'Staatliches', 'cursive' !important;
+  margin: 8px !important;
 }
 #bottomBar {
-  background-color: #47546b !important;
+  background-color: #041a47 !important;
   color: white !important;
   z-index: 3;
   position: absolute;
@@ -174,25 +179,15 @@ p {
   font-family: 'Montserrat', sans-serif !important;
   padding: 8px !important;
 }
-.center {
+.horizontally-centered {
   float: none;
-  margin: auto !important;
   display: table;
 }
-.nav-button:hover::after {
+.w3-button:hover::after {
   width: 0;
 }
 .w3-ul li {
   border-bottom: none;
-}
-.border-bottom {
-  border-bottom: 1px solid rgba(255, 255, 255, 0.438) !important;
-}
-.border-top {
-  border-top: 1px solid rgba(255, 255, 255, 0.438) !important;
-}
-.zero-padding-top {
-  padding-top: 0 !important;
 }
 .nuxt-link-active {
   color: white;

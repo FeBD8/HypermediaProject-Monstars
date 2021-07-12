@@ -12,22 +12,27 @@
     <!-- Areas Container -->
     <section id="content" class="w3-container">
       <div class="w3-center hide-animate">
-        <h1 class="w3-xxxlarge">THE AREAS</h1>
+        <h2 class="w3-xxxlarge">THE AREAS</h2>
       </div>
       <br />
       <div class="w3-padding-16">
-        <list-card
+        <div
           v-for="(area, areaIndex) in areas"
+          :id="'listRow' + areaIndex"
           :key="'area-' + areaIndex"
-          class="hide-animate"
-          :num="area.id"
-          :title="area.name"
-          :subtitle="area.subtitle"
-          :image="area.image"
-          :description="area.description"
-          :path="$route.path + '/' + area.id"
+          class="w3-row margin-bottom-large hide-animate"
         >
-        </list-card>
+          <list-card
+            :num="area.id"
+            :title="area.name"
+            :subtitle="area.subtitle"
+            :image="area.image"
+            :alt="'Abstract image of the ' + area.name + ' area'"
+            :description="area.description"
+            :path="$route.path + '/' + area.id"
+          >
+          </list-card>
+        </div>
       </div>
     </section>
   </div>
