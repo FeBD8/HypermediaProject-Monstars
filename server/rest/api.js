@@ -38,7 +38,15 @@ async function init() {
         },
         {
           model: Area,
-          as: 'area_resp',
+          as: 'manager_of_area',
+        },
+        {
+          model: Product,
+          as: 'reference_assistant_of',
+        },
+        {
+          model: Product,
+          as: 'product_manager_of',
         },
       ],
     })
@@ -63,12 +71,16 @@ async function init() {
           model: ProductDetail,
           as: 'product_details',
         },
+        {
+          model: Area,
+          as: 'membership_area',
+        },
       ],
     })
     return res.json(product)
   })
   // API to get an area by ID.
-  // This will return also the Products and the Details
+  // This will return also the Products, the Details and the People
   app.get('/areas/:id', async (req, res) => {
     const { id } = req.params
     const area = await Area.findOne({
@@ -76,11 +88,19 @@ async function init() {
       include: [
         {
           model: Product,
-          as: 'membership_area',
+          as: 'products',
         },
         {
           model: AreaDetail,
           as: 'area_details',
+        },
+        {
+          model: Person,
+          as: 'employees',
+        },
+        {
+          model: Person,
+          as: 'manager',
         },
       ],
     })

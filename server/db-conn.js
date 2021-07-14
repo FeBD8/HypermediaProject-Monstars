@@ -78,18 +78,33 @@ function defineDatabaseStructure() {
       underscored: true,
     }
   )
-  // Creating the 1 -> 1 association between Person and Area in which they work
+  // X belongsTo Y --> X has the fk
+  // Creating the 1 -> N association between Person and Area in which they work
   Person.belongsTo(Area, {
     as: 'working_area',
     foreignKey: {
       name: 'working_area_id',
       allowNull: false,
     },
+    constraints: false,
+  })
+  Area.hasMany(Person, {
+    as: 'employees',
+    foreignKey: 'working_area_id',
+    constraints: false,
   })
   // Creating the 1 -> 1 association between Person and Area for which they are responsible
-  Person.belongsTo(Area, {
-    as: 'responsible_of_area',
-    foreignKey: 'responsible_of_area_id',
+  Area.belongsTo(Person, {
+    as: 'manager',
+    foreignKey: {
+      name: 'manager_id',
+    },
+    constraints: false,
+  })
+  Person.hasOne(Area, {
+    as: 'manager_of_area',
+    foreignKey: 'manager_id',
+    constraints: false,
   })
   // Creating the 1 -> 1 association between Person and Product for which they are the reference for the assistance
   Product.belongsTo(Person, {
@@ -98,6 +113,12 @@ function defineDatabaseStructure() {
       name: 'reference_assistant_id',
       allowNull: false,
     },
+    constraints: false,
+  })
+  Person.hasOne(Product, {
+    as: 'reference_assistant_of',
+    foreignKey: 'reference_assistant_id',
+    constraints: false,
   })
   // Creating the 1 -> 1 association between Person and Product for which he/she is the product manager
   Product.belongsTo(Person, {
@@ -106,14 +127,26 @@ function defineDatabaseStructure() {
       name: 'product_manager_id',
       allowNull: false,
     },
+    constraints: false,
+  })
+  Person.hasOne(Product, {
+    as: 'product_manager_of',
+    foreignKey: 'product_manager_id',
+    constraints: false,
   })
   // Creating the 1 -> N association between Product and Area in which it belongs to
-  Area.hasMany(Product, {
+  Product.belongsTo(Area, {
     as: 'membership_area',
     foreignKey: {
       name: 'area_id',
       allowNull: false,
     },
+    constraints: false,
+  })
+  Area.hasMany(Product, {
+    as: 'products',
+    foreignKey: 'area_id',
+    constraints: false,
   })
   // Creating the 1 -> N association between Area and Detail that it has for its description
   Area.hasMany(AreaDetail, {
@@ -151,7 +184,7 @@ async function insertFakeData() {
     name: 'Security',
     subtitle: 'Partnering with customers to manage digital risk.',
     description: `We are unique among IT security consulting firms. We combine security technology engineering, 
-    intelligence expertise and our data science DNA to help companies manage digital risk end-to-end.`,
+        intelligence expertise and our data science DNA to help companies manage digital risk end-to-end.`,
     image: 'https://www.moviri.com/wp-content/uploads/2020/12/picture-0143.png',
     shortcut_image:
       'https://www.moviri.com/wp-content/uploads/2020/11/bl-icon-security@2x.png',
@@ -161,7 +194,7 @@ async function insertFakeData() {
     subtitle:
       'Autonomous optimization driven by machine learning and automation.',
     description: `The complexity of modern technology stacks and application pipelines requires end-to-end automation. 
-    We use machine learning techniques and the right tooling to create automated, full-stack, closed-loop performance engineering solutions.`,
+        We use machine learning techniques and the right tooling to create automated, full-stack, closed-loop performance engineering solutions.`,
     image: 'https://www.moviri.com/wp-content/uploads/2020/12/picture-0190.png',
     shortcut_image:
       'https://cdn0.iconfinder.com/data/icons/adobe-application/100/Ai_Icon-256.png',
@@ -174,8 +207,8 @@ async function insertFakeData() {
     image:
       'https://www.moviri.com/wp-content/uploads/2020/12/matteo_fabiano2.jpg',
     working_area_id: area1.id,
-    responsible_of_area_id: area1.id,
   })
+  area1.setManager(person1)
   const person2 = await Person.create({
     name: 'Sara',
     surname: 'Bianchi',
@@ -190,8 +223,8 @@ async function insertFakeData() {
     role: 'AI Expert',
     image: 'https://www.moviri.com/wp-content/uploads/2021/04/enrico-maini.jpg',
     working_area_id: area2.id,
-    responsible_of_area_id: area2.id,
   })
+  area2.setManager(person3)
   const person4 = await Person.create({
     name: 'Fabio',
     surname: 'Rossanigo',
@@ -199,9 +232,7 @@ async function insertFakeData() {
     image:
       'https://www.moviri.com/wp-content/uploads/2020/12/Fabio-Violante-1.jpg',
     working_area_id: area2.id,
-    responsible_of_area_id: area2.id,
   })
-
   // Create 2 Products
   const product1 = await Product.create({
     name: 'Cleafy',
@@ -334,7 +365,8 @@ async function insertFakeData() {
     description: `Cleafy’s ML algorithms indicate any behavioral, transactional, or device-related irregularity. 
     Clear tags help you detect any anomalies for each session, as they happen. Once you identify a malicious pattern, 
     the engine will learn how to detect that. It will then automatically recognize it whenever and wherever it encounters one.`,
-    image: 'https://www.akamas.io/wp-content/uploads/2021/05/service_resilience1@2x.png',
+    image:
+      'https://www.akamas.io/wp-content/uploads/2021/05/service_resilience1@2x.png',
     product_id: product1.id,
   })
   const productDetail3 = await ProductDetail.create({
@@ -342,7 +374,8 @@ async function insertFakeData() {
     subtitle: '',
     description: `With automated responses precisely targeted on malicious sessions, you can respond faster to any threat, even when they strike at scale.
     Automated responses aren’t just faster, they’re also more precise. They stop only those in need to be stopped, without interrupting your real users.`,
-    image: 'https://uploads-ssl.webflow.com/6020129a813fe0c8f1e8053e/605a231aff6896834273b413_Cleafy-RealTime-p-2000.png',
+    image:
+      'https://uploads-ssl.webflow.com/6020129a813fe0c8f1e8053e/605a231aff6896834273b413_Cleafy-RealTime-p-2000.png',
     product_id: product1.id,
   })
   const productDetail4 = await ProductDetail.create({
@@ -351,7 +384,8 @@ async function insertFakeData() {
     description: `From your dashboard, you can observe the metrics that matter the most for you. They will let you know if something is off so that you can 
     quickly create new rules or refine the existing ones. Having full control of the situation will reduce the stress on your team, and you can concentrate 
     on developing new businesses. Look ahead, Cleafy has got your back.`,
-    image: 'https://uploads-ssl.webflow.com/6020129a813fe0c8f1e8053e/605a231ae93af4c47433886e_Cleafy-Threats-p-1080.png',
+    image:
+      'https://uploads-ssl.webflow.com/6020129a813fe0c8f1e8053e/605a231ae93af4c47433886e_Cleafy-Threats-p-1080.png',
     product_id: product1.id,
   })
   // Create some Details for product 2
@@ -361,7 +395,8 @@ async function insertFakeData() {
     description: `Cloud cost optimization solutions and vendor tools focus on cost efficiency at the expense of real application performance. 
     Leverage Akamas AI-powered optimization to explore the cheapest Amazon EC2, GCP, and Microsoft Azure options, 
     while also maximizing end-to-end service performance.`,
-    image: 'https://www.akamas.io/wp-content/uploads/2021/05/cloud_efficiency@2x.png',
+    image:
+      'https://www.akamas.io/wp-content/uploads/2021/05/cloud_efficiency@2x.png',
     product_id: product2.id,
   })
   const productDetail6 = await ProductDetail.create({
@@ -379,7 +414,8 @@ async function insertFakeData() {
     description: `MongoDB, MySQL, PostgreSQL have hundreds of parameters that impact application performance. 
     Manual tuning is time consuming and overburdens DBAs. Leverage Akamas autonomous optimization to maximize application throughput, 
     while reducing the cost of database licenses and cloud services such as Amazon RDS, Microsoft Azure Database, Google Cloud SQL.`,
-    image: 'https://www.akamas.io/wp-content/uploads/2021/05/database_optimization@2x.png',
+    image:
+      'https://www.akamas.io/wp-content/uploads/2021/05/database_optimization@2x.png',
     product_id: product2.id,
   })
   const productDetail8 = await ProductDetail.create({
@@ -388,7 +424,8 @@ async function insertFakeData() {
     description: `JVM performance optimization challenges even the most experienced Java experts. 
     Manually tuning hundreds of JVM parameters is time consuming and does not ensure adequate response times or minimum resource usage. 
     Leverage Akamas out-of-the-box JVM optimization pack to automatically maximize the performance and resilience of your Java applications.`,
-    image: 'https://www.akamas.io/wp-content/uploads/2021/04/illustrazione1@2x.png',
+    image:
+      'https://www.akamas.io/wp-content/uploads/2021/04/illustrazione1@2x.png',
     product_id: product2.id,
   })
 }
