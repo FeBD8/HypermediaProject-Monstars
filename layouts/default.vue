@@ -74,6 +74,13 @@ export default {
 </script>
 
 <style>
+#content {
+  padding: 48px 0;
+}
+img {
+  height: auto !important;
+  max-width: 100% !important;
+}
 .w3-button:hover {
   color: inherit !important;
   background-color: transparent !important;
@@ -81,5 +88,6 @@ export default {
 .w3-button {
   color: inherit !important;
   background-color: transparent !important;
+  white-space: normal !important;
 }
 </style>

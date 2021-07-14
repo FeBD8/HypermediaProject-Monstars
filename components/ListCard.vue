@@ -9,12 +9,20 @@
       <img :src="image" :alt="alt" />
     </div>
     <div class="vertically-centered w3-padding-large">
-      <div>
+      <div class="text-container">
         <div v-if="logo !== ''" class="logo">
           <img :src="logo" :alt="'Logo' + title" />
         </div>
-        <h3 v-if="logo === ''" class="w3-xxlarge">{{ title }}</h3>
-        <h4 class="w3-xlarge">{{ subtitle }}</h4>
+        <h3 v-if="logo === ''" id="card-title" class="fontsize-medium">
+          {{ title }}
+        </h3>
+        <h4
+          v-if="subtitle !== ''"
+          id="card-subtitle"
+          class="w3-xlarge subtitle"
+        >
+          {{ subtitle }}
+        </h4>
         <div class="w3-hide-large">
           <img class="horizontally-centered" :src="image" :alt="alt" />
         </div>
@@ -52,13 +60,7 @@ export default {
 </script>
 
 <style scoped>
-h2 {
-  font-family: 'Staatliches', 'cursive' !important;
-  color: #47546b;
-}
 img {
-  height: auto !important;
-  max-width: 100% !important;
   padding: 32px 32px !important;
 }
 .logo {
@@ -70,22 +72,20 @@ img {
   padding: 0 !important;
 }
 .w3-button {
-  white-space: normal !important;
-  background-color: #47546b;
-  color: white;
+  background-color: #0d2b66 !important;
+  color: white !important;
   transition: background-color 0.3s ease-out;
+  border-color: #0d2b66 !important;
 }
 .w3-button:hover {
   background-color: transparent !important;
-  color: #47546b !important;
+  color: #0d2b66 !important;
 }
 .listcard-container {
-  max-width: 70%;
   grid-template-columns: 1fr 1fr;
 }
 @media (max-width: 1000px) {
   .listcard-container {
-    max-width: 90%;
     grid-template-columns: 1fr;
   }
 }

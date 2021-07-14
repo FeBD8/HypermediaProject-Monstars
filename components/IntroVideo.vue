@@ -1,7 +1,7 @@
 <template>
   <!-- Component for the introduction video of all the main pages.
   It contains a video, a title, a subtitle and an arrow that bring the user to the main content of the page -->
-  <div>
+  <section>
     <div class="video-container w3-animate-opacity">
       <video muted="" autoplay="" playsinline="" loop="" :poster="poster">
         <source :src="video" type="video/mp4" />
@@ -11,11 +11,9 @@
     <div class="background-overlay"></div>
     <div id="text" class="text-container horizontally-centered">
       <div class="w3-row animation-in">
-        <div class="w3-col l8 m12 s12" style="line-height: normal">
+        <div class="w3-col l8 m12 s12">
           <p class="w3-xlarge">{{ pathName }}</p>
-          <h1>
-            <span class="w3-xxxlarge" style="color: white">{{ title }}</span>
-          </h1>
+          <h1 class="w3-xxxlarge">{{ title }}</h1>
         </div>
         <div class="w3-col l8 m12 s12 w3-right">
           <p class="w3-large">
@@ -25,11 +23,11 @@
       </div>
     </div>
     <div id="scrollIcon" class="scrolldown-icon">
-      <button @click="scrollToContent()">
+      <button class="w3-button" @click="scrollToContent()">
         <img src="~/static/icons/arrow.png" alt="Scrolldown icon" />
       </button>
     </div>
-  </div>
+  </section>
 </template>
 
 <script>
@@ -86,9 +84,8 @@ export default {
 </script>
 
 <style scoped>
-button {
-  background-color: transparent;
-  border: none;
+.w3-button {
+  padding: 0;
 }
 .video-container {
   height: 100%;
@@ -100,12 +97,6 @@ video {
   height: 100%;
   object-fit: cover;
 }
-.background-overlay {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.6);
-}
 .scrolldown-icon {
   position: absolute;
   bottom: 20px;
@@ -116,7 +107,6 @@ video {
   width: 50vw;
   padding-top: 25vh;
   white-space: pre-line;
-  color: white;
   position: relative;
   z-index: 1;
 }
@@ -124,6 +114,7 @@ h1,
 p {
   margin-top: 0 !important;
   margin-bottom: 10px;
+  color: white !important;
 }
 @media (max-width: 600px) {
   .text-container {

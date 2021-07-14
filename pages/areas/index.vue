@@ -18,7 +18,7 @@
       <div class="w3-padding-16">
         <div
           v-for="(area, areaIndex) in areas"
-          :id="'listRow' + areaIndex"
+          id="listRow"
           :key="'area-' + areaIndex"
           class="w3-row margin-bottom-large hide-animate"
         >
@@ -70,4 +70,13 @@ export default {
 }
 </script>
 
-<style scoped></style>
+<style scoped>
+.listcard-container {
+  max-width: 70%;
+}
+@media (max-width: 1000px) {
+  .listcard-container {
+    max-width: 90%;
+  }
+}
+</style>

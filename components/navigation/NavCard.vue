@@ -2,12 +2,8 @@
   <!-- Card for the dropdown navigation link, with image and name 
   It is used in for the areas and their shortcut image -->
   <div class="w3-display-container">
-    <nuxt-link
-      class="w3-button w3-padding-large w3-large"
-      :to="path"
-      style="width: 100%; text-align: left"
-    >
-      <img :src="shortcutImage" style="margin-right: 10px" alt="Logo area" />
+    <nuxt-link class="w3-button w3-large card-button" :to="path">
+      <img :src="shortcutImage" alt="Logo area" />
       {{ name }}
     </nuxt-link>
   </div>
@@ -26,18 +22,18 @@ export default {
 <style scoped>
 img {
   max-width: 30px !important;
-  align-items: center;
+  margin-right: 10px !important;
 }
 .w3-display-container {
   font-family: 'Montserrat', sans-serif !important;
-  background-color: white !important;
-  color: black !important;
 }
 .w3-display-container:hover,
 .w3-button:hover {
   background-color: #dbe7f8f8 !important;
 }
-.w3-padding-large {
+.card-button {
   padding: 15px 20px !important;
+  width: 100%;
+  text-align: left;
 }
 </style>

@@ -1,14 +1,13 @@
 <template>
   <div>
     <!-- Products page composed by the introduction video and the list of all the products -->
-    <section class="intro">
-      <intro-video
-        :video="intro.video"
-        :poster="intro.poster"
-        :title="intro.title"
-        :subtitle="intro.subtitle"
-      ></intro-video>
-    </section>
+    <intro-video
+      :video="intro.video"
+      :poster="intro.poster"
+      :title="intro.title"
+      :subtitle="intro.subtitle"
+      class="intro"
+    ></intro-video>
     <!-- Products Container -->
     <section id="content" class="w3-container">
       <div class="w3-center hide-animate">
@@ -18,7 +17,7 @@
       <div class="w3-padding-16">
         <div
           v-for="(product, productIndex) in products"
-          :id="'listRow' + productIndex"
+          id="listRow"
           :key="'product-' + productIndex"
           class="w3-row margin-bottom-large hide-animate"
         >
@@ -80,4 +79,13 @@ export default {
 }
 </script>
 
-<style scoped></style>
+<style scoped>
+.listcard-container {
+  max-width: 70%;
+}
+@media (max-width: 1000px) {
+  .listcard-container {
+    max-width: 90%;
+  }
+}
+</style>

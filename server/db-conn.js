@@ -320,31 +320,38 @@ async function insertFakeData() {
   })
   // Create some Details for product 1
   const productDetail1 = await ProductDetail.create({
-    title: '',
+    title: 'Gather every information in one place',
     subtitle: '',
-    description: ``,
-    image: '',
+    description: `Cleafy’s engine collects all possible data in real-time, just on one platform. Having full visibility on all your channels 
+    increases your control in every situation. With just a few clicks, you can examine all your online users’ activities and conduct a specific 
+    quick investigation thanks to a flexible yet powerful query language.`,
+    image: 'https://www.akamas.io/wp-content/uploads/2021/04/big-data@2x.png',
     product_id: product1.id,
   })
   const productDetail2 = await ProductDetail.create({
-    title: '',
+    title: 'Create detection rules',
     subtitle: '',
-    description: ``,
-    image: '',
+    description: `Cleafy’s ML algorithms indicate any behavioral, transactional, or device-related irregularity. 
+    Clear tags help you detect any anomalies for each session, as they happen. Once you identify a malicious pattern, 
+    the engine will learn how to detect that. It will then automatically recognize it whenever and wherever it encounters one.`,
+    image: 'https://www.akamas.io/wp-content/uploads/2021/05/service_resilience1@2x.png',
     product_id: product1.id,
   })
   const productDetail3 = await ProductDetail.create({
-    title: '',
+    title: 'Set-up automated responses',
     subtitle: '',
-    description: ``,
-    image: '',
+    description: `With automated responses precisely targeted on malicious sessions, you can respond faster to any threat, even when they strike at scale.
+    Automated responses aren’t just faster, they’re also more precise. They stop only those in need to be stopped, without interrupting your real users.`,
+    image: 'https://uploads-ssl.webflow.com/6020129a813fe0c8f1e8053e/605a231aff6896834273b413_Cleafy-RealTime-p-2000.png',
     product_id: product1.id,
   })
   const productDetail4 = await ProductDetail.create({
-    title: '',
+    title: 'Keep your KPIs under control',
     subtitle: '',
-    description: ``,
-    image: '',
+    description: `From your dashboard, you can observe the metrics that matter the most for you. They will let you know if something is off so that you can 
+    quickly create new rules or refine the existing ones. Having full control of the situation will reduce the stress on your team, and you can concentrate 
+    on developing new businesses. Look ahead, Cleafy has got your back.`,
+    image: 'https://uploads-ssl.webflow.com/6020129a813fe0c8f1e8053e/605a231ae93af4c47433886e_Cleafy-Threats-p-1080.png',
     product_id: product1.id,
   })
   // Create some Details for product 2

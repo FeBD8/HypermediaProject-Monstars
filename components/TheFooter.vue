@@ -159,7 +159,6 @@ export default {
 <style scoped>
 p {
   font-family: 'Staatliches', 'cursive' !important;
-  margin: 8px !important;
 }
 #bottomBar {
   background-color: #041a47 !important;
@@ -183,16 +182,7 @@ p {
   float: none;
   display: table;
 }
-.w3-button:hover::after {
-  width: 0;
-}
 .w3-ul li {
   border-bottom: none;
-}
-.nuxt-link-active {
-  color: white;
-}
-.nuxt-link-active:after {
-  background: transparent;
 }
 </style>

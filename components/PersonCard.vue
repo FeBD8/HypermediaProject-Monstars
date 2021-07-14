@@ -2,7 +2,7 @@
   <!-- Card for the people page. It contains an image, the full name and the role of the person. -->
   <div>
     <nuxt-link
-      class="w3-button w3-padding-32 zoom"
+      class="w3-button w3-padding-32 zoom-animate"
       :to="path"
       style="width: 100%"
     >
@@ -10,7 +10,7 @@
         <img :src="image" alt="Profile image" />
       </div>
       <div class="text-container">
-        <h2 class="w3-xlarge">
+        <h2 class="w3-xlarge font-montserrat">
           <b class="w3-center">{{ name }} {{ surname }}</b>
         </h2>
         <p>{{ role }}</p>
@@ -32,25 +32,11 @@ export default {
 </script>
 
 <style scoped>
+h2 {
+  padding-top: 10px;
+  padding-bottom: 0;
+}
 .text-container {
   word-wrap: break-word !important;
-}
-img {
-  height: auto !important;
-  max-width: 100% !important;
-}
-.w3-button {
-  white-space: normal !important;
-}
-.w3-button:hover {
-  background-color: transparent !important;
-}
-.zoom {
-  transition: transform 0.2s;
-}
-.zoom:hover {
-  -ms-transform: scale(1.1); /* IE 9 */
-  -webkit-transform: scale(1.1); /* Safari 3-8 */
-  transform: scale(1.1);
 }
 </style>

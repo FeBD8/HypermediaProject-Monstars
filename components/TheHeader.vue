@@ -141,8 +141,8 @@ export default {
         header.style.color = '#041a47'
         header.classList.add('w3-border-bottom')
         navButtons.forEach((btn) => {
-          btn.classList.remove('underline-animation-light')
           btn.classList.add('underline-animation-dark')
+          btn.classList.remove('underline-animation-light')
         })
         this.top = false
       } else {
@@ -151,8 +151,8 @@ export default {
         header.style.color = 'white'
         header.style.backgroundColor = 'transparent'
         navButtons.forEach((btn) => {
-          btn.classList.remove('underline-animation-dark')
           btn.classList.add('underline-animation-light')
+          btn.classList.remove('underline-animation-dark')
         })
         this.top = true
       }
@@ -175,8 +175,8 @@ export default {
   color: white;
   visibility: visible;
   opacity: 1;
-  transition: background-color 0.5s linear, opacity 0.5s linear,
-    border-bottom 0.5s linear;
+  transition: background-color 0.3s linear, opacity 0.3s linear,
+    border-bottom 0s linear 0.3s;
 }
 #navSmallScreen {
   width: 100%;
