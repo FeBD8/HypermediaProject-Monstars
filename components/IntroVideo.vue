@@ -3,26 +3,23 @@
   It contains a video, a title, a subtitle and an arrow that bring the user to the main content of the page -->
   <section>
     <div class="video-container w3-animate-opacity">
-      <video muted="" autoplay="" playsinline="" loop="" :poster="poster">
-        <source :src="video" type="video/mp4" />
+      <video muted="" autoplay="" loop="" :poster="introVideo.poster">
+        <source :src="introVideo.src" type="video/mp4" />
         The video cannot be loaded.
       </video>
     </div>
     <div class="background-overlay"></div>
-    <div id="text" class="text-container horizontally-centered">
-      <div class="w3-row animation-in">
-        <div class="w3-col l8 m12 s12">
-          <p class="w3-xlarge">{{ pathName }}</p>
-          <h1 class="w3-xxxlarge">{{ title }}</h1>
-        </div>
-        <div class="w3-col l8 m12 s12 w3-right">
-          <p class="w3-large">
-            <b>{{ subtitle }}</b>
-          </p>
-        </div>
-      </div>
+    <!-- <p class="w3-xlarge" style="margin: 0">{{ pathName }}</p> -->
+    <div v-if="introText">
+      <paragraph
+        :title="introText.title"
+        :subtitle="introText.subtitle"
+        :description="introText.description"
+        :style="textStyle"
+        class="horizontally-centered"
+      ></paragraph>
     </div>
-    <div id="scrollIcon" class="scrolldown-icon">
+    <div id="scrollIcon" class="scrolldown-icon w3-hide-small">
       <button class="w3-button" @click="scrollToContent()">
         <img src="~/static/icons/arrow.png" alt="Scrolldown icon" />
       </button>
@@ -31,12 +28,28 @@
 </template>
 
 <script>
+import Paragraph from '~/components/Paragraph.vue'
 export default {
+  components: {
+    Paragraph,
+  },
   props: {
-    video: { type: String, default: () => '' },
-    poster: { type: String, default: () => '' },
-    title: { type: String, default: () => '' },
-    subtitle: { type: String, default: () => '' },
+    introVideo: { type: Object, default: () => {} },
+    introText: { type: Object, default: () => {} },
+    introTextStyle: {
+      type: Object,
+      default: () => {
+        return {
+          titleWidth: '66.6%',
+          titleAlign: 'left',
+          subtitleWidth: '66.6%',
+          subtitleColor: 'white',
+          subtitleSize: '1.2rem',
+          subtitlePosition: 'right',
+          subtitleAlign: 'left',
+        }
+      },
+    },
   },
   computed: {
     pathName() {
@@ -44,6 +57,20 @@ export default {
         return 'HOME'
       }
       return this.$route.name.toUpperCase()
+    },
+    textStyle() {
+      return {
+        '--title-width': this.introTextStyle.titleWidth,
+        '--title-align': this.introTextStyle.titleAlign,
+        '--title-responsive-align': 'center',
+        '--subtitle-width': this.introTextStyle.subtitleWidth,
+        '--subtitle-position': this.introTextStyle.subtitlePosition,
+        '--subtitle-color': this.introTextStyle.subtitleColor,
+        '--subtitle-size': this.introTextStyle.subtitleSize,
+        '--subtitle-align': this.introTextStyle.titleAlign,
+        '--subtitle-responsive-align': 'center',
+        '--description-align': 'center',
+      }
     },
   },
   // Add the listener when resize in order to hide the arrow when the text overlaps
@@ -67,16 +94,19 @@ export default {
         })
       }
     },
-    // This function hide the arrow for scrolling to the content when the text overlaps on small screens
+    // This function hide the arrow for scrolling to the content when the text overlaps
     showArrow() {
       const text = document.getElementById('text')
       const arrow = document.getElementById('scrollIcon')
-      if (
-        text.getBoundingClientRect().bottom > arrow.getBoundingClientRect().top
-      ) {
-        arrow.style.visibility = 'hidden'
-      } else {
-        arrow.style.visibility = 'visible'
+      if (text !== null && arrow !== null) {
+        if (
+          text.getBoundingClientRect().bottom >
+          arrow.getBoundingClientRect().top
+        ) {
+          arrow.style.visibility = 'hidden'
+        } else {
+          arrow.style.visibility = 'visible'
+        }
       }
     },
   },
@@ -93,9 +123,22 @@ export default {
   width: 100%;
 }
 video {
+  opacity: var(--video-opacity, 1);
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+.background-overlay {
+  background-color: #00000099;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+.text-container {
+  padding-top: 25vh;
+  padding-bottom: 20vh;
+  width: 60vw;
+  white-space: pre-line;
 }
 .scrolldown-icon {
   position: absolute;
@@ -103,23 +146,11 @@ video {
   margin-left: -20px;
   left: 50%;
 }
-.text-container {
-  width: 50vw;
-  padding-top: 25vh;
-  white-space: pre-line;
-  position: relative;
-  z-index: 1;
-}
-h1,
-p {
-  margin-top: 0 !important;
-  margin-bottom: 10px;
-  color: white !important;
-}
 @media (max-width: 600px) {
   .text-container {
     width: 90vw;
     padding-top: 15vh;
+    padding-bottom: 10vh;
   }
 }
 @media (max-width: 1000px) {

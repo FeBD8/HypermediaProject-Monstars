@@ -1,5 +1,5 @@
 <template>
-  <div class="font-montserrat fontsize-small animation-in">
+  <div class="lcoation font-montserrat fontsize-small animation-in">
     <nuxt-link :to="'/' + indexName">
       <span
         ><b>{{ indexName.toUpperCase() }}</b></span
@@ -27,4 +27,9 @@ export default {
 }
 </script>
 
-<style scoped></style>
+<style scoped>
+.location {
+  position: absolute;
+  margin-left: 30px;
+}
+</style>

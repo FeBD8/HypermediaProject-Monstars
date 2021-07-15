@@ -1,21 +1,18 @@
 <template>
   <!-- People page composed by the introduction video and the team container with all the people -->
   <div>
-    <section class="intro">
-      <intro-video
-        :video="intro.video"
-        :poster="intro.poster"
-        :title="intro.title"
-        :subtitle="intro.subtitle"
-      ></intro-video>
-    </section>
+    <intro-video
+      :intro-video="introVideo"
+      :intro-text="introText"
+      class="intro"
+    ></intro-video>
     <!-- Team Container -->
     <section id="content" class="w3-container">
       <div class="w3-center hide-animate">
         <h1 class="w3-xxxlarge">OUR TEAM</h1>
       </div>
       <br />
-      <div class="team-container w3-padding-16">
+      <div class="team-container w3-padding-16 horizontally-centered">
         <div class="w3-table">
           <!-- In the table it creates 1 row for each triplet of people and for each row puts inside 3 people -->
           <div
@@ -61,12 +58,14 @@ export default {
   },
   data() {
     return {
-      intro: {
+      introVideo: {
+        src: 'https://bendingspoons.com/assets/video/team.mp4',
+        poster: 'https://bendingspoons.com/assets/video/team.jpg',
+      },
+      introText: {
         title: 'Have you met our team?',
         subtitle:
           'We’d like to introduce you to our family of brilliant, hard-working, lovely weirdos (in a good way!). We dream big dreams and have the guts to go after them. Rumor has it we’re table tennis and foosball pros too, but you’ve got to see it for yourself.',
-        video: 'https://bendingspoons.com/assets/video/team.mp4',
-        poster: 'https://bendingspoons.com/assets/video/team.jpg',
       },
       /* 
       Number of items per row
@@ -90,8 +89,5 @@ export default {
 <style scoped>
 .team-container {
   max-width: 60%;
-  float: none;
-  margin: auto !important;
-  display: table;
 }
 </style>

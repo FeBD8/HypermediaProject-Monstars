@@ -1,13 +1,10 @@
 <template>
   <div>
-    <section class="intro">
-      <intro-video
-        :video="intro.video"
-        :poster="intro.poster"
-        :title="intro.title"
-        :subtitle="intro.subtitle"
-      ></intro-video>
-    </section>
+    <intro-video
+      :intro-video="introVideo"
+      :intro-text="introText"
+      class="intro"
+    ></intro-video>
     <section id="content" class="hide-animate">
       <h1>HOME PAGE</h1>
       <p>
@@ -43,13 +40,14 @@ export default {
   layout: 'default',
   data() {
     return {
-      intro: {
+      introVideo: {
+        src: 'https://www.moviri.com/wp-content/uploads/2020/12/Video-HP-01120_V1.mp4',
+        poster: 'https://bendingspoons.com/assets/video/home.jpg',
+      },
+      introText: {
         title: 'Transforming business\nOne company at a time',
         subtitle:
           'Monstar is a multinational consulting and software group of companies, helping customers harness the power of transformative technologies. We specialize in artificial intelligence and security, but we are exploring new frontiers of technology.',
-        video:
-          'https://www.moviri.com/wp-content/uploads/2020/12/Video-HP-01120_V1.mp4',
-        poster: 'https://bendingspoons.com/assets/video/home.jpg',
       },
     }
   },
@@ -59,4 +57,19 @@ export default {
 }
 </script>
 
-<style></style>
+<style scoped>
+h2 {
+  color: white !important;
+}
+.text-container {
+  width: 50vw;
+  padding-top: 20vh;
+  white-space: pre-line;
+  position: relative;
+  z-index: 1;
+}
+h1,
+p {
+  color: white !important;
+}
+</style>

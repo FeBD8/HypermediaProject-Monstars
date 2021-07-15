@@ -1,51 +1,48 @@
 <template>
-  <!-- Component used in a generic description list: it contains a logo or a title if the first is empty, a subtitle, an image and a brief description.
+  <!-- Component used in a generic description list: it contains an image, a paragraph and a button.
   The number is used in large screen devices to display alternatively the image and the text between different rows -->
   <div class="listcard-container horizontally-centered">
     <div
-      v-if="num % 2 !== 0"
+      v-if="!(num % 2)"
       class="vertically-centered w3-padding-large w3-hide-medium w3-hide-small"
     >
       <img :src="image" :alt="alt" />
     </div>
-    <div class="vertically-centered w3-padding-large">
-      <div class="text-container">
-        <div v-if="logo !== ''" class="logo">
-          <img :src="logo" :alt="'Logo' + title" />
+    <div class="vertically-centered">
+      <div>
+        <paragraph
+          :title="title"
+          :logo="logo"
+          :subtitle="subtitle"
+          :description="description"
+          :style="textStyle"
+        ></paragraph>
+        <div v-if="path" class="w3-padding-16">
+          <nuxt-link :to="path">
+            <button class="w3-button w3-round-xxlarge w3-border">
+              <b>Go to {{ title }}</b>
+            </button>
+          </nuxt-link>
         </div>
-        <h3 v-if="logo === ''" id="card-title" class="fontsize-medium">
-          {{ title }}
-        </h3>
-        <h4
-          v-if="subtitle !== ''"
-          id="card-subtitle"
-          class="w3-xlarge subtitle"
-        >
-          {{ subtitle }}
-        </h4>
-        <div class="w3-hide-large">
-          <img class="horizontally-centered" :src="image" :alt="alt" />
-        </div>
-        <p>{{ description }}</p>
-        <br />
-        <nuxt-link v-if="path !== ''" :to="path">
-          <button class="w3-button w3-round-xxlarge w3-border">
-            <b>Go to {{ title }}</b>
-          </button>
-        </nuxt-link>
       </div>
     </div>
     <div
-      v-if="num % 2 === 0"
+      v-if="num % 2"
       class="vertically-centered w3-padding-large w3-hide-medium w3-hide-small"
     >
+      <img :src="image" :alt="alt" />
+    </div>
+    <div class="vertically-centered w3-padding-large w3-hide-large">
       <img :src="image" :alt="alt" />
     </div>
   </div>
 </template>
 
 <script>
+import Paragraph from '~/components/Paragraph.vue'
+
 export default {
+  components: { Paragraph },
   props: {
     num: { type: Number, default: () => 0 },
     title: { type: String, default: () => '' },
@@ -55,6 +52,28 @@ export default {
     alt: { type: String, default: () => '' },
     description: { type: String, default: () => '' },
     path: { type: String, default: () => '' },
+    cardStyle: {
+      type: Object,
+      default: () => {
+        return {
+          titleColor: 'black',
+          subtitleColor: 'black',
+          descriptionColor: 'black',
+        }
+      },
+    },
+  },
+  computed: {
+    textStyle() {
+      return {
+        '--title-color': this.cardStyle.titleColor,
+        '--title-size': '1.9rem',
+        '--subtitle-color': this.cardStyle.subtitleColor,
+        '--subtitle-size': '1.6rem',
+        '--description-color': this.cardStyle.descriptionColor,
+        '--description-size': '1.1rem',
+      }
+    },
   },
 }
 </script>
@@ -62,14 +81,6 @@ export default {
 <style scoped>
 img {
   padding: 32px 32px !important;
-}
-.logo {
-  text-align: left;
-  width: 200px;
-  margin-bottom: 20px;
-}
-.logo > img {
-  padding: 0 !important;
 }
 .w3-button {
   background-color: #0d2b66 !important;
@@ -87,6 +98,7 @@ img {
 @media (max-width: 1000px) {
   .listcard-container {
     grid-template-columns: 1fr;
+    width: 90vw !important;
   }
 }
 </style>
