@@ -4,7 +4,7 @@
   <header class="w3-top">
     <div id="topBar" class="w3-bar">
       <li class="w3-bar-item w3-left w3-margin-left">
-        <the-logo @click.native="closeNav()"></the-logo>
+        <the-logo @click.native="$closeNav()"></the-logo>
       </li>
       <li class="w3-bar-item w3-display-right">
         <!-- Navigation bar on large screens -->
@@ -47,7 +47,7 @@
       </li>
       <button
         class="w3-bar-item w3-button w3-hide-large w3-display-right w3-ripple"
-        @click="openNav()"
+        @click="$openNav()"
       >
         <img v-if="top" src="~/static/icons/bars_white.png" alt="Menu icon" />
         <img v-else src="~/static/icons/bars_dark.png" alt="Menu icon" />
@@ -69,7 +69,7 @@
             :name="item.name"
             :path="item.path"
             class="w3-xlarge underline-animation-dark"
-            @click.native="openNav()"
+            @click.native="$closeNav()"
           >
           </nav-button>
         </li>
@@ -96,10 +96,8 @@ export default {
       top: true,
     }
   },
-  beforeMount() {
-    this.navBarOnScroll()
-  },
   mounted() {
+    this.navBarOnScroll()
     window.addEventListener('scroll', this.navBarOnScroll)
     window.addEventListener('resize', this.navBarSmallScreenScroll)
   },
@@ -108,16 +106,6 @@ export default {
     window.removeEventListener('resize', this.navBarSmallScreenScroll)
   },
   methods: {
-    // Methods used for showing and hiding the navbar on small screen's devices
-    openNav() {
-      const navBar = document.getElementById('navSmallScreen')
-      navBar.classList.toggle('visible')
-      this.navBarSmallScreenScroll()
-    },
-    closeNav() {
-      const navBar = document.getElementById('navSmallScreen')
-      navBar.classList.remove('visible')
-    },
     /* This function is used for showing and hiding the header when the footer is reached and it colors the top bar after
     the user has scrolled down the page */
     navBarOnScroll() {
@@ -132,7 +120,7 @@ export default {
         navSmallScreen.getBoundingClientRect().height
       if (document.documentElement.scrollTop !== 0) {
         if (offset < 0) {
-          this.closeNav()
+          this.$closeNav()
           header.classList.add('hide')
         } else {
           header.classList.remove('hide')

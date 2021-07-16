@@ -1,17 +1,17 @@
 <template>
   <div>
     <!-- Areas page composed by the introduction video and the list of all the areas of the company -->
-    <intro-video
-      :intro-video="introVideo"
-      :intro-text="introText"
-      class="intro"
-    ></intro-video>
+    <section class="intro">
+      <intro-video
+        :intro-video="introVideo"
+        :intro-text="introText"
+      ></intro-video>
+    </section>
     <!-- Areas Container -->
     <section id="content" class="w3-container">
       <div class="w3-center hide-animate">
-        <h2 class="w3-xxxlarge">THE AREAS</h2>
+        <h2 class="section-title">THE AREAS</h2>
       </div>
-      <br />
       <div class="w3-padding-16">
         <div
           v-for="(area, areaIndex) in areas"
@@ -63,14 +63,14 @@ export default {
           'We create our own tech products, used and loved by millions all around the world. Our primary focus is on artificial intelligence and security, but we have got our sights set on other tech fields too.',
       },
       cardStyle: {
-        titleColor: '#0d2b66',
+        titleColor: '#1b65a6',
         subtitleColor: '#5c74a0',
         descriptionColor: 'black',
       },
     }
   },
   mounted() {
-    this.$showComponentsInViewport()
+    this.$animateComponents()
   },
 }
 </script>

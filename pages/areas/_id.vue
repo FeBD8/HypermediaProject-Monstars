@@ -1,50 +1,51 @@
 <template>
   <div>
-    <intro-video
-      :intro-video="introVideo"
-      :intro-text="{
-        title: area.name,
-        subtitle: area.subtitle,
-        description: area.description,
-      }"
-      :intro-text-style="introTextStyle"
-      :style="videoStyle"
-      class="intro"
-    ></intro-video>
-    <location :name="area.name" class="location"> </location>
-    <!-- Details Container -->
-    <section id="content" class="w3-container">
-      <div class="w3-center hide-animate">
-        <h2 class="w3-xxxlarge">{{ area.name }} SOLUTIONS</h2>
-      </div>
-      <div class="w3-padding-16">
-        <div
-          v-for="(detail, detailIndex) in area.area_details"
-          :key="'detail-' + detailIndex"
-          class="w3-row hide-animate"
-        >
-          <list-card
-            :num="detail.id"
-            :title="detail.title"
-            :subtitle="detail.subtitle"
-            :image="detail.image"
-            :alt="'Abstract image of the ' + detail.name"
-            :description="detail.description"
-          >
-          </list-card>
+    <div class="area-description">
+      <section class="background">
+        <paragraph
+          :title="area.name"
+          :subtitle="area.subtitle"
+          :description="area.description"
+          :style="introTextStyle"
+          class="horizontally-centered animation-in"
+        ></paragraph>
+      </section>
+      <location :name="area.name"></location>
+      <!-- Details Container -->
+      <section id="content" class="w3-container">
+        <div class="w3-center hide-animate">
+          <h2 class="section-title">{{ area.name }} SOLUTIONS</h2>
         </div>
-      </div>
-    </section>
+        <div class="w3-padding-16">
+          <div
+            v-for="(detail, detailIndex) in area.area_details"
+            :key="'detail-' + detailIndex"
+            class="w3-row hide-animate"
+          >
+            <list-card
+              :num="detail.id"
+              :title="detail.title"
+              :subtitle="detail.subtitle"
+              :image="detail.image"
+              :alt="'Abstract image of the ' + detail.title"
+              :description="detail.description"
+              :card-style="cardStyle"
+            >
+            </list-card>
+          </div>
+        </div>
+      </section>
+    </div>
   </div>
 </template>
 
 <script>
 import Location from '~/components/Location.vue'
-import IntroVideo from '~/components/IntroVideo.vue'
+import Paragraph from '~/components/Paragraph.vue'
 export default {
   components: {
     Location,
-    IntroVideo,
+    Paragraph,
   },
   layout: 'default',
   async asyncData({ $axios, route }) {
@@ -57,41 +58,50 @@ export default {
   },
   data() {
     return {
-      introVideo: {
-        src: 'https://vod-progressive.akamaized.net/exp=1626378548~acl=%2Fvimeo-prod-skyfire-std-us%2F01%2F3748%2F14%2F368740653%2F1526460590.mp4~hmac=63fc9702761f0c636a3c9f9e4ee4e321633c1d088271e371903aa5b032061fe7/vimeo-prod-skyfire-std-us/01/3748/14/368740653/1526460590.mp4',
-      },
-      introTextStyle: {
-        titleAlign: 'center',
-        subtitleWidth: '100%',
-        subtitleColor: '#1d90eb',
-        subtitleSize: '2rem',
-        subtitlePosition: 'center',
-        subtitleAlign: 'center',
+      cardStyle: {
+        titleColor: '#1b65a6',
+        subtitleColor: '#5c74a0',
+        descriptionColor: 'black',
       },
     }
   },
   computed: {
-    pathName() {
-      return this.$route.name.toUpperCase()
-    },
-    videoStyle() {
+    introTextStyle() {
       return {
-        '--video-opacity': '0.3',
+        '--title-align': 'center',
+        '--title-responsive-align': 'center',
+        '--subtitle-color': '#1d90eb',
+        '--subtitle-align': 'center',
+        '--subtitle-responsive-align': 'center',
+        '--description-align': 'center',
       }
     },
   },
   mounted() {
-    this.$showComponentsInViewport()
+    this.$animateComponents()
   },
 }
 </script>
 
 <style scoped>
-.listcard-container {
-  max-width: 60% !important;
+.background {
+  background: #41295a;
+  background: -webkit-linear-gradient(to left, #41295a, #2f0743);
+  background: linear-gradient(to left, #41295a, #2f0743);
+  max-height: 70vh;
 }
-.intro {
-  min-height: fit-content;
-  background-color: #323846dc !important;
+.area-description {
+  padding-bottom: 100px;
+}
+.location {
+  margin-top: 30px;
+}
+.listcard-container {
+  width: 60vw;
+}
+.text-container {
+  padding-top: 15vh;
+  padding-bottom: 10vh;
+  width: 50vw;
 }
 </style>

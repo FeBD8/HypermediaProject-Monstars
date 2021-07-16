@@ -7,13 +7,18 @@
           :subtitle="product.subtitle"
           :description="product.description"
           :style="introTextStyle"
-          class="horizontally-centered"
+          class="horizontally-centered animation-in"
         ></paragraph>
         <location :name="product.name" class="location" style="color: white">
         </location>
       </section>
       <!-- Details Container -->
       <section id="content" class="w3-container">
+        <div class="w3-center hide-animate">
+          <h2 class="section-title" style="color: white">
+            THE {{ product.name }} SUITE
+          </h2>
+        </div>
         <div class="w3-padding-16">
           <div
             v-for="(detail, detailIndex) in product.product_details"
@@ -36,7 +41,7 @@
     </div>
     <section class="w3-padding-32 hide-animate">
       <div class="w3-center">
-        <h2 class="w3-xxxlarge">{{ product.name }} CUSTOMERS</h2>
+        <h2 class="section-title">{{ product.name }} CUSTOMERS</h2>
       </div>
       <slideshow :images="product.customers"></slideshow>
     </section>
@@ -75,8 +80,10 @@ export default {
   computed: {
     introTextStyle() {
       return {
+        '--title-responsive-align': 'center',
         '--subtitle-color': '#4fff63',
         '--subtitle-align': 'center',
+        '--subtitle-responsive-align': 'center',
         '--description-align': 'center',
         '--logo-margin': 'auto',
         '--logo-align': 'center',
@@ -85,7 +92,7 @@ export default {
     },
   },
   mounted() {
-    this.$showComponentsInViewport()
+    this.$animateComponents()
   },
 }
 </script>
@@ -107,14 +114,18 @@ export default {
   padding-bottom: 100px;
 }
 .location {
-  bottom: 10vh;
+  position: absolute;
+  margin-top: -70px;
+}
+#content {
+  margin-top: -20px;
 }
 .listcard-container {
   width: 60vw;
 }
 .text-container {
   padding-top: 15vh;
-  padding-bottom: 30vh;
+  padding-bottom: 20vh;
   width: 50vw;
 }
 @media (max-width: 600px) {

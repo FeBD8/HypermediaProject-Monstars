@@ -1,17 +1,17 @@
 <template>
   <div>
     <!-- Products page composed by the introduction video and the list of all the products -->
-    <intro-video
-      :intro-video="introVideo"
-      :intro-text="introText"
-      class="intro"
-    ></intro-video>
+    <section class="intro">
+      <intro-video
+        :intro-video="introVideo"
+        :intro-text="introText"
+      ></intro-video>
+    </section>
     <!-- Products Container -->
     <section id="content" class="w3-container">
       <div class="w3-center hide-animate">
-        <h1 class="w3-xxxlarge">OUR PRODUCTS</h1>
+        <h2 class="section-title">OUR PRODUCTS</h2>
       </div>
-      <br />
       <div class="w3-padding-16">
         <div
           v-for="(product, productIndex) in products"
@@ -73,7 +73,7 @@ export default {
     }
   },
   mounted() {
-    this.$showComponentsInViewport()
+    this.$animateComponents()
     // This is used to change the background color of consecutive rows
     // const productRow = document.getElementById('listRow' + this.num)
     // if (this.num % 2 !== 0) {

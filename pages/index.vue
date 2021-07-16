@@ -1,12 +1,15 @@
 <template>
   <div>
-    <intro-video
-      :intro-video="introVideo"
-      :intro-text="introText"
-      class="intro"
-    ></intro-video>
+    <section class="intro">
+      <intro-video
+        :intro-video="introVideo"
+        :intro-text="introText"
+      ></intro-video>
+    </section>
     <section id="content" class="hide-animate">
-      <h1>HOME PAGE</h1>
+      <div class="w3-center hide-animate">
+        <h2 class="section-title">HOME</h2>
+      </div>
       <p>
         Lorem ipsum dolor sit amet, consectetur adipisci elit, sed do eiusmod
         tempor incidunt ut labore et ssdolore magna aliqua. Ut enim ad minim
@@ -52,24 +55,9 @@ export default {
     }
   },
   mounted() {
-    this.$showComponentsInViewport()
+    this.$animateComponents()
   },
 }
 </script>
 
-<style scoped>
-h2 {
-  color: white !important;
-}
-.text-container {
-  width: 50vw;
-  padding-top: 20vh;
-  white-space: pre-line;
-  position: relative;
-  z-index: 1;
-}
-h1,
-p {
-  color: white !important;
-}
-</style>
+<style scoped></style>

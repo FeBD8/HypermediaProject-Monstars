@@ -59,23 +59,12 @@ export default {
       }
     }
   },
-  // Add the listener when scroll and resize in order to animate the components
-  mounted() {
-    window.addEventListener('scroll', this.$animateComponents)
-    window.addEventListener('resize', this.$animateComponents)
-    window.addEventListener('load', this.$animateComponents)
-  },
-  beforeDestroy() {
-    window.removeEventListener('scroll', this.$animateComponents)
-    window.removeEventListener('resize', this.$animateComponents)
-    window.removeEventListener('load', this.$animateComponents)
-  },
 }
 </script>
 
 <style>
 #content {
-  padding: 48px 0;
+  padding: 40px 0;
 }
 img {
   height: auto !important;
@@ -89,5 +78,10 @@ img {
   color: inherit !important;
   background-color: transparent !important;
   white-space: normal !important;
+}
+@media (max-width: 1000px) {
+  #content {
+    padding: 20px 0;
+  }
 }
 </style>

@@ -27,6 +27,9 @@ h6 {
 .font-montserrat {
   font-family: 'Montserrat', 'sans-serif' !important;
 }
+.section-title {
+  font-size: 3rem;
+}
 .intro {
   min-height: 100vh;
   position: relative;
@@ -54,6 +57,9 @@ h6 {
 }
 .margin-bottom {
   margin-bottom: 25px;
+}
+.shadow {
+  box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.2), 0 4px 20px 0 rgba(0, 0, 0, 0.19);
 }
 .underline-animation-dark::after {
   content: '';

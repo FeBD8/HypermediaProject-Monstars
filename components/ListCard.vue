@@ -19,7 +19,10 @@
         ></paragraph>
         <div v-if="path" class="w3-padding-16">
           <nuxt-link :to="path">
-            <button class="w3-button w3-round-xxlarge w3-border">
+            <button
+              class="w3-button w3-round-xxlarge w3-border"
+              @click="$closeNav()"
+            >
               <b>Go to {{ title }}</b>
             </button>
           </nuxt-link>
@@ -67,9 +70,10 @@ export default {
     textStyle() {
       return {
         '--title-color': this.cardStyle.titleColor,
-        '--title-size': '1.9rem',
+        '--title-size': '2.2rem',
+        '--title-responsive-size': '2rem',
         '--subtitle-color': this.cardStyle.subtitleColor,
-        '--subtitle-size': '1.6rem',
+        '--subtitle-size': '1.4rem',
         '--description-color': this.cardStyle.descriptionColor,
         '--description-size': '1.1rem',
       }

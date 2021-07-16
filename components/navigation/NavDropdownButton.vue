@@ -1,7 +1,7 @@
 <template>
   <!-- Dropdown button with the contents used in the navigation bar 
   In the website is used for the Areas button s-->
-  <ul class="w3-dropdown-content w3-ul w3-animate-opacity">
+  <ul class="w3-dropdown-content w3-ul w3-animate-opacity shadow">
     <li v-for="(item, itemIndex) of dropdownContent" :key="'item-' + itemIndex">
       <nav-card
         :name="item.name"

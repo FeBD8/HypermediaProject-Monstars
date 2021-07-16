@@ -1,7 +1,7 @@
 <template>
   <!-- Component for the introduction video of all the main pages.
   It contains a video, a title, a subtitle and an arrow that bring the user to the main content of the page -->
-  <section>
+  <div class="container">
     <div class="video-container w3-animate-opacity">
       <video muted="" autoplay="" loop="" :poster="introVideo.poster">
         <source :src="introVideo.src" type="video/mp4" />
@@ -16,7 +16,7 @@
         :subtitle="introText.subtitle"
         :description="introText.description"
         :style="textStyle"
-        class="horizontally-centered"
+        class="horizontally-centered animation-in"
       ></paragraph>
     </div>
     <div id="scrollIcon" class="scrolldown-icon w3-hide-small">
@@ -24,7 +24,7 @@
         <img src="~/static/icons/arrow.png" alt="Scrolldown icon" />
       </button>
     </div>
-  </section>
+  </div>
 </template>
 
 <script>
@@ -114,13 +114,11 @@ export default {
 </script>
 
 <style scoped>
-.w3-button {
-  padding: 0;
-}
+.container,
 .video-container {
+  width: 100%;
   height: 100%;
   position: absolute;
-  width: 100%;
 }
 video {
   opacity: var(--video-opacity, 1);
@@ -129,13 +127,13 @@ video {
   object-fit: cover;
 }
 .background-overlay {
-  background-color: #00000099;
+  background-color: var(--overlay-color, #000000a1);
   position: absolute;
   width: 100%;
   height: 100%;
 }
 .text-container {
-  padding-top: 25vh;
+  padding-top: 20vh;
   padding-bottom: 20vh;
   width: 60vw;
   white-space: pre-line;

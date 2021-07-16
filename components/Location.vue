@@ -1,6 +1,6 @@
 <template>
-  <div class="lcoation font-montserrat fontsize-small animation-in">
-    <nuxt-link :to="'/' + indexName">
+  <div class="location font-montserrat fontsize animation-in">
+    <nuxt-link :to="'/' + indexName" @click.native="$closeNav()">
       <span
         ><b>{{ indexName.toUpperCase() }}</b></span
       >
@@ -29,7 +29,11 @@ export default {
 
 <style scoped>
 .location {
-  position: absolute;
+  width: 100%;
   margin-left: 30px;
+  z-index: 2;
+}
+.fontsize {
+  font-size: 1.2rem;
 }
 </style>

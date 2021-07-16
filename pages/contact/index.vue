@@ -1,16 +1,16 @@
 <template>
   <div>
-    <intro-video
-      :intro-video="introVideo"
-      :intro-text="introText"
-      class="intro"
-    ></intro-video>
+    <section class="intro">
+      <intro-video
+        :intro-video="introVideo"
+        :intro-text="introText"
+      ></intro-video>
+    </section>
     <!-- Contact Container -->
     <section id="content" class="w3-container w3-padding-16 w3-center">
       <div class="hide-animate">
-        <h1 class="w3-xxxlarge">CONTACTS</h1>
+        <h2 class="section-title">CONTACTS</h2>
       </div>
-      <br />
     </section>
   </div>
 </template>
@@ -32,7 +32,7 @@ export default {
     }
   },
   mounted() {
-    this.$showComponentsInViewport()
+    this.$animateComponents()
   },
 }
 </script>

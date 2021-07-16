@@ -1,17 +1,17 @@
 <template>
   <!-- People page composed by the introduction video and the team container with all the people -->
   <div>
-    <intro-video
-      :intro-video="introVideo"
-      :intro-text="introText"
-      class="intro"
-    ></intro-video>
+    <section class="intro">
+      <intro-video
+        :intro-video="introVideo"
+        :intro-text="introText"
+      ></intro-video>
+    </section>
     <!-- Team Container -->
     <section id="content" class="w3-container">
       <div class="w3-center hide-animate">
-        <h1 class="w3-xxxlarge">OUR TEAM</h1>
+        <h2 class="section-title">OUR TEAM</h2>
       </div>
-      <br />
       <div class="team-container w3-padding-16 horizontally-centered">
         <div class="w3-table">
           <!-- In the table it creates 1 row for each triplet of people and for each row puts inside 3 people -->
@@ -81,7 +81,7 @@ export default {
     },
   },
   mounted() {
-    this.$showComponentsInViewport()
+    this.$animateComponents()
   },
 }
 </script>

@@ -1,7 +1,7 @@
 <template>
   <!-- Paragraph component composed by a title or a logo image, a subtitle and a description -->
   <div class="text-container">
-    <div class="w3-row animation-in">
+    <div class="w3-row">
       <h1 v-if="!logo" class="title">
         <span>{{ title }}</span>
       </h1>
@@ -79,6 +79,7 @@ export default {
   .subtitle {
     width: 100%;
     text-align: var(--subtitle-responsive-align);
+    font-size: var(--subtitle-responsive-size, 1.3rem);
   }
   .description {
     width: 100%;
