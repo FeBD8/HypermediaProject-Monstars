@@ -2,13 +2,10 @@
   <div>
     <div class="product-description">
       <section class="background">
-        <paragraph
-          :logo="product.logo"
-          :subtitle="product.subtitle"
-          :description="product.description"
-          :style="introTextStyle"
-          class="horizontally-centered animation-in"
-        ></paragraph>
+        <intro-text
+          :intro-text="introText"
+          :intro-text-style="introTextStyle"
+        ></intro-text>
         <location :name="product.name" class="location" style="color: white">
         </location>
       </section>
@@ -32,18 +29,18 @@
 </template>
 
 <script>
-import Paragraph from '~/components/Paragraph.vue'
-import Location from '~/components/Location.vue'
+import Location from '~/components/intro/Location.vue'
 import SectionTitle from '~/components/SectionTitle.vue'
 import Slideshow from '~/components/Slideshow.vue'
 import DetailList from '~/components/list/DetailList.vue'
+import IntroText from '~/components/intro/IntroText.vue'
 export default {
   components: {
-    Paragraph,
     Location,
     SectionTitle,
     Slideshow,
     DetailList,
+    IntroText,
   },
   layout: 'default',
   async asyncData({ $axios, route }) {
@@ -53,6 +50,11 @@ export default {
     )
     const product = data
     return {
+      introText: {
+        logo: product.logo,
+        subtitle: product.subtitle,
+        description: product.description,
+      },
       product,
     }
   },
@@ -63,23 +65,10 @@ export default {
         subtitleColor: '#5c74a0',
         descriptionColor: 'white',
       },
+      introTextStyle: {
+        subtitleColor: '#4fff63',
+      },
     }
-  },
-  computed: {
-    introTextStyle() {
-      return {
-        '--title-color': 'white',
-        '--title-responsive-align': 'center',
-        '--subtitle-color': '#4fff63',
-        '--subtitle-align': 'center',
-        '--subtitle-responsive-align': 'center',
-        '--description-color': 'white',
-        '--description-align': 'center',
-        '--logo-margin': 'auto',
-        '--logo-align': 'center',
-        '--logo-filter': 'brightness(50%) sepia(100%) invert(100%)',
-      }
-    },
   },
   mounted() {
     this.$animateComponents()
@@ -106,6 +95,7 @@ export default {
 .location {
   position: absolute;
   margin-top: -70px;
+  margin-left: 30px;
 }
 #content {
   margin-top: -20px;

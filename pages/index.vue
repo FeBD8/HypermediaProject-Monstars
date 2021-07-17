@@ -32,7 +32,7 @@
 </template>
 
 <script>
-import IntroVideo from '~/components/IntroVideo.vue'
+import IntroVideo from '~/components/intro/IntroVideo.vue'
 import SectionTitle from '~/components/SectionTitle.vue'
 export default {
   components: {

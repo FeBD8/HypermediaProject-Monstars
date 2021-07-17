@@ -1,15 +1,15 @@
 <template>
   <!-- Card for the people page. It contains an image, the full name and the role of the person. -->
   <div class="person-card">
-    <nuxt-link class="w3-button w3-padding-32 zoom-animate" :to="path">
+    <nuxt-link class="w3-button zoom-animate" :to="path" style="width: 100%">
       <div>
         <img :src="image" alt="Profile image" />
       </div>
       <div class="text-container">
-        <h2 class="w3-xlarge font-montserrat">
+        <h2 class="name font-montserrat">
           <b class="w3-center">{{ name }} {{ surname }}</b>
         </h2>
-        <p>{{ role }}</p>
+        <p class="role">{{ role }}</p>
       </div>
     </nuxt-link>
   </div>
@@ -28,12 +28,18 @@ export default {
 </script>
 
 <style scoped>
-h2 {
-  padding-top: 10px;
-  padding-bottom: 0;
+.w3-button {
+  padding: 0;
+}
+.name {
+  font-size: 1.6rem;
+}
+.role {
+  font-size: 1.1rem;
 }
 .person-card {
   width: var(--card-width, 33.3%);
+  padding: 30px;
   float: left;
 }
 .text-container {

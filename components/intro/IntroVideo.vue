@@ -9,16 +9,12 @@
       </video>
     </div>
     <div class="background-overlay"></div>
-    <!-- <p class="w3-xlarge" style="margin: 0">{{ pathName }}</p> -->
-    <div v-if="introText">
-      <paragraph
-        :title="introText.title"
-        :subtitle="introText.subtitle"
-        :description="introText.description"
-        :style="textStyle"
-        class="horizontally-centered animation-in"
-      ></paragraph>
-    </div>
+    <location class="horizontally-centered" style="color: white"></location>
+    <intro-text
+      v-if="introText"
+      :intro-text="introText"
+      :intro-text-style="textStyle"
+    ></intro-text>
     <div id="scrollIcon" class="scrolldown-icon w3-hide-small">
       <button class="w3-button" @click="scrollToContent()">
         <img src="~/static/icons/arrow.png" alt="Scrolldown icon" />
@@ -28,28 +24,30 @@
 </template>
 
 <script>
-import Paragraph from '~/components/Paragraph.vue'
+import IntroText from '~/components/intro/IntroText.vue'
+import Location from '~/components/intro/Location.vue'
 export default {
   components: {
-    Paragraph,
+    IntroText,
+    Location,
   },
   props: {
     introVideo: { type: Object, default: () => {} },
     introText: { type: Object, default: () => {} },
-    introTextStyle: {
-      type: Object,
-      default: () => {
-        return {
-          titleWidth: '66.6%',
-          titleAlign: 'left',
-          subtitleWidth: '66.6%',
-          subtitleColor: 'white',
-          subtitleSize: '1.2rem',
-          subtitlePosition: 'right',
-          subtitleAlign: 'left',
-        }
+  },
+  data() {
+    return {
+      textStyle: {
+        titleWidth: '66.6%',
+        titleAlign: 'left',
+        subtitleWidth: '66.6%',
+        subtitleColor: 'white',
+        subtitleSize: '1.2rem',
+        subtitleResponsiveSize: '1.2rem',
+        subtitlePosition: 'right',
+        subtitleAlign: 'left',
       },
-    },
+    }
   },
   computed: {
     pathName() {
@@ -57,21 +55,6 @@ export default {
         return 'HOME'
       }
       return this.$route.name.toUpperCase()
-    },
-    textStyle() {
-      return {
-        '--title-color': 'white',
-        '--title-width': this.introTextStyle.titleWidth,
-        '--title-align': this.introTextStyle.titleAlign,
-        '--title-responsive-align': 'center',
-        '--subtitle-width': this.introTextStyle.subtitleWidth,
-        '--subtitle-position': this.introTextStyle.subtitlePosition,
-        '--subtitle-color': this.introTextStyle.subtitleColor,
-        '--subtitle-size': this.introTextStyle.subtitleSize,
-        '--subtitle-align': this.introTextStyle.titleAlign,
-        '--subtitle-responsive-align': 'center',
-        '--description-align': 'center',
-      }
     },
   },
   // Add the listener when resize in order to hide the arrow when the text overlaps
@@ -115,6 +98,12 @@ export default {
 </script>
 
 <style scoped>
+.location {
+  position: relative;
+  width: 60vw;
+  padding-top: 20vh;
+  margin-bottom: -20vh;
+}
 .container,
 .video-container {
   width: 100%;
@@ -122,42 +111,28 @@ export default {
   position: absolute;
 }
 video {
-  opacity: var(--video-opacity, 1);
   width: 100%;
   height: 100%;
   object-fit: cover;
-}
-.background-overlay {
-  background-color: var(--overlay-color, #000000a1);
-  position: absolute;
-  width: 100%;
-  height: 100%;
-}
-.text-container {
-  padding-top: 20vh;
-  padding-bottom: 20vh;
-  width: 60vw;
-  white-space: pre-line;
 }
 .scrolldown-icon {
   position: absolute;
   bottom: 20px;
   margin-left: -20px;
   left: 50%;
+  z-index: 1;
 }
 @media (max-width: 600px) {
-  .text-container {
+  .location {
     width: 90vw;
     padding-top: 15vh;
-    padding-bottom: 10vh;
+    margin-bottom: -15vh;
   }
 }
 @media (max-width: 1000px) {
-  .text-container {
+  .location {
     width: 90vw;
-  }
-  .w3-col {
-    text-align: center !important;
+    text-align: center;
   }
 }
 </style>

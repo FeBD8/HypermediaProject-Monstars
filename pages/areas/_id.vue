@@ -2,13 +2,10 @@
   <div>
     <div class="area-description">
       <section class="background">
-        <paragraph
-          :title="area.name"
-          :subtitle="area.subtitle"
-          :description="area.description"
-          :style="introTextStyle"
-          class="horizontally-centered animation-in"
-        ></paragraph>
+        <intro-text
+          :intro-text="introText"
+          :intro-text-style="introTextStyle"
+        ></intro-text>
       </section>
       <location :name="area.name"></location>
       <!-- Details Container -->
@@ -24,14 +21,14 @@
 </template>
 
 <script>
-import Location from '~/components/Location.vue'
-import Paragraph from '~/components/Paragraph.vue'
+import Location from '~/components/intro/Location.vue'
 import SectionTitle from '~/components/SectionTitle.vue'
 import DetailList from '~/components/list/DetailList.vue'
+import IntroText from '~/components/intro/IntroText.vue'
 export default {
   components: {
     Location,
-    Paragraph,
+    IntroText,
     SectionTitle,
     DetailList,
   },
@@ -41,6 +38,11 @@ export default {
     const { data } = await $axios.get(`${process.env.BASE_URL}/api/areas/${id}`)
     const area = data
     return {
+      introText: {
+        title: area.name,
+        subtitle: area.subtitle,
+        description: area.description,
+      },
       area,
     }
   },
@@ -49,23 +51,11 @@ export default {
       cardStyle: {
         titleColor: '#1b65a6',
         subtitleColor: '#5c74a0',
-        descriptionColor: 'black',
+      },
+      introTextStyle: {
+        subtitleColor: '#1d90eb',
       },
     }
-  },
-  computed: {
-    introTextStyle() {
-      return {
-        '--title-color': 'white',
-        '--title-align': 'center',
-        '--title-responsive-align': 'center',
-        '--subtitle-color': '#1d90eb',
-        '--subtitle-align': 'center',
-        '--subtitle-responsive-align': 'center',
-        '--description-color': 'white',
-        '--description-align': 'center',
-      }
-    },
   },
   mounted() {
     this.$animateComponents()
@@ -84,6 +74,7 @@ export default {
   padding-bottom: 100px;
 }
 .location {
+  margin-left: 30px;
   margin-top: 30px;
 }
 .text-container {

@@ -54,7 +54,10 @@ export default {
   text-align: var(--logo-align);
   padding-top: 15px;
   padding-bottom: 15px;
-  max-width: 300px;
+}
+.logo > img {
+  max-width: 250px !important;
+  width: auto !important;
 }
 .filter {
   filter: var(--logo-filter);
@@ -65,9 +68,6 @@ export default {
   z-index: 1;
 }
 @media (max-width: 1000px) {
-  .logo {
-    max-width: 150px;
-  }
   .text-container {
     width: 90vw !important;
   }
@@ -79,7 +79,7 @@ export default {
   .subtitle {
     width: 100%;
     text-align: var(--subtitle-responsive-align);
-    font-size: var(--subtitle-responsive-size, 1.3rem);
+    font-size: var(--subtitle-responsive-size, 1.5rem);
   }
   .description {
     width: 100%;

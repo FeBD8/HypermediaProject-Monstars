@@ -2,7 +2,11 @@
   <div class="team-container w3-padding-16 horizontally-centered">
     <div>
       <!-- In the table it creates 1 row for each triplet of people and for each row puts inside 3 people -->
-      <div v-for="(i, iIndex) in rowCount" :key="'row-' + iIndex">
+      <div
+        v-for="(i, iIndex) in rowCount"
+        :key="'row-' + iIndex"
+        class="w3-row"
+      >
         <person-card
           v-for="(person, personIndex) in people.slice(
             (i - 1) * peoplePerRow,

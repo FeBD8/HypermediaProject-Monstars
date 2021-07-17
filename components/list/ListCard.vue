@@ -55,26 +55,17 @@ export default {
     alt: { type: String, default: () => '' },
     description: { type: String, default: () => '' },
     path: { type: String, default: () => '' },
-    cardStyle: {
-      type: Object,
-      default: () => {
-        return {
-          titleColor: 'black',
-          subtitleColor: 'black',
-          descriptionColor: 'black',
-        }
-      },
-    },
+    cardStyle: { type: Object, default: () => {} },
   },
   computed: {
     textStyle() {
       return {
-        '--title-color': this.cardStyle.titleColor,
+        '--title-color': this.cardStyle.titleColor ?? 'black',
         '--title-size': '2.2rem',
         '--title-responsive-size': '2rem',
-        '--subtitle-color': this.cardStyle.subtitleColor,
+        '--subtitle-color': this.cardStyle.subtitleColor ?? 'black',
         '--subtitle-size': '1.4rem',
-        '--description-color': this.cardStyle.descriptionColor,
+        '--description-color': this.cardStyle.descriptionColor ?? 'black',
         '--description-size': '1.1rem',
       }
     },
