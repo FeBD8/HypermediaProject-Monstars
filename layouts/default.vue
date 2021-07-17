@@ -68,7 +68,7 @@ export default {
 }
 img {
   height: auto !important;
-  max-width: 100% !important;
+  width: 100% !important;
 }
 .w3-button:hover {
   color: inherit !important;

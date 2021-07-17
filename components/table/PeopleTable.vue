@@ -9,12 +9,13 @@
             i * peoplePerRow
           )"
           :key="'person-' + personIndex"
-          class="w3-third hide-animate"
+          class="hide-animate"
           :name="person.name"
           :surname="person.surname"
           :image="person.image"
           :role="person.role"
           :path="$route.path + '/' + person.id"
+          :style="cardStyle"
         >
         </person-card>
       </div>
@@ -42,8 +43,17 @@ export default {
     rowCount() {
       return Math.ceil(this.people.length / this.peoplePerRow)
     },
+    cardStyle() {
+      return {
+        '--card-width': 100 / this.peoplePerRow + '%',
+      }
+    },
   },
 }
 </script>
 
-<style scoped></style>
+<style scoped>
+.team-container {
+  max-width: 60vw;
+}
+</style>

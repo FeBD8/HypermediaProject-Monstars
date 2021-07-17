@@ -3,7 +3,7 @@ export default ({ app }, inject) => {
   class hide-animate is defined */
   inject('animateComponents', () => {
     const config = {
-      threshold: 0.2,
+      threshold: 0.3,
     }
     const elems = document.getElementsByClassName('hide-animate')
     const observer = new IntersectionObserver((entries) => {

@@ -51,8 +51,4 @@ export default {
 }
 </script>
 
-<style scoped>
-.team-container {
-  max-width: 60vw;
-}
-</style>
+<style scoped></style>
