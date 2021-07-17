@@ -13,27 +13,11 @@
       <location :name="area.name"></location>
       <!-- Details Container -->
       <section id="content" class="w3-container">
-        <div class="w3-center hide-animate">
-          <h2 class="section-title">{{ area.name }} SOLUTIONS</h2>
-        </div>
-        <div class="w3-padding-16">
-          <div
-            v-for="(detail, detailIndex) in area.area_details"
-            :key="'detail-' + detailIndex"
-            class="w3-row hide-animate"
-          >
-            <list-card
-              :num="detail.id"
-              :title="detail.title"
-              :subtitle="detail.subtitle"
-              :image="detail.image"
-              :alt="'Abstract image of the ' + detail.title"
-              :description="detail.description"
-              :card-style="cardStyle"
-            >
-            </list-card>
-          </div>
-        </div>
+        <section-title :title="area.name + ' SOLUTIONS'"></section-title>
+        <detail-list
+          :details="area.area_details"
+          :card-style="cardStyle"
+        ></detail-list>
       </section>
     </div>
   </div>
@@ -42,10 +26,14 @@
 <script>
 import Location from '~/components/Location.vue'
 import Paragraph from '~/components/Paragraph.vue'
+import SectionTitle from '~/components/SectionTitle.vue'
+import DetailList from '~/components/list/DetailList.vue'
 export default {
   components: {
     Location,
     Paragraph,
+    SectionTitle,
+    DetailList,
   },
   layout: 'default',
   async asyncData({ $axios, route }) {
@@ -68,11 +56,13 @@ export default {
   computed: {
     introTextStyle() {
       return {
+        '--title-color': 'white',
         '--title-align': 'center',
         '--title-responsive-align': 'center',
         '--subtitle-color': '#1d90eb',
         '--subtitle-align': 'center',
         '--subtitle-responsive-align': 'center',
+        '--description-color': 'white',
         '--description-align': 'center',
       }
     },
@@ -95,9 +85,6 @@ export default {
 }
 .location {
   margin-top: 30px;
-}
-.listcard-container {
-  width: 60vw;
 }
 .text-container {
   padding-top: 15vh;

@@ -1,6 +1,6 @@
 <template>
   <!-- Slideshow container -->
-  <div class="slideshow-container">
+  <div class="slideshow-container hide-animate">
     <!-- Images are divided in group of itemPerDiv (=4) and they are switched automatically after a timer is fired -->
     <div
       v-for="(i, iIndex) in divCount"

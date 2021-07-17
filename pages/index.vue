@@ -7,9 +7,7 @@
       ></intro-video>
     </section>
     <section id="content" class="hide-animate">
-      <div class="w3-center hide-animate">
-        <h2 class="section-title">HOME</h2>
-      </div>
+      <section-title title="HOME"></section-title>
       <p>
         Lorem ipsum dolor sit amet, consectetur adipisci elit, sed do eiusmod
         tempor incidunt ut labore et ssdolore magna aliqua. Ut enim ad minim
@@ -35,10 +33,11 @@
 
 <script>
 import IntroVideo from '~/components/IntroVideo.vue'
-
+import SectionTitle from '~/components/SectionTitle.vue'
 export default {
   components: {
     IntroVideo,
+    SectionTitle,
   },
   layout: 'default',
   data() {

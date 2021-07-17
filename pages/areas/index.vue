@@ -9,38 +9,24 @@
     </section>
     <!-- Areas Container -->
     <section id="content" class="w3-container">
-      <div class="w3-center hide-animate">
-        <h2 class="section-title">THE AREAS</h2>
-      </div>
-      <div class="w3-padding-16">
-        <div
-          v-for="(area, areaIndex) in areas"
-          id="listRow"
-          :key="'area-' + areaIndex"
-          class="w3-row margin-bottom hide-animate"
-        >
-          <list-card
-            :num="area.id"
-            :title="area.name"
-            :subtitle="area.subtitle"
-            :image="area.image"
-            :alt="'Abstract image of the ' + area.name + ' area'"
-            :description="area.description"
-            :path="$route.path + '/' + area.id"
-            :card-style="cardStyle"
-          >
-          </list-card>
-        </div>
-      </div>
+      <section-title title="THE AREAS"></section-title>
+      <group-list
+        :group="areas"
+        alt="Abstract image of the area: "
+      ></group-list>
     </section>
   </div>
 </template>
 
 <script>
-import ListCard from '~/components/ListCard.vue'
+import GroupList from '~/components/list/GroupList.vue'
+import IntroVideo from '~/components/IntroVideo.vue'
+import SectionTitle from '~/components/SectionTitle.vue'
 export default {
   components: {
-    ListCard,
+    GroupList,
+    IntroVideo,
+    SectionTitle,
   },
   layout: 'default',
   // Function used for fetching the data of the products from the db for the ssr
@@ -62,11 +48,6 @@ export default {
         subtitle:
           'We create our own tech products, used and loved by millions all around the world. Our primary focus is on artificial intelligence and security, but we have got our sights set on other tech fields too.',
       },
-      cardStyle: {
-        titleColor: '#1b65a6',
-        subtitleColor: '#5c74a0',
-        descriptionColor: 'black',
-      },
     }
   },
   mounted() {
@@ -75,13 +56,4 @@ export default {
 }
 </script>
 
-<style scoped>
-.listcard-container {
-  max-width: 70%;
-}
-@media (max-width: 1000px) {
-  .listcard-container {
-    max-width: 90%;
-  }
-}
-</style>
+<style scoped></style>

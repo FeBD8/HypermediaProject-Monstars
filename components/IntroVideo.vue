@@ -60,6 +60,7 @@ export default {
     },
     textStyle() {
       return {
+        '--title-color': 'white',
         '--title-width': this.introTextStyle.titleWidth,
         '--title-align': this.introTextStyle.titleAlign,
         '--title-responsive-align': 'center',

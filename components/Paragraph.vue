@@ -29,21 +29,21 @@ export default {
 
 <style scoped>
 .title {
-  color: var(--title-color, white);
+  color: var(--title-color, black);
   width: var(--title-width);
   float: var(--title-position);
   text-align: var(--title-align);
   font-size: var(--title-size, 3.2rem);
 }
 .subtitle {
-  color: var(--subtitle-color, white);
+  color: var(--subtitle-color, black);
   width: var(--subtitle-width);
   float: var(--subtitle-position);
   text-align: var(--subtitle-align);
   font-size: var(--subtitle-size, 1.6rem);
 }
 .description {
-  color: var(--description-color, white);
+  color: var(--description-color, black);
   width: var(--description-width);
   float: var(--description-position);
   text-align: var(--description-align);

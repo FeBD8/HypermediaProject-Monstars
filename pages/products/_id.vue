@@ -14,35 +14,18 @@
       </section>
       <!-- Details Container -->
       <section id="content" class="w3-container">
-        <div class="w3-center hide-animate">
-          <h2 class="section-title" style="color: white">
-            THE {{ product.name }} SUITE
-          </h2>
-        </div>
-        <div class="w3-padding-16">
-          <div
-            v-for="(detail, detailIndex) in product.product_details"
-            :key="'detail-' + detailIndex"
-            class="w3-row hide-animate"
-          >
-            <list-card
-              :num="detail.id"
-              :title="detail.title"
-              :subtitle="detail.subtitle"
-              :image="detail.image"
-              :alt="'Abstract image of the ' + detail.title"
-              :description="detail.description"
-              :card-style="cardStyle"
-            >
-            </list-card>
-          </div>
-        </div>
+        <section-title
+          :title="'THE ' + product.name + ' SUITE'"
+          :style="{ '--title-color': 'white' }"
+        ></section-title>
+        <detail-list
+          :details="product.product_details"
+          :card-style="cardStyle"
+        ></detail-list>
       </section>
     </div>
-    <section class="w3-padding-32 hide-animate">
-      <div class="w3-center">
-        <h2 class="section-title">{{ product.name }} CUSTOMERS</h2>
-      </div>
+    <section class="w3-padding-32">
+      <section-title :title="product.name + ' CUSTOMERS'"></section-title>
       <slideshow :images="product.customers"></slideshow>
     </section>
   </div>
@@ -51,12 +34,16 @@
 <script>
 import Paragraph from '~/components/Paragraph.vue'
 import Location from '~/components/Location.vue'
+import SectionTitle from '~/components/SectionTitle.vue'
 import Slideshow from '~/components/Slideshow.vue'
+import DetailList from '~/components/list/DetailList.vue'
 export default {
   components: {
     Paragraph,
     Location,
+    SectionTitle,
     Slideshow,
+    DetailList,
   },
   layout: 'default',
   async asyncData({ $axios, route }) {
@@ -74,16 +61,19 @@ export default {
       cardStyle: {
         titleColor: '#1d90eb',
         subtitleColor: '#5c74a0',
+        descriptionColor: 'white',
       },
     }
   },
   computed: {
     introTextStyle() {
       return {
+        '--title-color': 'white',
         '--title-responsive-align': 'center',
         '--subtitle-color': '#4fff63',
         '--subtitle-align': 'center',
         '--subtitle-responsive-align': 'center',
+        '--description-color': 'white',
         '--description-align': 'center',
         '--logo-margin': 'auto',
         '--logo-align': 'center',
