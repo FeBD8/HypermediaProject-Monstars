@@ -35,13 +35,13 @@
   "main": ".eslintrc.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/FeBD8/HypermediaProject-Monstars.git"
+    "url": "git+https://github.com/lucacolombo97/HypermediaProject-Monstars.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/FeBD8/HypermediaProject-Monstars/issues"
+    "url": "https://github.com/lucacolombo97/HypermediaProject-Monstars.git"
   },
-  "homepage": "https://github.com/FeBD8/HypermediaProject-Monstars#readme"
+  "homepage": "https://github.com/lucacolombo97/HypermediaProject-Monstars.git#readme"
 }

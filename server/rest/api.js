@@ -1,14 +1,9 @@
-import express from 'express'
+const express = require('express')
 import initializeDatabase from '../db-conn'
 const app = express()
 
 // We need this one if we send data inside the body as JSON
 app.use(express.json())
-
-const PORT = process.env.PORT || 3000
-app.listen(PORT, () => {
-  console.log(`Our app is running on port ${PORT}`)
-})
 
 async function init() {
   // Call the init function that returns the Database
