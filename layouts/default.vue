@@ -48,16 +48,16 @@ export default {
     }
   },
   // Function used for fetching the data of the areas from the db for the ssr
-  // async fetch() {
-  //   for (let i = 0; i < this.menuOptions.length; i++) {
-  //     if (this.menuOptions[i].content) {
-  //       const { data } = await this.$axios.get(
-  //         `${process.env.BASE_URL}/api${this.menuOptions[i].path}`
-  //       )
-  //       this.menuOptions[i].content = data
-  //     }
-  //   }
-  // },
+  async fetch() {
+    for (let i = 0; i < this.menuOptions.length; i++) {
+      if (this.menuOptions[i].content) {
+        const { data } = await this.$axios.get(
+          `${process.env.BASE_URL}/api${this.menuOptions[i].path}`
+        )
+        this.menuOptions[i].content = data
+      }
+    }
+  },
 }
 </script>
 
