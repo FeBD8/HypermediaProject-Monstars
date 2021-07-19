@@ -53,10 +53,10 @@ h6 {
   display: grid;
 }
 .border-bottom {
-  border-bottom: 1px solid rgba(255, 255, 255, 0.438) !important;
+  border-bottom: 1px solid #ffffff70 !important;
 }
 .border-top {
-  border-top: 1px solid rgba(255, 255, 255, 0.438) !important;
+  border-top: 1px solid #ffffff70 !important;
 }
 .zero-padding-top {
   padding-top: 0 !important;
@@ -64,32 +64,23 @@ h6 {
 .margin-bottom {
   margin-bottom: 25px;
 }
+.margin-top {
+  margin-top: 15px;
+}
 .shadow {
   box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.2), 0 4px 20px 0 rgba(0, 0, 0, 0.19);
 }
-.underline-animation-dark::after {
+.underline-animation::after {
   content: '';
   display: block;
   width: 0;
   height: 1px;
-  background: #041a47;
+  background: var(--underline-color,#041a47);
   transition: width 0.3s;
 }
-.underline-animation-dark:hover::after {
+.underline-animation:hover::after {
   width: 100%;
-  background: #041a47;
-}
-.underline-animation-light::after {
-  content: '';
-  display: block;
-  width: 0;
-  height: 1px;
-  background: white;
-  transition: width 0.3s;
-}
-.underline-animation-light:hover::after {
-  width: 100%;
-  background: white;
+  background: var(--underline-color,#041a47);
 }
 .zoom-animate {
   transition: transform 0.2s;

@@ -1,7 +1,7 @@
 <template>
   <!-- Paragraph component composed by a title or a logo image, a subtitle and a description -->
   <div class="text-container">
-    <div class="w3-row">
+    <div id="text-container" class="w3-row">
       <h1 v-if="!logo" class="title">
         <span>{{ title }}</span>
       </h1>

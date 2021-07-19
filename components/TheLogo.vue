@@ -1,11 +1,7 @@
 <template>
   <!-- Logo of the company with the link to the home page -->
   <nuxt-link to="/" @click.native="$scrollToTop()">
-    <img
-      src="~/static/icons/logo.png"
-      alt="Logo Monstar"
-      class="logo w3-padding-16"
-    />
+    <img src="~/static/icons/logo.png" alt="Logo Monstar" class="logo" />
   </nuxt-link>
 </template>
 
@@ -15,11 +11,13 @@ export default {}
 
 <style scoped>
 .logo {
-  max-height: 90px;
+  max-height: 60px;
+  margin: 16px;
+  width: auto;
 }
 @media (max-width: 1000px) {
   .logo {
-    max-height: 80px !important;
+    max-height: 50px !important;
   }
 }
 </style>

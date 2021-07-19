@@ -20,14 +20,13 @@ export default {
   },
   data() {
     return {
-      /* The dropdown flaf is used to select which button should have the dropdown menu 
-      with its content into the navigation bar and the list of elements in the footer */
+      /* The content is used for the dropdown menu with its content into the navigation bar 
+      and the list of elements in the footer */
       menuOptions: [
         {
           name: 'Areas',
           path: '/areas',
           content: [],
-          dropdown: true,
         },
         {
           name: 'Products',
@@ -51,7 +50,7 @@ export default {
   // Function used for fetching the data of the areas from the db for the ssr
   async fetch() {
     for (let i = 0; i < this.menuOptions.length; i++) {
-      if (this.menuOptions[i].dropdown) {
+      if (this.menuOptions[i].content) {
         const { data } = await this.$axios.get(
           `${process.env.BASE_URL}/api${this.menuOptions[i].path}`
         )
@@ -67,8 +66,8 @@ export default {
   padding: 40px 0;
 }
 img {
-  height: auto !important;
-  width: 100% !important;
+  height: auto;
+  width: 100%;
 }
 .w3-button:hover {
   color: inherit !important;

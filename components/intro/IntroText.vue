@@ -13,7 +13,7 @@
 export default {
   props: {
     introText: { type: Object, default: () => {} },
-    introTextStyle: { type: Object, default: () => {} },
+    introTextStyle: { type: Object, default: () => Object() },
   },
   computed: {
     textStyle() {

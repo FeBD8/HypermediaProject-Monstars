@@ -35,12 +35,8 @@ export default {
   },
   props: {
     people: { type: Array, default: () => [] },
-  },
-  data() {
-    return {
-      /* Number of people per row */
-      peoplePerRow: 3,
-    }
+    // Number of people per row, by default it's 3
+    peoplePerRow: { type: Number, default: () => 3 },
   },
   computed: {
     // Counts the number of rows in the table

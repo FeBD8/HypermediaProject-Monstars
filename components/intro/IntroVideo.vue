@@ -49,14 +49,6 @@ export default {
       },
     }
   },
-  computed: {
-    pathName() {
-      if (this.$route.name === 'index') {
-        return 'HOME'
-      }
-      return this.$route.name.toUpperCase()
-    },
-  },
   // Add the listener when resize in order to hide the arrow when the text overlaps
   mounted() {
     window.addEventListener('resize', this.showArrow)
@@ -80,7 +72,7 @@ export default {
     },
     // This function hide the arrow for scrolling to the content when the text overlaps
     showArrow() {
-      const text = document.getElementById('text')
+      const text = document.getElementById('text-container')
       const arrow = document.getElementById('scrollIcon')
       if (text !== null && arrow !== null) {
         if (
@@ -115,12 +107,14 @@ video {
   height: 100%;
   object-fit: cover;
 }
+.w3-button {
+  padding: 0;
+}
 .scrolldown-icon {
   position: absolute;
   bottom: 20px;
   margin-left: -20px;
   left: 50%;
-  z-index: 1;
 }
 @media (max-width: 600px) {
   .location {

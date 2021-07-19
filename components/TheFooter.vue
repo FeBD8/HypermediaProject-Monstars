@@ -2,14 +2,18 @@
   <!-- The footer of the website with the method for responsiveness -->
   <footer id="bottomBar" class="w3-bar">
     <div class="w3-bar-item horizontally-centered">
-      <!-- Logo section -->
-      <section id="logo" class="w3-bar-item">
+      <!-- Logo section with address infos -->
+      <section
+        id="logo"
+        :class="{ 'horizontally-centered': arrangeElems }"
+        class="w3-bar-item"
+      >
         <ul class="w3-ul w3-bar-item">
           <li class="w3-center">
             <the-logo></the-logo>
           </li>
           <li class="w3-center">
-            <p class="w3-large">
+            <p class="font-staatliches">
               ©2021 Monstars S.p.A.<br />Piazza Leonardo da Vinci, 32<br />Milano,
               Italy
             </p>
@@ -17,74 +21,33 @@
         </ul>
       </section>
       <!-- Navbar on large screen devices -->
-      <nav id="navLinkLarge" class="w3-bar-item w3-hide-small w3-hide-medium">
-        <div id="dropdown" class="w3-bar-item w3-bar">
-          <ul
-            v-for="(dropItem, itemIndex) of elemsWithDropdownContent"
-            :key="'drop-item-' + itemIndex"
-            class="w3-bar-item w3-ul w3-center"
-          >
-            <li class="border-bottom zero-padding-top">
-              <nav-button
-                :name="dropItem.name"
-                :path="dropItem.path"
-                class="w3-large zero-padding-top"
-              >
-              </nav-button>
-            </li>
-            <li
-              v-for="(contentItem, contentIndex) of dropItem.content"
-              id="contentDrop"
-              :key="'contentDrop-item-' + contentIndex"
-            >
-              <nav-button
-                :name="contentItem.name"
-                :path="dropItem.path + '/' + contentItem.id"
-                class="w3-medium"
-              >
-              </nav-button>
-            </li>
-          </ul>
-        </div>
-        <div id="menu" class="w3-bar-item w3-bar">
-          <nav-button
-            v-for="(menuItem, itemIndex) of elemsWithoutDropdownContent"
-            id="menuButton"
-            :key="'menu-item-' + itemIndex"
-            class="w3-bar-item w3-large"
-            :name="menuItem.name"
-            :path="menuItem.path"
-          >
-          </nav-button>
-        </div>
-      </nav>
+      <navbar-large
+        id="navLinkLarge"
+        :dropdown="false"
+        :options="menuOptions"
+        :dropdown-style="dropdownStyle"
+        :class="{ 'horizontally-centered': arrangeElems }"
+        class="w3-bar-item"
+        :style="navBarStyle"
+      ></navbar-large>
       <!-- Navbar on small screen devices -->
-      <nav
+      <navbar-small
         id="navLinkSmall"
-        class="
-          w3-bar-item w3-hide-large
-          horizontally-centered
-          border-bottom border-top
-        "
-      >
-        <ul class="w3-bar-item w3-ul">
-          <li
-            v-for="(item, itemIndex) of menuOptions"
-            :key="'menu-item-' + itemIndex"
-            class="w3-large"
-            style="text-align: center"
-          >
-            <nav-button :name="item.name" :path="item.path"> </nav-button>
-          </li>
-        </ul>
-      </nav>
+        :options="menuOptions"
+        :style="navBarStyle"
+        class="horizontally-centered"
+      ></navbar-small>
       <!-- Social section -->
-      <section id="social" class="w3-bar-item w3-padding-top-24">
-        <ul class="w3-bar-item w3-ul">
+      <section
+        id="social"
+        :class="{ 'horizontally-centered': arrangeElems }"
+        class="w3-bar-item"
+      >
+        <ul class="w3-ul">
           <li>
-            <p class="w3-large w3-center" style="margin: 0">Follow Us</p>
+            <p class="w3-center font-staatliches">Follow Us</p>
           </li>
-          <li class="w3-padding-24">
+          <li>
             <the-socials></the-socials>
           </li>
         </ul>
@@ -96,30 +59,40 @@
 <script>
 import TheLogo from '~/components/TheLogo.vue'
 import TheSocials from '~/components/TheSocials.vue'
-import NavButton from '~/components/navigation/NavButton.vue'
+import NavbarSmall from '~/components/navigation/NavbarSmall.vue'
+import NavbarLarge from '~/components/navigation/NavbarLarge.vue'
 export default {
   components: {
     TheLogo,
     TheSocials,
-    NavButton,
+    NavbarSmall,
+    NavbarLarge,
   },
   props: {
     menuOptions: { type: Array, default: () => [] },
   },
+  data() {
+    return {
+      dropdownStyle: {
+        border: '0px',
+        fontSize: '1rem',
+      },
+      // If true the elements are centered
+      arrangeElems: false,
+    }
+  },
   computed: {
-    elemsWithDropdownContent() {
-      const elems = []
-      this.menuOptions.forEach((item) => {
-        if (item.dropdown) elems.push(item)
-      })
-      return elems
-    },
-    elemsWithoutDropdownContent() {
-      const elems = []
-      this.menuOptions.forEach((item) => {
-        if (!item.dropdown) elems.push(item)
-      })
-      return elems
+    navBarStyle() {
+      return {
+        '--border-color': '#ffffff70',
+        '--text-color': 'white',
+        '--font-size': '1.3rem',
+        '--text-align': 'center',
+        '--background-color': 'trasparent',
+        '--bar-width': 'auto',
+        '--bar-visibility': 'visible',
+        '--bar-opacity': '1',
+      }
     },
   },
   mounted() {
@@ -143,13 +116,9 @@ export default {
         social.getBoundingClientRect().width +
         200
       if (window.innerWidth <= barWidth) {
-        logo.classList.add('horizontally-centered')
-        navLinkLarge.classList.add('horizontally-centered')
-        social.classList.add('horizontally-centered')
+        this.arrangeElems = true
       } else if (window.innerWidth > 1001) {
-        logo.classList.remove('horizontally-centered')
-        navLinkLarge.classList.remove('horizontally-centered')
-        social.classList.remove('horizontally-centered')
+        this.arrangeElems = false
       }
     },
   },
@@ -157,32 +126,27 @@ export default {
 </script>
 
 <style scoped>
-p {
-  font-family: 'Staatliches', 'cursive' !important;
-}
 #bottomBar {
   background-color: #041a47 !important;
   color: white !important;
   z-index: 3;
   position: absolute;
+  font-size: 1.3rem;
 }
-#menuButton {
-  margin-left: 20px !important;
-  margin-right: 20px !important;
-}
-#social,
 #navLinkLarge {
-  padding-top: 32px !important;
+  padding: 24px 32px !important;
 }
-#contentDrop {
-  font-family: 'Montserrat', sans-serif !important;
-  padding: 8px !important;
+#social {
+  padding: 32px 16px;
+}
+ul li {
+  border-bottom: none;
+}
+p {
+  margin: 20px 0;
 }
 .horizontally-centered {
   float: none;
   display: table;
-}
-.w3-ul li {
-  border-bottom: none;
 }
 </style>
