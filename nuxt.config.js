@@ -34,10 +34,7 @@ export default {
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
-  css: [
-    '@/assets/css/w3.css',
-    '@/assets/css/personal.css'
-],
+  css: ['@/assets/css/w3.css', '@/assets/css/personal.css'],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [{ src: '~/plugins/helpers.js', mode: 'client' }],
