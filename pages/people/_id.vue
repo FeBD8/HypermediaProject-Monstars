@@ -7,7 +7,7 @@
     </div>
     <div class="background-gradient">
       <location :name="person.name"></location>
-      <div class="w3-container container horizontally-centered">
+      <div class="w3-container person-container horizontally-centered">
         <!-- Person Container -->
         <section class="animation-in">
           <div
@@ -128,7 +128,7 @@ img {
   max-width: 20vw;
   height: min-content;
 }
-.container {
+.person-container {
   width: 70vw;
   padding-top: 20px;
 }
@@ -155,7 +155,7 @@ img {
   .img-container {
     max-width: 25vw;
   }
-  .container {
+  .person-container {
     width: 90vw;
   }
 }

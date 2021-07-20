@@ -110,4 +110,9 @@ export default {
   padding-bottom: 10vh;
   width: 50vw;
 }
+@media (max-width: 1000px) {
+  .links-container {
+    width: 90vw;
+  }
+}
 </style>

@@ -62,10 +62,15 @@ h3 {
   margin-left: 1vw;
 }
 .list {
-  margin-left: 1vw;
+  margin-left: 3vw;
   display: list-item;
 }
 .grid {
   display: grid;
+}
+@media (max-width: 1000px) {
+  .list {
+    margin-left: 7vw !important;
+  }
 }
 </style>
