@@ -5,6 +5,7 @@
         <nav-button
           :name="item.name"
           :path="item.path"
+          :scroll="true"
           class="underline-animation"
           @click.native="$closeNav()"
         >
