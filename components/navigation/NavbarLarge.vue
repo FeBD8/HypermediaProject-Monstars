@@ -11,7 +11,6 @@
           class="underline-animation"
           :name="item.name"
           :path="item.path"
-          :scroll="true"
         ></nav-button>
         <div v-if="!dropdown && item.content" class="border-bottom"></div>
         <nav-dropdown

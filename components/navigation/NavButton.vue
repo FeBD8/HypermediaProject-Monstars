@@ -1,10 +1,6 @@
 <template>
   <!-- Navigation button for the header and the footer -->
-  <nuxt-link
-    class="w3-button"
-    :to="path"
-    @click.native="scroll ? $scrollToTop() : null"
-  >
+  <nuxt-link class="w3-button" :to="path" @click.native="scrollUp()">
     <span class="hover">{{ name }}</span>
   </nuxt-link>
 </template>
@@ -14,7 +10,13 @@ export default {
   props: {
     name: { type: String, default: () => '' },
     path: { type: String, default: () => '' },
-    scroll: { type: Boolean, default: () => '' },
+  },
+  methods: {
+    scrollUp() {
+      if (this.$route.name === this.name.toLowerCase()) {
+        this.$scrollToTop()
+      }
+    },
   },
 }
 </script>
