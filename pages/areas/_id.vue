@@ -1,22 +1,46 @@
 <template>
   <div>
-    <div class="area-description">
-      <section class="background">
+    <section class="area-description">
+      <div class="background">
         <intro-text
           :intro-text="introText"
           :intro-text-style="introTextStyle"
         ></intro-text>
-      </section>
+      </div>
       <location :name="area.name"></location>
       <!-- Details Container -->
-      <section id="content" class="w3-container">
+      <div class="w3-container">
         <section-title :title="area.name + ' SOLUTIONS'"></section-title>
         <detail-list
           :details="area.area_details"
           :card-style="cardStyle"
         ></detail-list>
-      </section>
-    </div>
+      </div>
+    </section>
+    <!-- Transition links -->
+    <section class="background-gradient hide-animate">
+      <div class="links-container horizontally-centered">
+        <section-title title="REFERENCE"></section-title>
+        <div class="hide-animate">
+          <transition-link
+            title="Area Manager:"
+            :items="area.manager"
+            base-path="/people/"
+          ></transition-link>
+          <transition-link
+            title="Employees:"
+            :items="area.employees"
+            base-path="/people/"
+          ></transition-link>
+          <transition-link
+            title="Products:"
+            :items="area.products"
+            base-path="/products/"
+          ></transition-link>
+        </div>
+      </div>
+      <back-button></back-button>
+    </section>
   </div>
 </template>
 
@@ -25,12 +49,16 @@ import Location from '~/components/intro/Location.vue'
 import SectionTitle from '~/components/SectionTitle.vue'
 import DetailList from '~/components/list/DetailList.vue'
 import IntroText from '~/components/intro/IntroText.vue'
+import TransitionLink from '~/components/navigation/TransitionLink.vue'
+import BackButton from '~/components/navigation/BackButton.vue'
 export default {
   components: {
     Location,
     IntroText,
     SectionTitle,
     DetailList,
+    TransitionLink,
+    BackButton,
   },
   layout: 'default',
   async asyncData({ $axios, route }) {
@@ -70,8 +98,8 @@ export default {
   background: linear-gradient(to left, #41295a, #2f0743);
   max-height: 70vh;
 }
-.area-description {
-  padding-bottom: 100px;
+.links-container {
+  width: 60vw;
 }
 .location {
   margin-left: 30px;

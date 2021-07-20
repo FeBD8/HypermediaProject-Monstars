@@ -129,7 +129,6 @@ export default {
 #bottomBar {
   background-color: #041a47 !important;
   color: white !important;
-  z-index: 3;
   position: absolute;
   font-size: 1.3rem;
 }

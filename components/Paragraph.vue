@@ -1,7 +1,7 @@
 <template>
   <!-- Paragraph component composed by a title or a logo image, a subtitle and a description -->
   <div class="text-container">
-    <div id="text-container" class="w3-row">
+    <div class="w3-row">
       <h1 v-if="!logo" class="title">
         <span>{{ title }}</span>
       </h1>
@@ -65,7 +65,11 @@ export default {
 }
 .text-container {
   position: relative;
-  z-index: 1;
+}
+@media (max-width: 600px) {
+  .title {
+    text-align: var(--title-responsive600-align) !important;
+  }
 }
 @media (max-width: 1000px) {
   .text-container {

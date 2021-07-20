@@ -4,7 +4,7 @@ const { Sequelize, DataTypes } = require('sequelize')
 // const db = new Sequelize(
 //   'postgres://postgres:postgres@localhost:5432/Hypermedia'
 // )
-// Production
+Production
 const pg = require('pg')
 pg.defaults.ssl = true
 const db = new Sequelize(process.env.DATABASE_URL, {
@@ -20,9 +20,11 @@ function defineDatabaseStructure() {
     'person',
     {
       name: DataTypes.STRING,
-      surname: DataTypes.STRING,
+      intro: DataTypes.TEXT,
+      description: DataTypes.TEXT,
       role: DataTypes.STRING,
       image: DataTypes.STRING,
+      linkedin: DataTypes.STRING,
     },
     {
       underscored: true,
@@ -199,7 +201,8 @@ async function insertFakeData() {
   const area1 = await Area.create({
     name: 'Security',
     subtitle: 'Partnering with customers to manage digital risk.',
-    description: 'We are unique among IT security consulting firms. We combine security technology engineering, intelligence expertise and our data science DNA to help companies manage digital risk end-to-end.',
+    description:
+      'We are unique among IT security consulting firms. We combine security technology engineering, intelligence expertise and our data science DNA to help companies manage digital risk end-to-end.',
     image: 'https://www.moviri.com/wp-content/uploads/2020/12/picture-0143.png',
     shortcut_image:
       'https://www.moviri.com/wp-content/uploads/2020/11/bl-icon-security@2x.png',
@@ -208,41 +211,59 @@ async function insertFakeData() {
     name: 'Artificial Intelligence',
     subtitle:
       'Autonomous optimization driven by machine learning and automation.',
-    description: 'The complexity of modern technology stacks and application pipelines requires end-to-end automation. We use machine learning techniques and the right tooling to create automated, full-stack, closed-loop performance engineering solutions.',
+    description:
+      'The complexity of modern technology stacks and application pipelines requires end-to-end automation. We use machine learning techniques and the right tooling to create automated, full-stack, closed-loop performance engineering solutions.',
     image: 'https://www.moviri.com/wp-content/uploads/2020/12/picture-0190.png',
     shortcut_image:
       'https://cdn0.iconfinder.com/data/icons/adobe-application/100/Ai_Icon-256.png',
   })
   // Create 4 Person
   const person1 = await Person.create({
-    name: 'Luca',
-    surname: 'Colombo',
+    name: 'Luca Colombo',
     role: 'Software Engineer',
+    intro: "I'm a Software Engineer and a Backend Developer from Milan, Italy",
+    description: `Lorem ipsum dolor sit amet, consectetur adipisci elit, sed do eiusmod
+    tempor incidunt ut labore et ssdolore magna aliqua. Ut enim ad minim
+    veniam, quis nostrum exercitationem ullamco laboriosam, nisi ut aliquid
+    ex ea commodi consequatur. Duis a ute irure reprehenderit in voluptate
+    velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
+    obcaecat cupiditat non proident, sunt in culpa qui officia deserunt
+    mollit anim id est laborum.`,
+    linkedin: '',
     image:
       'https://www.moviri.com/wp-content/uploads/2020/12/matteo_fabiano2.jpg',
     working_area_id: area1.id,
   })
   area1.setManager(person1)
   const person2 = await Person.create({
-    name: 'Sara',
-    surname: 'Bianchi',
+    name: 'Sara Bianchi',
     role: 'Security Expert',
+    intro:
+      "I'm a Security Expert with a great passion in solving puzzles and I'm from Rome, Italy",
+    description: '',
+    linkedin: '',
     image:
       'https://www.moviri.com/wp-content/uploads/2020/12/Camilla-Stefani-1.jpg',
     working_area_id: area1.id,
   })
   const person3 = await Person.create({
-    name: 'Riccardo',
-    surname: 'Zanaboni',
+    name: 'Matteo Rossi',
     role: 'AI Expert',
+    intro:
+      "I'm an AI Expert and an Artificial Neural Network researcher from Venice, Italy",
+    description: '',
+    linkedin: '',
     image: 'https://www.moviri.com/wp-content/uploads/2021/04/enrico-maini.jpg',
     working_area_id: area2.id,
   })
   area2.setManager(person3)
   const person4 = await Person.create({
-    name: 'Fabio',
-    surname: 'Rossanigo',
+    name: 'Christian Verdi',
     role: 'Data Scientist',
+    intro:
+      "I'm a Data Scientist and a Python Programmer from Sydney, Australia",
+    description: '',
+    linkedin: '',
     image:
       'https://www.moviri.com/wp-content/uploads/2020/12/Fabio-Violante-1.jpg',
     working_area_id: area2.id,
@@ -252,50 +273,56 @@ async function insertFakeData() {
     name: 'Cleafy',
     subtitle: 'At your side, fighting against online fraud.',
     logo: 'https://www.moviri.com/wp-content/uploads/elementor/thumbs/Cleafy-Logo-p4x9d3ef1luvofs4qsvcwnjxn2iil5g091wbunncw0.png',
-    description: 'Cleafy helps banks and financial institutions scale-up their fight against online fraud. Cleafy is the first solution to introduce full detection and response in online fraud prevention. A revolutionary technology that combines the most advanced fraud detection capabilities, with the possibility to set-up automated responses. All in one central platform.',
+    description:
+      'Cleafy helps banks and financial institutions scale-up their fight against online fraud. Cleafy is the first solution to introduce full detection and response in online fraud prevention. A revolutionary technology that combines the most advanced fraud detection capabilities, with the possibility to set-up automated responses. All in one central platform.',
     image:
       'https://www.moviri.com/wp-content/uploads/2021/03/cleafy-dashboard.png',
     area_id: area1.id,
     product_manager_id: person1.id,
-    reference_assistant_id: person4.id,
+    reference_assistant_id: person2.id,
   })
   const product2 = await Product.create({
     name: 'Akamas',
     subtitle: 'The Autonomous Performance Optimization AI.',
     logo: 'https://www.moviri.com/wp-content/uploads/2020/11/akamas.png',
-    description: 'Akamas is a new, category-defining software that delivers autonomous and continuous performance optimization, powered by machine learning, extracting unprecedented levels of performance and cost savings from technology stacks.',
+    description:
+      'Akamas is a new, category-defining software that delivers autonomous and continuous performance optimization, powered by machine learning, extracting unprecedented levels of performance and cost savings from technology stacks.',
     image:
       'https://www.moviri.com/wp-content/uploads/2020/11/showcase-akamas1.png',
     area_id: area2.id,
     product_manager_id: person3.id,
-    reference_assistant_id: person2.id,
+    reference_assistant_id: person4.id,
   })
   // Create some Details for area 1
   const areaDetail1 = await AreaDetail.create({
     title: 'Continuous Monitoring & Risk Evaluation',
     subtitle: 'Real-time security data collection and analysis.',
-    description: 'We leverage frameworks and standards such as MITRE to design systems that collect, normalize and analyze security data in real-time. We use intelligence tools to generate insights that limit risk exposure, while reducing operational effort.',
+    description:
+      'We leverage frameworks and standards such as MITRE to design systems that collect, normalize and analyze security data in real-time. We use intelligence tools to generate insights that limit risk exposure, while reducing operational effort.',
     image: 'https://www.moviri.com/wp-content/uploads/2020/12/picture-0220.png',
     area_id: area1.id,
   })
   const areaDetail2 = await AreaDetail.create({
     title: 'Digital Identity for Critical Services',
     subtitle: 'Visibility and control of privileged and 3rd-party access.',
-    description: 'We provide the tools to ensure that all users and all device access activities are visible and controllable. We also support governance processes to control critical access, such as access by privileged parties or by third-parties, both to services and to data.',
+    description:
+      'We provide the tools to ensure that all users and all device access activities are visible and controllable. We also support governance processes to control critical access, such as access by privileged parties or by third-parties, both to services and to data.',
     image: 'https://www.moviri.com/wp-content/uploads/2020/12/picture-0143.png',
     area_id: area1.id,
   })
   const areaDetail3 = await AreaDetail.create({
     title: 'Cloud Security Zero-Trust Architecture',
     subtitle: 'Cloud and multi-cloud policies enforcement and monitoring.',
-    description: 'As companies migrate services and data to the cloud, we have a range of solutions for cloud native application and infrastructure, risk monitoring of cloud traffic and multi-cloud integrations, security enforcement, continuous monitoring for cloud native services, SASE and CASB implementation, containers and serverless security.',
+    description:
+      'As companies migrate services and data to the cloud, we have a range of solutions for cloud native application and infrastructure, risk monitoring of cloud traffic and multi-cloud integrations, security enforcement, continuous monitoring for cloud native services, SASE and CASB implementation, containers and serverless security.',
     image: 'https://www.moviri.com/wp-content/uploads/2020/12/picture-0380.png',
     area_id: area1.id,
   })
   const areaDetail4 = await AreaDetail.create({
     title: 'Cyber & Enterprise Risk Integration',
     subtitle: 'Cybersecurity integration with ERM systems and frameworks.',
-    description: 'We offer solutions specifically designed to help enterprises meet regulatory and governance challenges, including enterprise risk management and compliance around a variety of governance frameworks.',
+    description:
+      'We offer solutions specifically designed to help enterprises meet regulatory and governance challenges, including enterprise risk management and compliance around a variety of governance frameworks.',
     image: 'https://www.moviri.com/wp-content/uploads/2020/12/picture-0385.png',
     area_id: area1.id,
   })

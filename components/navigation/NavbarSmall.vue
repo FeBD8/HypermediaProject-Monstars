@@ -31,10 +31,9 @@ export default {
   width: var(--bar-width, 100%);
   color: var(--text-color, #041a47);
   background-color: var(--background-color, white);
-  display: block;
+  display: none;
   visibility: var(--bar-visibility, hidden);
   opacity: var(--bar-opacity, 0);
-  transition: visibility 0s linear 0.5s, opacity 0.5s linear;
   border-bottom: 1px solid var(--border-color, #47546b65) !important;
   border-top: 1px solid var(--border-color, #47546b65) !important;
   position: relative;
@@ -47,10 +46,5 @@ ul li {
   padding: 8px 16px !important;
   border-bottom: none !important;
   text-align: center;
-}
-.visible {
-  visibility: visible !important;
-  opacity: 1 !important;
-  transition-delay: 0s !important;
 }
 </style>

@@ -1,7 +1,7 @@
 <template>
   <!-- Navigation button for the header and the footer -->
   <nuxt-link class="w3-button" :to="path" @click.native="$scrollToTop()">
-    {{ name }}
+    <span class="hover">{{ name }}</span>
   </nuxt-link>
 </template>
 
@@ -15,6 +15,13 @@ export default {
 </script>
 
 <style scoped>
+.w3-button {
+  margin: 8px 16px;
+  padding: 0;
+}
+.hover:hover {
+  color: var(--hover-color);
+}
 .nuxt-link-active:after {
   content: '';
   display: block;

@@ -1,4 +1,5 @@
 const express = require('express')
+const { Op, col } = require('sequelize')
 import initializeDatabase from '../db-conn'
 const app = express()
 
@@ -35,11 +36,15 @@ async function init() {
       include: [
         {
           model: Area,
-          as: 'working_area',
+          as: 'manager_of_area',
         },
         {
           model: Area,
-          as: 'manager_of_area',
+          as: 'working_area',
+          where: {
+            manager_id: { [Op.ne]: id },
+          },
+          required: false,
         },
         {
           model: Product,
@@ -69,12 +74,12 @@ async function init() {
           as: 'product_manager',
         },
         {
-          model: ProductDetail,
-          as: 'product_details',
-        },
-        {
           model: Area,
           as: 'membership_area',
+        },
+        {
+          model: ProductDetail,
+          as: 'product_details',
         },
         {
           model: Customer,
@@ -96,16 +101,19 @@ async function init() {
           as: 'products',
         },
         {
-          model: AreaDetail,
-          as: 'area_details',
+          model: Person,
+          as: 'manager',
         },
         {
           model: Person,
           as: 'employees',
+          where: {
+            id: { [Op.ne]: col('area.manager_id') },
+          },
         },
         {
-          model: Person,
-          as: 'manager',
+          model: AreaDetail,
+          as: 'area_details',
         },
       ],
     })

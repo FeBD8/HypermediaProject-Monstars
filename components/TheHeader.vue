@@ -80,12 +80,11 @@ export default {
     navBarOnScroll() {
       const header = document.getElementById('topBar')
       const footer = document.getElementById('bottomBar')
-      const navSmallScreen = document.getElementById('navSmallScreen')
       const offset =
         footer.offsetTop -
         document.documentElement.scrollTop -
         header.getBoundingClientRect().height -
-        navSmallScreen.getBoundingClientRect().height
+        200
       if (document.documentElement.scrollTop !== 0) {
         if (offset < 0) {
           this.$closeNav()
@@ -117,15 +116,13 @@ export default {
   transition: background-color 0.3s linear, opacity 0.3s linear,
     border-bottom 0s linear 0.3s;
   background-color: var(--background-color, 'trasparent');
+  z-index: 1;
 }
 .bar-container {
   display: flex;
   align-items: center;
   width: 100%;
   padding: 0;
-}
-.w3-top {
-  z-index: 2;
 }
 .hide {
   visibility: hidden !important;

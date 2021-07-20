@@ -7,7 +7,7 @@
       </div>
       <div class="text-container">
         <h2 class="name font-montserrat">
-          <b class="w3-center">{{ name }} {{ surname }}</b>
+          <b class="w3-center">{{ name }}</b>
         </h2>
         <p class="role">{{ role }}</p>
       </div>

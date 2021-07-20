@@ -55,7 +55,7 @@ export default {
     alt: { type: String, default: () => '' },
     description: { type: String, default: () => '' },
     path: { type: String, default: () => '' },
-    cardStyle: { type: Object, default: () => {} },
+    cardStyle: { type: Object, default: () => Object() },
   },
   computed: {
     textStyle() {
@@ -76,6 +76,7 @@ export default {
 <style scoped>
 img {
   padding: 32px 32px !important;
+  max-width: 40vw;
 }
 .w3-button {
   background-color: #0d2b66 !important;

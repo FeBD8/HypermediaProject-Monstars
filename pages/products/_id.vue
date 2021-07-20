@@ -1,16 +1,16 @@
 <template>
   <div>
-    <div class="product-description">
-      <section class="background">
+    <section class="product-description">
+      <div class="background">
         <intro-text
           :intro-text="introText"
           :intro-text-style="introTextStyle"
         ></intro-text>
         <location :name="product.name" class="location" style="color: white">
         </location>
-      </section>
+      </div>
       <!-- Details Container -->
-      <section id="content" class="w3-container">
+      <div class="w3-container">
         <section-title
           :title="'THE ' + product.name + ' SUITE'"
           :style="{ '--title-color': 'white' }"
@@ -19,11 +19,36 @@
           :details="product.product_details"
           :card-style="cardStyle"
         ></detail-list>
-      </section>
-    </div>
+      </div>
+    </section>
+    <!-- Customers Container -->
     <section class="w3-padding-32">
       <section-title :title="product.name + ' CUSTOMERS'"></section-title>
       <slideshow :images="product.customers"></slideshow>
+    </section>
+    <!-- Transition links -->
+    <section class="background-gradient hide-animate">
+      <div class="links-container horizontally-centered">
+        <section-title title="REFERENCE"></section-title>
+        <div class="hide-animate">
+          <transition-link
+            title="Area:"
+            :items="product.membership_area"
+            base-path="/areas/"
+          ></transition-link>
+          <transition-link
+            title="Product Manager:"
+            :items="product.product_manager"
+            base-path="/people/"
+          ></transition-link>
+          <transition-link
+            title="Reference Assistant:"
+            :items="product.reference_assistant"
+            base-path="/people/"
+          ></transition-link>
+        </div>
+      </div>
+      <back-button></back-button>
     </section>
   </div>
 </template>
@@ -34,6 +59,8 @@ import SectionTitle from '~/components/SectionTitle.vue'
 import Slideshow from '~/components/Slideshow.vue'
 import DetailList from '~/components/list/DetailList.vue'
 import IntroText from '~/components/intro/IntroText.vue'
+import TransitionLink from '~/components/navigation/TransitionLink.vue'
+import BackButton from '~/components/navigation/BackButton.vue'
 export default {
   components: {
     Location,
@@ -41,6 +68,8 @@ export default {
     Slideshow,
     DetailList,
     IntroText,
+    TransitionLink,
+    BackButton,
   },
   layout: 'default',
   async asyncData({ $axios, route }) {
@@ -100,6 +129,7 @@ export default {
 #content {
   margin-top: -20px;
 }
+.links-container,
 .listcard-container {
   width: 60vw;
 }

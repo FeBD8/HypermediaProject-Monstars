@@ -3,7 +3,7 @@ export default ({ app }, inject) => {
   class hide-animate is defined */
   inject('animateComponents', () => {
     const config = {
-      threshold: 0.3,
+      threshold: 0.1,
     }
     const elems = document.getElementsByClassName('hide-animate')
     const observer = new IntersectionObserver((entries) => {
@@ -25,11 +25,18 @@ export default ({ app }, inject) => {
   // Methods used for showing and hiding the navbar on small screen's devices
   inject('openNav', () => {
     const navBar = document.getElementById('navSmallScreen')
-    navBar.classList.toggle('visible')
+    if (navBar.classList.contains('block')) {
+      navBar.classList.remove('fade-in')
+      setTimeout(() => navBar.classList.remove('block'), 500)
+    } else {
+      navBar.classList.add('block')
+      setTimeout(() => navBar.classList.add('fade-in'))
+    }
   })
   // Methods used for showing and hiding the navbar on small screen's devices
   inject('closeNav', () => {
     const navBar = document.getElementById('navSmallScreen')
-    navBar.classList.remove('visible')
+    navBar.classList.remove('fade-in')
+    setTimeout(() => navBar.classList.remove('block'), 500)
   })
 }

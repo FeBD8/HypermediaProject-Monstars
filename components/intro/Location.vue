@@ -50,9 +50,6 @@ export default {
 </script>
 
 <style scoped>
-.location {
-  z-index: 1;
-}
 .fontsize {
   font-size: 1.2rem;
 }

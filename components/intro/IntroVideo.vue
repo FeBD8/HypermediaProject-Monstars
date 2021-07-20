@@ -12,6 +12,7 @@
     <location class="horizontally-centered" style="color: white"></location>
     <intro-text
       v-if="introText"
+      id="text-container"
       :intro-text="introText"
       :intro-text-style="textStyle"
     ></intro-text>
@@ -41,7 +42,7 @@ export default {
         titleWidth: '66.6%',
         titleAlign: 'left',
         subtitleWidth: '66.6%',
-        subtitleColor: 'white',
+        subtitleColor: '#ffffffe6',
         subtitleSize: '1.2rem',
         subtitleResponsiveSize: '1.2rem',
         subtitlePosition: 'right',
