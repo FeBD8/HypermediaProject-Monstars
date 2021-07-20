@@ -9,7 +9,7 @@
       </div>
       <location :name="area.name"></location>
       <!-- Details Container -->
-      <div class="w3-container">
+      <div class="w3-container w3-padding-top-24">
         <section-title :title="area.name + ' SOLUTIONS'"></section-title>
         <detail-list
           :details="area.area_details"

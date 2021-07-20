@@ -3,8 +3,8 @@ export default {
   ssr: true,
   target: 'server',
   env: {
-    BASE_URL: 'https://hypermedia-monstar.herokuapp.com', // Production URL
-    // BASE_URL: '', // Development URL
+    // BASE_URL: 'https://hypermedia-monstar.herokuapp.com', // Production URL
+    BASE_URL: '', // Development URL
     configurationId: '',
   },
   serverMiddleware: [

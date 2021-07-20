@@ -22,6 +22,7 @@ export default {
         '--title-width': this.introTextStyle.titleWidth ?? '100%',
         '--title-align': this.introTextStyle.titleAlign ?? 'center',
         '--title-responsive-align': 'center',
+        '--title-responsive600-align': 'center',
         '--subtitle-width': this.introTextStyle.subtitleWidth ?? '100%',
         '--subtitle-position': this.introTextStyle.subtitlePosition ?? 'center',
         '--subtitle-color': this.introTextStyle.subtitleColor ?? 'white',

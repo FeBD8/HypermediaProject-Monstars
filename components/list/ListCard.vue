@@ -35,7 +35,7 @@
     >
       <img :src="image" :alt="alt" />
     </div>
-    <div class="vertically-centered w3-padding-large w3-hide-large">
+    <div class="horizontally-centered w3-padding-large w3-hide-large">
       <img :src="image" :alt="alt" />
     </div>
   </div>
@@ -76,7 +76,6 @@ export default {
 <style scoped>
 img {
   padding: 32px 32px !important;
-  max-width: 40vw;
 }
 .w3-button {
   background-color: #0d2b66 !important;

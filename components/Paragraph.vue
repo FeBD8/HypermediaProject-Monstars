@@ -67,6 +67,9 @@ export default {
   position: relative;
 }
 @media (max-width: 600px) {
+  .logo > img {
+    max-width: 150px !important;
+  }
   .title {
     text-align: var(--title-responsive600-align) !important;
   }

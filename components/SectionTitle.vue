@@ -1,7 +1,7 @@
 <template>
   <div class="w3-center hide-animate">
     <h2 class="section-title">
-      {{ title }}
+      <span>{{ title }}</span>
     </h2>
   </div>
 </template>

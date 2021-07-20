@@ -1,8 +1,10 @@
 <template>
   <div v-if="items" class="flex">
-    <h3>
-      {{ title }}
-    </h3>
+    <div>
+      <h3>
+        <span>{{ title }}</span>
+      </h3>
+    </div>
     <div v-if="Array.isArray(items)" class="grid">
       <div
         v-for="(elem, elemIndex) in items"
@@ -60,6 +62,7 @@ h3 {
 }
 .single {
   margin-left: 1vw;
+  font-size: 1rem;
 }
 .list {
   margin-left: 3vw;
@@ -67,6 +70,11 @@ h3 {
 }
 .grid {
   display: grid;
+}
+@media (max-width: 600px) {
+  .flex {
+    display: block !important;
+  }
 }
 @media (max-width: 1000px) {
   .list {
