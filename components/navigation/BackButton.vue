@@ -12,7 +12,7 @@
           class="w3-button w3-round-xxlarge w3-border"
           @click="$closeNav()"
         >
-          <b>Go back</b>
+          <b>Back to previous page</b>
         </button>
       </nuxt-link>
     </div>
