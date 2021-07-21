@@ -1,0 +1,214 @@
+{
+  "name": "HypermediaProject-Monstars",
+  "data": {
+    "kb": {
+      "start": {
+        "initials": [
+          "Hi! I'm Monst, i'm here for helping you!",
+          "Hello! I'm Monst, i'm the chatbot at your service!"
+        ]
+      },
+      "first_xor": {
+        "initials": [
+          "Do you want to contact our company or do you want a personal guided tour?",
+          "If you want I can take you on a tour of the site, otherwise I can let you contact our company. What do you prefer?"
+        ],
+        "choices": [
+          {
+            "id": "contact_xor",
+            "intents": [
+              "I want to contact the company",
+              "contact",
+              "contacts",
+              "I need to contact the company",
+              "I need the contacts"
+            ],
+            "utterance": ["Okay", "Message received!", "As you want"]
+          },
+          {
+            "id": "guide",
+            "intents": [
+              "I want a personal guided tour",
+              "I want a guided tour",
+              "a tour",
+              "the tour",
+              "tour",
+              "guided tour",
+              "tour of the site",
+              "personal tour"
+            ]
+          }
+        ],
+        "quit": {
+          "intents": ["quit", "exit", "reset", "no", "back"],
+          "utterance": ["Okay bye"]
+        },
+        "unknown": "This option is not available. You can choose between contact or tour."
+      },
+      "contact_xor": {
+        "initials": [
+          "Do you want to fulfill a contact form or go to the contact page?",
+          "If you want you can fulfill a contact form, otherwise bring you to the contact page. What do you prefer?"
+        ],
+        "choices": [
+          {
+            "id": "contact_form",
+            "intents": [
+              "I want to fulfill the form",
+              "fulfill the form",
+              "fulfill form",
+              "form",
+              "the form",
+              "insert information in the form"
+            ],
+            "utterance": [
+              "Welcome to the contact form. Fill it with your information to stay in touch with us.",
+              "Okay, now you can fulfill the form.",
+              "This is the contact form with which you can contact our company."
+            ],
+            "payload": {
+              "guide": "/contact#form"
+            }
+          },
+          {
+            "id": "contact_page",
+            "intents": [
+              "I want to go to the contact page",
+              "contact page",
+              "contact",
+              "bring me to the contact page",
+              "bting me to the contact",
+              "contacts",
+              "contacts of the company",
+              "page"
+            ],
+            "utterance": [
+              "Welcome to the Contact page of our website. Here you can find all the information you need.",
+              "This is the Contact page that contains all the information on our contacts.",
+              "Here is our contact page."
+            ],
+            "payload": {
+              "guide": "/contact"
+            }
+          }
+        ],
+        "quit": {
+          "intents": ["quit", "exit", "reset", "no", "back"],
+          "utterance": ["Okay bye"]
+        },
+        "unknown": "This option is not available. You can choose between form or contact page."
+      },
+      "guide": {
+        "initials": [
+          "Okay! I'm your virtual-tour guide! Are you ready?",
+          "Perfect, so can we start the tour?",
+          "Good choice! When you are ready, let me know!"
+        ],
+        "completed": {
+          "utterance": "Okay, let's start!"
+        }
+      },
+      "home": {
+        "initials": [
+          "Welcome to the Homepage. Can I go on with the tour?",
+          "This is our Homepage. Can we go on?",
+          "This is the Homepage of our website. Can we continue?"
+        ]
+      },
+      "about": {
+        "initials": [
+          "Welcome to the About page of our website. Here you can find all the information about our company",
+          "This is our About page that contains all the information about us",
+          "This is the About page of our website with all the infos on Monstar"
+        ]
+      },
+      "final": "The process is completed. Thank you for your patience!",
+      "steps_v": ["", "/", "/about"],
+      "continue_v": [
+        "continue",
+        "ok",
+        "go",
+        "yes",
+        "go on",
+        "let's go",
+        "okay",
+        "next",
+        "show me the next page",
+        "I'm ready",
+        "ready",
+        "now",
+        "y",
+        "yep"
+      ],
+      "guide_v": ["guide"],
+      "stay_message": "I don't understand. Do you want to continue?"
+    },
+    "process": {
+      "activities": [
+        {
+          "my_id": "start",
+          "next_id": "first_xor",
+          "my_type": "START",
+          "callback": "start"
+        },
+        {
+          "my_id": "first_xor",
+          "next_id": "final",
+          "my_type": "XOR",
+          "callback": "generic_xor",
+          "choices": ["contact_xor", "guide"]
+        },
+        {
+          "my_id": "contact_xor",
+          "next_id": null,
+          "my_type": "XOR",
+          "callback": "generic_xor",
+          "choices": ["contact_form", "contact_page"]
+        },
+        {
+          "my_id": "contact_form",
+          "next_id": null,
+          "my_type": "TASK",
+          "callback": "nothing"
+        },
+        {
+          "my_id": "contact_page",
+          "next_id": null,
+          "my_type": "TASK",
+          "callback": "nothing"
+        },
+        {
+          "my_id": "guide",
+          "next_id": "home",
+          "my_type": "TASK",
+          "callback": "guide"
+        },
+        {
+          "my_id": "home",
+          "next_id": "about",
+          "my_type": "TASK",
+          "callback": "guide"
+        },
+        {
+          "my_id": "about",
+          "next_id": null,
+          "my_type": "TASK",
+          "callback": "nothing"
+        },
+        {
+          "my_id": "final",
+          "next_id": null,
+          "my_type": "TASK",
+          "callback": "nothing"
+        },
+        {
+          "my_id": "end",
+          "next_id": "start",
+          "my_type": "END",
+          "callback": "end"
+        }
+      ],
+      "first_activity_id": "start"
+    }
+  }
+}

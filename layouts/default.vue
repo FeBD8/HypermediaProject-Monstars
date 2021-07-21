@@ -4,6 +4,7 @@
     <the-header :menu-options="menuOptions"></the-header>
     <div>
       <Nuxt />
+      <chat :chat-list="list" />
     </div>
     <the-footer :menu-options="menuOptions"></the-footer>
   </div>
@@ -12,12 +13,15 @@
 <script>
 import TheHeader from '~/components/TheHeader.vue'
 import TheFooter from '~/components/TheFooter.vue'
-
+import Chat from '~/components/Chat.vue'
+import MMCCMixin from '~/mixins/mmcc-mixin.js'
 export default {
   components: {
     TheHeader,
     TheFooter,
+    Chat,
   },
+  mixins: [MMCCMixin],
   data() {
     return {
       /* The content is used for the dropdown menu with its content into the navigation bar 
@@ -82,5 +86,10 @@ img {
   #content {
     padding: 20px 0;
   }
+}
+.chat {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
 }
 </style>

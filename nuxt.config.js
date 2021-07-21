@@ -5,7 +5,7 @@ export default {
   env: {
     // BASE_URL: 'https://hypermedia-monstar.herokuapp.com', // Production URL
     BASE_URL: '', // Development URL
-    configurationId: '',
+    configurationId: '7f24de59-b3b2-4a41-87a5-fecda0cbe0f8',
   },
   serverMiddleware: [
     {
@@ -37,7 +37,10 @@ export default {
   css: ['@/assets/css/w3.css', '@/assets/css/personal.css'],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: [{ src: '~/plugins/helpers.js', mode: 'client' }],
+  plugins: [
+    { src: '~/plugins/helpers.js', mode: 'client' },
+    '~/plugins/mmcc.js',
+  ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,

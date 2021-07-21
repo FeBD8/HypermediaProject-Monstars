@@ -10,6 +10,7 @@
     <section id="content" class="w3-container w3-padding-16 w3-center">
       <section-title title="CONTACTS"></section-title>
     </section>
+    <div id="form"></div>
   </div>
 </template>
 
