@@ -18,7 +18,7 @@
           :path="item.path"
           :dropdown="dropdown"
           :dropdown-content="item.content"
-          :style="style"
+          :style="dropStyle"
         >
         </nav-dropdown>
       </li>
@@ -40,10 +40,11 @@ export default {
     dropdownStyle: { type: Object, default: () => Object() },
   },
   computed: {
-    style() {
+    dropStyle() {
       return {
         '--border-bottom': this.dropdownStyle.border ?? '',
         '--font-size': this.dropdownStyle.fontSize ?? '',
+        '--padding-top': this.dropdownStyle.paddingTop ?? '',
       }
     },
   },

@@ -7,7 +7,7 @@
       ></intro-video>
     </section>
     <!-- Team Container -->
-    <section id="content" class="w3-container w3-padding-16 w3-center">
+    <section id="content" class="w3-container">
       <section-title title="ABOUT US"></section-title>
     </section>
   </div>

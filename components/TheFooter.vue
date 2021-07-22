@@ -28,13 +28,13 @@
         :dropdown-style="dropdownStyle"
         :class="{ 'horizontally-centered': arrangeElems }"
         class="w3-bar-item"
-        :style="navBarStyle"
+        :style="navBarLargeStyle"
       ></navbar-large>
       <!-- Navbar on small screen devices -->
       <navbar-small
         id="navLinkSmall"
         :options="menuOptions"
-        :style="navBarStyle"
+        :style="navBarSmallStyle"
         class="horizontally-centered"
       ></navbar-small>
       <!-- Social section -->
@@ -76,22 +76,29 @@ export default {
       dropdownStyle: {
         border: '0px',
         fontSize: '1rem',
+        paddingTop: '12px',
       },
       // If true the elements are centered
       arrangeElems: false,
     }
   },
   computed: {
-    navBarStyle() {
+    navBarSmallStyle() {
       return {
         '--border-color': '#ffffff70',
         '--text-color': 'white',
         '--font-size': '1.3rem',
-        '--text-align': 'center',
         '--background-color': 'trasparent',
         '--bar-width': 'auto',
         '--bar-visibility': 'visible',
         '--bar-opacity': '1',
+      }
+    },
+    navBarLargeStyle() {
+      return {
+        '--text-color': 'white',
+        '--font-size': '1.3rem',
+        '--text-align': 'center',
       }
     },
   },

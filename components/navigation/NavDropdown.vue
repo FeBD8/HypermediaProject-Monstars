@@ -45,7 +45,8 @@ export default {
   top: 100%;
 }
 ul li {
-  padding: 0px !important;
+  padding: 0;
+  padding-top: var(--padding-top, 0px);
   font-size: var(--font-size);
   border-bottom: var(--border-bottom, 1px solid #ddd);
 }

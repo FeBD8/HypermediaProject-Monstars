@@ -57,7 +57,6 @@ h3 {
 }
 .flex {
   padding-bottom: 32px;
-  align-items: center;
   color: #0d2b66;
 }
 .single {
@@ -69,7 +68,7 @@ h3 {
   display: list-item;
 }
 .grid {
-  display: grid;
+  align-items: center;
 }
 @media (max-width: 600px) {
   .flex {

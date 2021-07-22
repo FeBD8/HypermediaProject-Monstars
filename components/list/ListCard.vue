@@ -89,6 +89,7 @@ img {
 }
 .listcard-container {
   grid-template-columns: 1fr 1fr;
+  margin-bottom: 40px;
 }
 @media (max-width: 1000px) {
   .listcard-container {

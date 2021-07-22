@@ -229,7 +229,7 @@ async function insertFakeData() {
     velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
     obcaecat cupiditat non proident, sunt in culpa qui officia deserunt
     mollit anim id est laborum.`,
-    linkedin: '',
+    linkedin: 'https://it.linkedin.com/',
     image:
       'https://www.moviri.com/wp-content/uploads/2020/12/matteo_fabiano2.jpg',
     working_area_id: area1.id,
@@ -240,8 +240,14 @@ async function insertFakeData() {
     role: 'Security Expert',
     intro:
       "I'm a Security Expert with a great passion in solving puzzles and I'm from Rome, Italy",
-    description: '',
-    linkedin: '',
+    description: `Lorem ipsum dolor sit amet, consectetur adipisci elit, sed do eiusmod
+    tempor incidunt ut labore et ssdolore magna aliqua. Ut enim ad minim
+    veniam, quis nostrum exercitationem ullamco laboriosam, nisi ut aliquid
+    ex ea commodi consequatur. Duis a ute irure reprehenderit in voluptate
+    velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
+    obcaecat cupiditat non proident, sunt in culpa qui officia deserunt
+    mollit anim id est laborum.`,
+    linkedin: 'https://it.linkedin.com/',
     image:
       'https://www.moviri.com/wp-content/uploads/2020/12/Camilla-Stefani-1.jpg',
     working_area_id: area1.id,
@@ -251,8 +257,14 @@ async function insertFakeData() {
     role: 'AI Expert',
     intro:
       "I'm an AI Expert and an Artificial Neural Network researcher from Venice, Italy",
-    description: '',
-    linkedin: '',
+    description: `Lorem ipsum dolor sit amet, consectetur adipisci elit, sed do eiusmod
+    tempor incidunt ut labore et ssdolore magna aliqua. Ut enim ad minim
+    veniam, quis nostrum exercitationem ullamco laboriosam, nisi ut aliquid
+    ex ea commodi consequatur. Duis a ute irure reprehenderit in voluptate
+    velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
+    obcaecat cupiditat non proident, sunt in culpa qui officia deserunt
+    mollit anim id est laborum.`,
+    linkedin: 'https://it.linkedin.com/',
     image: 'https://www.moviri.com/wp-content/uploads/2021/04/enrico-maini.jpg',
     working_area_id: area2.id,
   })
@@ -262,13 +274,51 @@ async function insertFakeData() {
     role: 'Data Scientist',
     intro:
       "I'm a Data Scientist and a Python Programmer from Sydney, Australia",
-    description: '',
-    linkedin: '',
+    description: `Lorem ipsum dolor sit amet, consectetur adipisci elit, sed do eiusmod
+    tempor incidunt ut labore et ssdolore magna aliqua. Ut enim ad minim
+    veniam, quis nostrum exercitationem ullamco laboriosam, nisi ut aliquid
+    ex ea commodi consequatur. Duis a ute irure reprehenderit in voluptate
+    velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
+    obcaecat cupiditat non proident, sunt in culpa qui officia deserunt
+    mollit anim id est laborum.`,
+    linkedin: 'https://it.linkedin.com/',
     image:
       'https://www.moviri.com/wp-content/uploads/2020/12/Fabio-Violante-1.jpg',
     working_area_id: area2.id,
   })
-  // Create 2 Products
+  const person5 = await Person.create({
+    name: 'Francesco Blu',
+    role: 'Data Analist',
+    intro: "I'm a Data Analist and a Frontend Developer from Paris, France",
+    description: `Lorem ipsum dolor sit amet, consectetur adipisci elit, sed do eiusmod
+    tempor incidunt ut labore et ssdolore magna aliqua. Ut enim ad minim
+    veniam, quis nostrum exercitationem ullamco laboriosam, nisi ut aliquid
+    ex ea commodi consequatur. Duis a ute irure reprehenderit in voluptate
+    velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
+    obcaecat cupiditat non proident, sunt in culpa qui officia deserunt
+    mollit anim id est laborum.`,
+    linkedin: 'https://it.linkedin.com/',
+    image: 'https://www.moviri.com/wp-content/uploads/2021/06/luca-forni.jpg',
+    working_area_id: area2.id,
+  })
+  const person6 = await Person.create({
+    name: 'Mattia Viola',
+    role: 'Software Engineer',
+    intro:
+      "I'm a Software Engineer and a Backend Developer from Los Angeles, USA",
+    description: `Lorem ipsum dolor sit amet, consectetur adipisci elit, sed do eiusmod
+    tempor incidunt ut labore et ssdolore magna aliqua. Ut enim ad minim
+    veniam, quis nostrum exercitationem ullamco laboriosam, nisi ut aliquid
+    ex ea commodi consequatur. Duis a ute irure reprehenderit in voluptate
+    velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
+    obcaecat cupiditat non proident, sunt in culpa qui officia deserunt
+    mollit anim id est laborum.`,
+    linkedin: 'https://it.linkedin.com/',
+    image:
+      'https://www.moviri.com/wp-content/uploads/2020/12/Matteo-Bogana.jpg',
+    working_area_id: area2.id,
+  })
+  // Create 3 Products
   const product1 = await Product.create({
     name: 'Cleafy',
     subtitle: 'At your side, fighting against online fraud.',
@@ -292,6 +342,17 @@ async function insertFakeData() {
     area_id: area2.id,
     product_manager_id: person3.id,
     reference_assistant_id: person4.id,
+  })
+  const product3 = await Product.create({
+    name: 'ContentWise',
+    subtitle: 'User Experience, Front and Center.',
+    logo: 'https://www.moviri.com/wp-content/uploads/2020/11/contentwise.png',
+    description:
+      'Compelling, relevant and adaptive customer experience is no longer a nice-to-have. ContentWise automatically manages digital storefronts and catalog metadata to create superior customer experiences.',
+    image: 'https://www.moviri.com/wp-content/uploads/2020/12/contentwise2.png',
+    area_id: area2.id,
+    product_manager_id: person5.id,
+    reference_assistant_id: person6.id,
   })
   // Create some Details for area 1
   const areaDetail1 = await AreaDetail.create({
@@ -448,6 +509,42 @@ async function insertFakeData() {
       'https://www.akamas.io/wp-content/uploads/2021/04/illustrazione1@2x.png',
     product_id: product2.id,
   })
+  // Create some Details for product 3
+  const productDetail9 = await ProductDetail.create({
+    title: 'Full-page Optimization',
+    subtitle: 'UX Engine personalizes the entire UI, non just content.',
+    description:
+      'UX Engine controls not just elements inside a predefined carousel or “widget” but it also reorganizes layout elements themselves, extending personalization to the entire page. No need to build layouts manually and to use static segmentation of your user base.',
+    image:
+      'https://www.contentwise.com/cw-media/2019/10/Full-page-Optimization.svg',
+    product_id: product3.id,
+  })
+  const productDetail10 = await ProductDetail.create({
+    title: 'AI-Assisted Editorial Control',
+    subtitle: 'The right mix of human wisdom and algorithmic automation.',
+    description:
+      'UX Engine can seamlessly blend the two approaches, enabling use cases where editorial selection recipes are enhanced by algorithmic personalization. Different curation approaches and personalization mechanisms blend and interlock for maximum flexibility.',
+    image: 'https://www.contentwise.com/cw-media/2019/10/AI-Assisted-Editorial-Control.svg',
+    product_id: product3.id,
+  })
+  const productDetail11 = await ProductDetail.create({
+    title: 'Open Connector Ecosystem',
+    subtitle: 'A platform to integrate and manage third-party applications.',
+    description:
+      'UX Engine can integrate and manage third-party applications and use cases. Capable of supporting content discovery, search and content feeds from any third party service, ContentWise is an open platform for experience management.',
+    image:
+      'https://www.contentwise.com/cw-media/2019/10/Open-Connector-Ecosystem.svg',
+    product_id: product3.id,
+  })
+  const productDetail12 = await ProductDetail.create({
+    title: 'AI-Powered UX Assistant',
+    subtitle: 'A 24/7 data concierge at your service.',
+    description:
+      'Data Insights’ UX Assistant, benchmarking historical information, highlights areas of improvement to suggest incremental changes and maximize personalization impact. Spot and act on every bit of optimization data.',
+    image:
+      'https://i0.wp.com/www.contentwise.com/cw-media/2021/02/AI-powered-UX-Assistant-620x344.png',
+    product_id: product3.id,
+  })
   // Create some Customers
   const customer1 = await Customer.create({
     image:
@@ -517,6 +614,16 @@ async function insertFakeData() {
     customer2,
     customer1,
     customer8,
+  ])
+  product3.setCustomers([
+    customer9,
+    customer8,
+    customer2,
+    customer12,
+    customer4,
+    customer10,
+    customer1,
+    customer5,
   ])
 }
 
