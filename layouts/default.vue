@@ -4,7 +4,7 @@
     <the-header :menu-options="menuOptions"></the-header>
     <div>
       <Nuxt />
-      <chat :chat-list="list" />
+      <chat :chat-list="list" :new-message="newMessage" />
     </div>
     <the-footer :menu-options="menuOptions"></the-footer>
   </div>
@@ -82,14 +82,14 @@ img {
   background-color: transparent !important;
   white-space: normal !important;
 }
-@media (max-width: 1000px) {
-  #content {
-    padding: 20px 0;
-  }
-}
 .chat {
   position: fixed;
   bottom: 20px;
   right: 20px;
+}
+@media (max-width: 1000px) {
+  #content {
+    padding: 20px 0;
+  }
 }
 </style>

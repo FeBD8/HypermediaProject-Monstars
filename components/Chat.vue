@@ -22,7 +22,10 @@
         />
       </div>
     </div>
-    <div class="button" @click="isOpen = !isOpen">
+    <div class="button" @click="openChat()">
+      <div v-if="!isOpen && newMessage" class="notification-container">
+        <img src="~/static/icons/notification.png" alt="Notification logo" />
+      </div>
       <img
         class="w3-round-xxlarge"
         src="~/static/icons/chatbot.png"
@@ -35,15 +38,13 @@
 <script>
 export default {
   props: {
-    chatList: {
-      type: Array,
-      required: true,
-    },
+    chatList: { type: Array, required: true },
+    newMessage: { type: Boolean, default: () => false },
   },
   data() {
     return {
       messageToSend: '',
-      isOpen: true,
+      isOpen: false,
     }
   },
   methods: {
@@ -60,6 +61,10 @@ export default {
       WebSocketEventBus.$emit('send', packet)
       this.messageToSend = ''
     },
+    openChat() {
+      this.isOpen = !this.isOpen
+      this.$store.commit('messageRead')
+    },
   },
 }
 </script>
@@ -73,6 +78,12 @@ export default {
   width: 80px;
   padding: 10px;
   float: right;
+}
+.notification-container {
+  width: 25px;
+  height: 25px;
+  position: absolute;
+  top: -5px;
 }
 .chat-container {
   background-color: rgb(233, 243, 232);

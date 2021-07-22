@@ -1,12 +1,16 @@
 export default {
   data() {
     const list = []
+    const newMessage = ''
     const configurationId = process.env.configurationId
-    return { list, configurationId }
+    return { list, newMessage, configurationId }
   },
   watch: {
     '$store.state.messages'() {
       this.list = this.$store.state.messages
+    },
+    '$store.state.newMessage'() {
+      this.newMessage = this.$store.state.newMessage
     },
   },
   mounted() {
