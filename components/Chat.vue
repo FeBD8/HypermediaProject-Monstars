@@ -15,6 +15,7 @@
       </div>
       <div class="chat-input-container">
         <input
+          id="input"
           v-model="messageToSend"
           class="chat-input"
           type="text"
@@ -64,6 +65,17 @@ export default {
     openChat() {
       this.isOpen = !this.isOpen
       this.$store.commit('messageRead')
+      setTimeout(() => this.updateScroll())
+    },
+    updateScroll() {
+      const container = document.getElementById('chat-window')
+      const input = document.getElementById('input')
+      if (container !== null) {
+        container.scrollTop = container.scrollHeight
+      }
+      if (input !== null) {
+        input.focus()
+      }
     },
   },
 }

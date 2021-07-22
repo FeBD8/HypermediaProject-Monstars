@@ -7,7 +7,7 @@
       ></intro-video>
     </section>
     <!-- Contact Container -->
-    <section id="content" class="w3-container w3-padding-16">
+    <section id="content" class="w3-container">
       <section-title title="CONTACTS"></section-title>
       <div class="contacts-container horizontally-centered hide-animate">
         <div>
@@ -20,7 +20,7 @@
                 <p>
                   <b>Italy HQ<br /></b>
                   <span>Via Schiaffino, 11<br /></span>
-                  <span>20158 MILANO<br /></span>
+                  <span>Milano, 20158<br /></span>
                   <span>T: +39 02 4951 7001</span>
                 </p>
               </div>
@@ -45,7 +45,7 @@
                 <p>
                   <b>Singapore<br /></b>
                   <span>5 Temasek Blvd,<br /></span>
-                  <span>Singapore 03898<br /></span>
+                  <span>Singapore, 03898<br /></span>
                   <span>T: +6 571 617 527</span>
                 </p>
               </div>
@@ -93,7 +93,8 @@
             </div>
           </section>
         </div>
-        <div id="form">
+        <div>
+          <div id="form"></div>
           <the-contact-form></the-contact-form>
         </div>
       </div>
@@ -130,12 +131,14 @@ export default {
 </script>
 
 <style scoped>
+#form {
+  margin-bottom: 100px;
+}
 .contacts-container {
-  width: 70vw;
+  width: 75vw;
   display: grid;
   grid-template-columns: 1fr 1fr;
   line-height: 1.5;
-  padding-top: 20px;
   padding-bottom: 50px;
 }
 .title {
@@ -149,7 +152,7 @@ export default {
 .offices-container,
 .email-container {
   line-height: 2;
-  padding-bottom: 15px;
+  margin-top: 80px;
 }
 a {
   color: #2867c5;

@@ -10,7 +10,7 @@
           <span>*</span>
         </label>
         <div class="input-container">
-          <input type="text" />
+          <input type="text" class="input" />
         </div>
       </div>
       <div class="label-container">
@@ -19,7 +19,7 @@
           <span>*</span>
         </label>
         <div class="input-container">
-          <input type="text" />
+          <input type="text" class="input" />
         </div>
       </div>
       <div class="label-container">
@@ -28,7 +28,7 @@
           <span>*</span>
         </label>
         <div class="input-container">
-          <input type="text" />
+          <input type="text" class="input" />
         </div>
       </div>
       <div class="label-container">
@@ -37,7 +37,7 @@
           <span>*</span>
         </label>
         <div class="input-container">
-          <input type="text" />
+          <input type="text" class="input" />
         </div>
       </div>
       <div class="label-container">
@@ -45,7 +45,7 @@
           <span>Message</span>
         </label>
         <div class="input-container">
-          <input type="text" />
+          <textarea class="input" style="max-width: 530px"></textarea>
         </div>
       </div>
       <div class="privacy">
@@ -77,7 +77,8 @@ export default {
 <style scoped>
 .form-container {
   background-color: white;
-  margin-top: 20px;
+  max-width: 85%;
+  float: right;
 }
 .title {
   font-size: 2rem;
@@ -94,7 +95,7 @@ export default {
 .label-container {
   margin: 10px;
 }
-input {
+.input {
   box-sizing: border-box;
   padding: 0 10px;
   min-height: 27px;
@@ -113,5 +114,10 @@ input {
 .w3-button:hover {
   background-color: transparent !important;
   color: #0d2b66 !important;
+}
+@media (max-width: 1000px) {
+  .form-container {
+    max-width: 100%;
+  }
 }
 </style>
