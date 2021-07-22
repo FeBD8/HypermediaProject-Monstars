@@ -5,25 +5,25 @@
         <div
           v-for="(message, messageIndex) of chatList"
           :key="`message-${messageIndex}`"
-          class="message"
+          class="chat-message"
           :class="{ sender: message.sender }"
         >
-          <div class="message-content" :class="{ sender: message.sender }">
+          <div class="chat-message-content" :class="{ sender: message.sender }">
             {{ message.content }}
           </div>
         </div>
       </div>
-      <div class="input-container">
+      <div class="chat-input-container">
         <input
           v-model="messageToSend"
-          class="input"
+          class="chat-input"
           type="text"
           @keypress.enter="sendMessage"
         />
       </div>
     </div>
-    <div class="button" @click="openChat()">
-      <div v-if="!isOpen && newMessage" class="notification-container">
+    <div class="chat-button" @click="openChat()">
+      <div v-if="!isOpen && newMessage" class="chat-notification-container">
         <img src="~/static/icons/notification.png" alt="Notification logo" />
       </div>
       <img
@@ -73,13 +73,13 @@ export default {
 .chat {
   z-index: 100;
 }
-.button {
+.chat-button {
   height: 80px;
   width: 80px;
   padding: 10px;
   float: right;
 }
-.notification-container {
+.chat-notification-container {
   width: 25px;
   height: 25px;
   position: absolute;
@@ -99,15 +99,15 @@ export default {
   overflow-y: scroll;
   max-height: calc(100% - 45px);
 }
-.message {
+.chat-message {
   display: flex;
   justify-content: flex-end;
 }
-.message.sender {
+.chat-message.sender {
   justify-content: flex-start;
   width: calc(100% - 20px);
 }
-.message-content {
+.chat-message-content {
   padding: 5px 10px;
   margin: 4px;
   background: #f3f3f3;
@@ -115,19 +115,19 @@ export default {
   border: 1px solid #041a47;
   border-radius: 15px;
 }
-.message-content.sender {
+.chat-message-content.sender {
   margin: 10px;
   background: #247a02;
   color: white;
   border: 1px solid #1b5803;
 }
-.input-container {
+.chat-input-container {
   width: 100%;
   padding: 0 10px;
   position: absolute;
   bottom: 10px;
 }
-input {
+.chat-input {
   box-sizing: border-box;
   padding: 0 10px;
   min-height: 27px;

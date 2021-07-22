@@ -1,8 +1,8 @@
 <template>
   <div class="w3-center hide-animate">
-    <h2 class="section-title">
+    <h3 class="section-title">
       <span>{{ title }}</span>
-    </h2>
+    </h3>
   </div>
 </template>
 
