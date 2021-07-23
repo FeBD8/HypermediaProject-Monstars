@@ -1,5 +1,6 @@
 <template>
-  <!-- Card for the people page. It contains an image, the full name and the role of the person. -->
+  <!-- Component of the card for the people page. It contains an image, the full name and the role of the person.
+  It is used inside the people table for each person retrieved from the DB. -->
   <div class="person-card">
     <nuxt-link class="w3-button zoom-animate" :to="path" style="width: 100%">
       <div>

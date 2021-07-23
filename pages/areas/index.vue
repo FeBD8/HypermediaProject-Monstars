@@ -1,6 +1,6 @@
 <template>
+  <!-- All areas page composed by the introduction video and the list of all the areas of the company -->
   <div>
-    <!-- Areas page composed by the introduction video and the list of all the areas of the company -->
     <section class="intro">
       <intro-video
         :intro-video="introVideo"
@@ -10,26 +10,27 @@
     <!-- Areas Container -->
     <section id="content" class="w3-container">
       <section-title title="THE AREAS"></section-title>
-      <group-list
-        :group="areas"
+      <list
+        :list-items="areas"
+        :button="true"
         alt="Abstract image of the area: "
-      ></group-list>
+      ></list>
     </section>
   </div>
 </template>
 
 <script>
-import GroupList from '~/components/list/GroupList.vue'
+import List from '~/components/list/List.vue'
 import IntroVideo from '~/components/intro/IntroVideo.vue'
 import SectionTitle from '~/components/SectionTitle.vue'
 export default {
   components: {
-    GroupList,
+    List,
     IntroVideo,
     SectionTitle,
   },
   layout: 'default',
-  // Function used for fetching the data of the products from the db for the ssr
+  // Function used for fetching the data of the areas from the db for the ssr
   async asyncData({ $axios }) {
     const { data } = await $axios.get(`${process.env.BASE_URL}/api/areas`)
     const areas = data
@@ -39,6 +40,7 @@ export default {
   },
   data() {
     return {
+      // Data used for the introduction of the page: the video and the intro text
       introVideo: {
         src: 'https://bendingspoons.com/assets/video/technologies.mp4',
         poster: 'https://bendingspoons.com/assets/video/technologies.jpg',

@@ -68,7 +68,7 @@ function defineDatabaseStructure() {
   const AreaDetail = db.define(
     'areaDetail',
     {
-      title: DataTypes.STRING,
+      name: DataTypes.STRING,
       subtitle: DataTypes.STRING,
       description: DataTypes.TEXT,
       image: DataTypes.STRING,
@@ -80,7 +80,7 @@ function defineDatabaseStructure() {
   const ProductDetail = db.define(
     'productDetail',
     {
-      title: DataTypes.STRING,
+      name: DataTypes.STRING,
       subtitle: DataTypes.STRING,
       description: DataTypes.TEXT,
       image: DataTypes.STRING,
@@ -356,7 +356,7 @@ async function insertFakeData() {
   })
   // Create some Details for area 1
   const areaDetail1 = await AreaDetail.create({
-    title: 'Continuous Monitoring & Risk Evaluation',
+    name: 'Continuous Monitoring & Risk Evaluation',
     subtitle: 'Real-time security data collection and analysis.',
     description:
       'We leverage frameworks and standards such as MITRE to design systems that collect, normalize and analyze security data in real-time. We use intelligence tools to generate insights that limit risk exposure, while reducing operational effort.',
@@ -364,7 +364,7 @@ async function insertFakeData() {
     area_id: area1.id,
   })
   const areaDetail2 = await AreaDetail.create({
-    title: 'Digital Identity for Critical Services',
+    name: 'Digital Identity for Critical Services',
     subtitle: 'Visibility and control of privileged and 3rd-party access.',
     description:
       'We provide the tools to ensure that all users and all device access activities are visible and controllable. We also support governance processes to control critical access, such as access by privileged parties or by third-parties, both to services and to data.',
@@ -372,7 +372,7 @@ async function insertFakeData() {
     area_id: area1.id,
   })
   const areaDetail3 = await AreaDetail.create({
-    title: 'Cloud Security Zero-Trust Architecture',
+    name: 'Cloud Security Zero-Trust Architecture',
     subtitle: 'Cloud and multi-cloud policies enforcement and monitoring.',
     description:
       'As companies migrate services and data to the cloud, we have a range of solutions for cloud native application and infrastructure, risk monitoring of cloud traffic and multi-cloud integrations, security enforcement, continuous monitoring for cloud native services, SASE and CASB implementation, containers and serverless security.',
@@ -380,7 +380,7 @@ async function insertFakeData() {
     area_id: area1.id,
   })
   const areaDetail4 = await AreaDetail.create({
-    title: 'Cyber & Enterprise Risk Integration',
+    name: 'Cyber & Enterprise Risk Integration',
     subtitle: 'Cybersecurity integration with ERM systems and frameworks.',
     description:
       'We offer solutions specifically designed to help enterprises meet regulatory and governance challenges, including enterprise risk management and compliance around a variety of governance frameworks.',
@@ -388,7 +388,7 @@ async function insertFakeData() {
     area_id: area1.id,
   })
   const areaDetail5 = await AreaDetail.create({
-    title: 'AI-Based Fraud & Threat Intelligence',
+    name: 'AI-Based Fraud & Threat Intelligence',
     subtitle: 'Advanced threat intelligence and fraud investigation.',
     description:
       'With our threat analysis and response orchestration solution, we create early detection systems for threats. We also create automatic orchestration response solutions that actively react to attack campaigns in a scalable way.',
@@ -397,7 +397,7 @@ async function insertFakeData() {
   })
   // Create some Details for area 2
   const areaDetail6 = await AreaDetail.create({
-    title: 'Continuous Monitoring & Risk Evaluation',
+    name: 'Continuous Monitoring & Risk Evaluation',
     subtitle: 'Real-time security data collection and analysis.',
     description:
       'We leverage frameworks and standards such as MITRE to design systems that collect, normalize and analyze security data in real-time. We use intelligence tools to generate insights that limit risk exposure, while reducing operational effort.',
@@ -406,7 +406,7 @@ async function insertFakeData() {
     area_id: area2.id,
   })
   const areaDetail7 = await AreaDetail.create({
-    title: 'Digital Identity for Critical Services',
+    name: 'Digital Identity for Critical Services',
     subtitle: 'Visibility and control of privileged and 3rd-party access.',
     description:
       'We provide the tools to ensure that all users and all device access activities are visible and controllable. We also support governance processes to control critical access, such as access by privileged parties or by third-parties, both to services and to data.',
@@ -414,7 +414,7 @@ async function insertFakeData() {
     area_id: area2.id,
   })
   const areaDetail8 = await AreaDetail.create({
-    title: 'Cloud Security Zero-Trust Architecture',
+    name: 'Cloud Security Zero-Trust Architecture',
     subtitle: 'Cloud and multi-cloud policies enforcement and monitoring.',
     description:
       'As companies migrate services and data to the cloud, we have a range of solutions for cloud native application and infrastructure, risk monitoring of cloud traffic and multi-cloud integrations, security enforcement, continuous monitoring for cloud native services, SASE and CASB implementation, containers and serverless security.',
@@ -422,7 +422,7 @@ async function insertFakeData() {
     area_id: area2.id,
   })
   const areaDetail9 = await AreaDetail.create({
-    title: 'Cyber & Enterprise Risk Integration',
+    name: 'Cyber & Enterprise Risk Integration',
     subtitle: 'Cybersecurity integration with ERM systems and frameworks.',
     description:
       'We offer solutions specifically designed to help enterprises meet regulatory and governance challenges, including enterprise risk management and compliance around a variety of governance frameworks.',
@@ -430,7 +430,7 @@ async function insertFakeData() {
     area_id: area2.id,
   })
   const areaDetail10 = await AreaDetail.create({
-    title: 'AI-Based Fraud & Threat Intelligence',
+    name: 'AI-Based Fraud & Threat Intelligence',
     subtitle: 'Advanced threat intelligence and fraud investigation.',
     description:
       'With our threat analysis and response orchestration solution, we create early detection systems for threats. We also create automatic orchestration response solutions that actively react to attack campaigns in a scalable way.',
@@ -439,7 +439,7 @@ async function insertFakeData() {
   })
   // Create some Details for product 1
   const productDetail1 = await ProductDetail.create({
-    title: 'Gather every information in one place',
+    name: 'Gather every information in one place',
     subtitle: '',
     description:
       'Cleafy’s engine collects all possible data in real-time, just on one platform. Having full visibility on all your channels increases your control in every situation. With just a few clicks, you can examine all your online users’ activities and conduct a specific quick investigation thanks to a flexible yet powerful query language.',
@@ -447,7 +447,7 @@ async function insertFakeData() {
     product_id: product1.id,
   })
   const productDetail2 = await ProductDetail.create({
-    title: 'Create detection rules',
+    name: 'Create detection rules',
     subtitle: '',
     description:
       'Cleafy’s ML algorithms indicate any behavioral, transactional, or device-related irregularity. Clear tags help you detect any anomalies for each session, as they happen. Once you identify a malicious pattern, the engine will learn how to detect that. It will then automatically recognize it whenever and wherever it encounters one.',
@@ -456,7 +456,7 @@ async function insertFakeData() {
     product_id: product1.id,
   })
   const productDetail3 = await ProductDetail.create({
-    title: 'Set-up automated responses',
+    name: 'Set-up automated responses',
     subtitle: '',
     description:
       'With automated responses precisely targeted on malicious sessions, you can respond faster to any threat, even when they strike at scale. Automated responses aren’t just faster, they’re also more precise. They stop only those in need to be stopped, without interrupting your real users.',
@@ -465,7 +465,7 @@ async function insertFakeData() {
     product_id: product1.id,
   })
   const productDetail4 = await ProductDetail.create({
-    title: 'Keep your KPIs under control',
+    name: 'Keep your KPIs under control',
     subtitle: '',
     description:
       'From your dashboard, you can observe the metrics that matter the most for you. They will let you know if something is off so that you can quickly create new rules or refine the existing ones. Having full control of the situation will reduce the stress on your team, and you can concentrate on developing new businesses. Look ahead, Cleafy has got your back.',
@@ -475,7 +475,7 @@ async function insertFakeData() {
   })
   // Create some Details for product 2
   const productDetail5 = await ProductDetail.create({
-    title: 'CLOUD EFFICIENCY',
+    name: 'CLOUD EFFICIENCY',
     subtitle: 'Optimize cloud cost AND performance',
     description:
       'Cloud cost optimization solutions and vendor tools focus on cost efficiency at the expense of real application performance. Leverage Akamas AI-powered optimization to explore the cheapest Amazon EC2, GCP, and Microsoft Azure options, while also maximizing end-to-end service performance.',
@@ -484,7 +484,7 @@ async function insertFakeData() {
     product_id: product2.id,
   })
   const productDetail6 = await ProductDetail.create({
-    title: 'BIG DATA',
+    name: 'BIG DATA',
     subtitle: 'Optimize Spark jobs at enterprise scale',
     description:
       'Configuring Spark for maximum job performance is more art than science. Job size, data volumes, and other factors impact completion time and ability to stay within execution windows. Leverage Akamas goal-driven optimization to configure Spark, AWS EMR, and Google DataProc to minimize resource usage, maximize applications performance, reduce costs and meet SLOs.',
@@ -492,7 +492,7 @@ async function insertFakeData() {
     product_id: product2.id,
   })
   const productDetail7 = await ProductDetail.create({
-    title: 'DATABASE OPTIMIZATION',
+    name: 'DATABASE OPTIMIZATION',
     subtitle: 'Automate DB tuning for higher performance',
     description:
       'MongoDB, MySQL, PostgreSQL have hundreds of parameters that impact application performance. Manual tuning is time consuming and overburdens DBAs. Leverage Akamas autonomous optimization to maximize application throughput, while reducing the cost of database licenses and cloud services such as Amazon RDS, Microsoft Azure Database, Google Cloud SQL.',
@@ -501,7 +501,7 @@ async function insertFakeData() {
     product_id: product2.id,
   })
   const productDetail8 = await ProductDetail.create({
-    title: 'JAVA TUNING',
+    name: 'JAVA TUNING',
     subtitle: 'Tame the JVM',
     description:
       'JVM performance optimization challenges even the most experienced Java experts. Manually tuning hundreds of JVM parameters is time consuming and does not ensure adequate response times or minimum resource usage. Leverage Akamas out-of-the-box JVM optimization pack to automatically maximize the performance and resilience of your Java applications.',
@@ -511,7 +511,7 @@ async function insertFakeData() {
   })
   // Create some Details for product 3
   const productDetail9 = await ProductDetail.create({
-    title: 'Full-page Optimization',
+    name: 'Full-page Optimization',
     subtitle: 'UX Engine personalizes the entire UI, non just content.',
     description:
       'UX Engine controls not just elements inside a predefined carousel or “widget” but it also reorganizes layout elements themselves, extending personalization to the entire page. No need to build layouts manually and to use static segmentation of your user base.',
@@ -520,7 +520,7 @@ async function insertFakeData() {
     product_id: product3.id,
   })
   const productDetail10 = await ProductDetail.create({
-    title: 'AI-Assisted Editorial Control',
+    name: 'AI-Assisted Editorial Control',
     subtitle: 'The right mix of human wisdom and algorithmic automation.',
     description:
       'UX Engine can seamlessly blend the two approaches, enabling use cases where editorial selection recipes are enhanced by algorithmic personalization. Different curation approaches and personalization mechanisms blend and interlock for maximum flexibility.',
@@ -528,7 +528,7 @@ async function insertFakeData() {
     product_id: product3.id,
   })
   const productDetail11 = await ProductDetail.create({
-    title: 'Open Connector Ecosystem',
+    name: 'Open Connector Ecosystem',
     subtitle: 'A platform to integrate and manage third-party applications.',
     description:
       'UX Engine can integrate and manage third-party applications and use cases. Capable of supporting content discovery, search and content feeds from any third party service, ContentWise is an open platform for experience management.',
@@ -537,7 +537,7 @@ async function insertFakeData() {
     product_id: product3.id,
   })
   const productDetail12 = await ProductDetail.create({
-    title: 'AI-Powered UX Assistant',
+    name: 'AI-Powered UX Assistant',
     subtitle: 'A 24/7 data concierge at your service.',
     description:
       'Data Insights’ UX Assistant, benchmarking historical information, highlights areas of improvement to suggest incremental changes and maximize personalization impact. Spot and act on every bit of optimization data.',

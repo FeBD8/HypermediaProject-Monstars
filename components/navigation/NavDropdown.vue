@@ -1,6 +1,8 @@
 <template>
-  <!-- Dropdown button with the contents used in the navigation bar 
-  In the website is used for the Areas button s-->
+  <!-- Component of the dropdown content used in the navigation bar for large screen devices.
+  It is composed of navcards if the dropdown props is set to true like in the header where the 
+  dropdown menu is shown only on hover, otherwise it is composed of navbuttons like in the footer. 
+  In the website is used for the specific Areas. -->
   <ul
     :class="{ 'w3-dropdown-content': dropdown, shadow: dropdown }"
     class="w3-ul w3-animate-opacity"
@@ -17,7 +19,7 @@
         v-else
         :name="item.name"
         :path="path + '/' + item.id"
-        class="font-montserrat margin-top"
+        class="font-montserrat"
       >
       </nav-button>
     </li>

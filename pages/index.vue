@@ -1,4 +1,5 @@
 <template>
+  <!-- Home page composed of the introduction video -->
   <div>
     <section class="intro">
       <intro-video

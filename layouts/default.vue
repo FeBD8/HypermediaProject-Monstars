@@ -1,5 +1,5 @@
 <template>
-  <!-- Default layout composed by the header, the main content and the footer -->
+  <!-- Default layout composed of the header, the main content, the chatbot and the footer. -->
   <div>
     <the-header :menu-options="menuOptions"></the-header>
     <div>

@@ -1,4 +1,6 @@
 <template>
+  <!-- Component of the navigation bar on small screen devices. It is composed of navigation buttons displayed properly 
+  for devices with small screen. It is used both in the header and in the footer. -->
   <nav id="navSmallScreen" class="navbar-small w3-hide-large">
     <ul class="w3-ul">
       <li v-for="(item, itemIndex) of options" :key="'menu-item-' + itemIndex">

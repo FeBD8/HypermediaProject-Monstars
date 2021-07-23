@@ -60,15 +60,12 @@ export default {
     cardStyle: { type: Object, default: () => Object() },
   },
   computed: {
+    // Style for the paragraph
     textStyle() {
       return {
-        '--title-color': this.cardStyle.titleColor ?? 'black',
-        '--title-size': '2.2rem',
-        '--title-responsive-size': '2rem',
-        '--subtitle-color': this.cardStyle.subtitleColor ?? 'black',
-        '--subtitle-size': '1.4rem',
-        '--description-color': this.cardStyle.descriptionColor ?? 'black',
-        '--description-size': '1.1rem',
+        '--title-color': this.cardStyle.titleColor ?? '',
+        '--subtitle-color': this.cardStyle.subtitleColor ?? '',
+        '--description-color': this.cardStyle.descriptionColor ?? '',
       }
     },
   },

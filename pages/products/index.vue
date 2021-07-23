@@ -1,6 +1,6 @@
 <template>
+  <!-- All products page composed of the introduction video and the list of all the products -->
   <div>
-    <!-- Products page composed by the introduction video and the list of all the products -->
     <section class="intro">
       <intro-video
         :intro-video="introVideo"
@@ -10,21 +10,22 @@
     <!-- Products Container -->
     <section id="content" class="w3-container">
       <section-title title="OUR PRODUCTS"></section-title>
-      <group-list
-        :group="products"
+      <list
+        :list-items="products"
+        :button="true"
         alt="Screenshot of the interface of "
-      ></group-list>
+      ></list>
     </section>
   </div>
 </template>
 
 <script>
-import GroupList from '~/components/list/GroupList.vue'
+import List from '~/components/list/List.vue'
 import IntroVideo from '~/components/intro/IntroVideo.vue'
 import SectionTitle from '~/components/SectionTitle.vue'
 export default {
   components: {
-    GroupList,
+    List,
     IntroVideo,
     SectionTitle,
   },
@@ -39,6 +40,7 @@ export default {
   },
   data() {
     return {
+      // Data used for the introduction of the page: the video and the intro text
       introVideo: {
         src: 'https://bendingspoons.com/assets/video/products.mp4',
         poster: 'https://bendingspoons.com/assets/video/products.jpg',

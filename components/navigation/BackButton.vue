@@ -1,5 +1,5 @@
 <template>
-  <!-- Back button. If the user navigates between pages, the back button brings the user to the last 
+  <!-- Component for the back button. If the user navigates between pages, the back button brings the user to the last 
     visited page, otherwise it brings the user to the topic page -->
   <div>
     <div class="back-button">
@@ -22,6 +22,7 @@
 <script>
 export default {
   computed: {
+    // This methods computes the base path in case there is no a previous visited page
     basePath() {
       return '/' + this.$route.path.match(/\w+/)[0]
     },

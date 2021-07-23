@@ -1,5 +1,5 @@
 <template>
-  <!-- It contains the socials buttons and links of the company -->
+  <!-- It contains the socials buttons and links of the company. -->
   <div class="icons-container">
     <div class="link">
       <a href="https://www.facebook.com/">

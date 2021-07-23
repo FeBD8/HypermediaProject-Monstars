@@ -1,4 +1,7 @@
 <template>
+  <!-- Component of the chatbot. It has an icon image that is the button used in order to 
+  open and close it, an image for the notification and the chat window that displays all the
+  messages that are retrieved from the store. -->
   <div class="chat">
     <div v-if="isOpen" class="chat-container">
       <div id="chat-window" class="chat-window">
@@ -49,6 +52,7 @@ export default {
     }
   },
   methods: {
+    // Methods used for sending messages
     sendMessage() {
       if (this.messageToSend === '') {
         return
@@ -65,11 +69,13 @@ export default {
       WebSocketEventBus.$emit('send', packet)
       this.messageToSend = ''
     },
+    // Methods used for opening the chat and commit to the store that the messages have been read
     openChat() {
       this.isOpen = !this.isOpen
       this.$store.commit('messageRead')
       setTimeout(() => this.updateScroll())
     },
+    // Methods used for scrolling down to the last message the view inside the chat window
     updateScroll() {
       const container = document.getElementById('chat-window')
       const input = document.getElementById('input')

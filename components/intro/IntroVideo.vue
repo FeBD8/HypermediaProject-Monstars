@@ -1,6 +1,7 @@
 <template>
   <!-- Component for the introduction video of all the main pages.
-  It contains a video, a title, a subtitle and an arrow that bring the user to the main content of the page -->
+  It contains a video, the location that indicates the current page, an intro-text component
+  for the indroductory text and an arrow button that bring the user to the main content of the page -->
   <div class="container">
     <div class="video-container w3-animate-opacity">
       <video muted="" autoplay="" loop="" :poster="introVideo.poster">
@@ -12,10 +13,12 @@
     <location class="horizontally-centered" style="color: white"></location>
     <intro-text
       v-if="introText"
-      id="text-container"
-      :intro-text="introText"
-      :intro-text-style="textStyle"
-    ></intro-text>
+      id="text"
+      :title="introText.title"
+      :subtitle="introText.subtitle"
+      :style="textStyle"
+    >
+    </intro-text>
     <div id="scrollIcon" class="scrolldown-icon w3-hide-small">
       <button class="w3-button" @click="scrollToContent()">
         <img src="~/static/icons/arrow.png" alt="Scrolldown icon" />
@@ -36,19 +39,20 @@ export default {
     introVideo: { type: Object, default: () => {} },
     introText: { type: Object, default: () => {} },
   },
-  data() {
-    return {
-      textStyle: {
-        titleWidth: '66.6%',
-        titleAlign: 'left',
-        subtitleWidth: '66.6%',
-        subtitleColor: '#ffffffe6',
-        subtitleSize: '1.2rem',
-        subtitleResponsiveSize: '1.2rem',
-        subtitlePosition: 'right',
-        subtitleAlign: 'left',
-      },
-    }
+  computed: {
+    // Style of the introductory text
+    textStyle() {
+      return {
+        '--title-width': '66.6%',
+        '--title-align': 'left',
+        '--subtitle-width': '66.6%',
+        '--subtitle-color': '#ffffffe6',
+        '--subtitle-size': '1.2rem',
+        '--subtitle-responsive-size': '1.2rem',
+        '--subtitle-position': 'right',
+        '--subtitle-align': 'left',
+      }
+    },
   },
   // Add the listener when resize in order to hide the arrow when the text overlaps
   mounted() {
@@ -73,7 +77,7 @@ export default {
     },
     // This function hide the arrow for scrolling to the content when the text overlaps
     showArrow() {
-      const text = document.getElementById('text-container')
+      const text = document.getElementById('text')
       const arrow = document.getElementById('scrollIcon')
       if (text !== null && arrow !== null) {
         if (

@@ -1,7 +1,10 @@
 <template>
+  <!-- Component for the table of people. It is used inside the people page and it is composed of a series of 
+  person cards. It has the props peoplePerRow that is used to specify how many people are shown for each single row. -->
   <div class="team-container w3-padding-16 horizontally-centered">
     <div>
-      <!-- In the table it creates 1 row for each triplet of people and for each row puts inside 3 people -->
+      <!-- In the table it creates 1 new row every time one is compleated and for each row puts inside 
+      the number of items specified inside the props peoplePerRow. -->
       <div
         v-for="(i, iIndex) in rowCount"
         :key="'row-' + iIndex"
@@ -19,7 +22,7 @@
           :image="person.image"
           :role="person.role"
           :path="$route.path + '/' + person.id"
-          :style="cardStyle"
+          :style="personCardStyle"
         >
         </person-card>
       </div>
@@ -43,7 +46,8 @@ export default {
     rowCount() {
       return Math.ceil(this.people.length / this.peoplePerRow)
     },
-    cardStyle() {
+    // Style fot the person card
+    personCardStyle() {
       return {
         '--card-width': 100 / this.peoplePerRow + '%',
       }

@@ -1,5 +1,6 @@
 <template>
-  <!-- Slideshow container -->
+  <!-- Slideshow component used inside the products in order to show the customers. 
+  It automatically changes its content after a timeout is fired. -->
   <div class="slideshow-container hide-animate">
     <!-- Images are divided in group of itemPerDiv (=4) and they are switched automatically after a timer is fired -->
     <div

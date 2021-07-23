@@ -1,5 +1,5 @@
 <template>
-  <!-- People page composed by the introduction video and the team container with all the people -->
+  <!-- All people page composed by the introduction video and the team container with all the people -->
   <div>
     <section class="intro">
       <intro-video
@@ -33,6 +33,7 @@ export default {
     }
   },
   data() {
+    // Data used for the introduction of the page: the video and the intro text
     return {
       introVideo: {
         src: 'https://bendingspoons.com/assets/video/team.mp4',

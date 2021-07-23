@@ -1,4 +1,7 @@
 <template>
+  <!-- Page of a specific person. The content is dynamically generated and retrieved from the DB. 
+  It is composed of the image of the person, the fullname and his/her description.
+  It contains also the transition links to the related topics. -->
   <div>
     <div class="background-color">
       <h1 class="title w3-center animation-in" style="color: white">
@@ -78,6 +81,7 @@ export default {
     BackButton,
   },
   layout: 'default',
+  // Function used for fetching the data of the specific person from the db for the ssr
   async asyncData({ $axios, route }) {
     const { id } = route.params
     const { data } = await $axios.get(
@@ -89,6 +93,7 @@ export default {
     }
   },
   computed: {
+    // Style of the paragraph of the person description
     textStyle() {
       return {
         '--title-color': '#041a47',

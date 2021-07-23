@@ -1,11 +1,12 @@
 <template>
-  <!-- The footer of the website with the method for responsiveness -->
+  <!-- The footer component of the website. It is divided into 3 main sections:
+  the logo section, the navbar section and the socials section. -->
   <footer id="bottomBar" class="w3-bar">
     <div class="w3-bar-item horizontally-centered">
       <!-- Logo section with address infos -->
       <section
         id="logo"
-        :class="{ 'horizontally-centered': arrangeElems }"
+        :class="{ 'horizontally-centered': centerElements }"
         class="w3-bar-item"
       >
         <ul class="w3-ul w3-bar-item">
@@ -26,7 +27,7 @@
         :dropdown="false"
         :options="menuOptions"
         :dropdown-style="dropdownStyle"
-        :class="{ 'horizontally-centered': arrangeElems }"
+        :class="{ 'horizontally-centered': centerElements }"
         class="w3-bar-item"
         :style="navBarLargeStyle"
       ></navbar-large>
@@ -40,7 +41,7 @@
       <!-- Social section -->
       <section
         id="social"
-        :class="{ 'horizontally-centered': arrangeElems }"
+        :class="{ 'horizontally-centered': centerElements }"
         class="w3-bar-item"
       >
         <ul class="w3-ul">
@@ -73,16 +74,18 @@ export default {
   },
   data() {
     return {
+      // Style for the dropdown content
       dropdownStyle: {
         border: '0px',
         fontSize: '1rem',
         paddingTop: '12px',
       },
-      // If true the elements are centered
-      arrangeElems: false,
+      // Used for responsiveness: if it is true the elements are centered
+      centerElements: false,
     }
   },
   computed: {
+    // Style for the navbar on small screen devices
     navBarSmallStyle() {
       return {
         '--border-color': '#ffffff70',
@@ -94,6 +97,7 @@ export default {
         '--bar-opacity': '1',
       }
     },
+    // Style for the navbar on large screen devices
     navBarLargeStyle() {
       return {
         '--text-color': 'white',
@@ -102,6 +106,7 @@ export default {
       }
     },
   },
+  // Listener on resize event in order to arrange the elements in the correct way
   mounted() {
     this.changeElemsArrangement()
     window.addEventListener('resize', this.changeElemsArrangement)
@@ -110,7 +115,8 @@ export default {
     window.removeEventListener('resize', this.changeElemsArrangement)
   },
   methods: {
-    // Method used for the responsiveness of the footer and the arrangement of its elements
+    /* Method used for the responsiveness of the footer and the arrangement of its elements.
+    It sets the centerElements data field used by the html components. */
     changeElemsArrangement() {
       const logo = document.getElementById('logo')
       const navLinkLarge = document.getElementById('navLinkLarge')
@@ -123,9 +129,9 @@ export default {
         social.getBoundingClientRect().width +
         200
       if (window.innerWidth <= barWidth) {
-        this.arrangeElems = true
+        this.centerElements = true
       } else if (window.innerWidth > 1001) {
-        this.arrangeElems = false
+        this.centerElements = false
       }
     },
   },

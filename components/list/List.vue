@@ -1,11 +1,14 @@
 <template>
+  <!-- Component of an item list: it is composed of a series of listcard.
+It is used inside the dynamic pages where the items are retrieved from the DB. -->
   <div class="w3-padding-16">
     <div
-      v-for="(item, itemIndex) in group"
+      v-for="(item, itemIndex) in listItems"
       :key="'item-' + itemIndex"
-      class="margin-bottom hide-animate"
+      class="hide-animate"
+      style="margin-bottom: 25px"
     >
-      <div :class="{ background: itemIndex % 2 }">
+      <div :class="{ 'background-alternate': itemIndex % 2 }">
         <list-card
           :num="item.id"
           :title="item.name"
@@ -15,7 +18,7 @@
           :alt="alt + item.name"
           :description="item.description"
           :button-name="'Go to ' + item.name"
-          :button-path="$route.path + '/' + item.id"
+          :button-path="button ? $route.path + '/' + item.id : ''"
           :card-style="cardStyle"
         >
         </list-card>
@@ -27,23 +30,17 @@
 <script>
 export default {
   props: {
-    group: { type: Array, default: () => [] },
+    listItems: { type: Array, default: () => [] },
+    button: { type: Boolean, default: () => false },
     alt: { type: String, default: () => '' },
-  },
-  data() {
-    return {
-      cardStyle: {
-        titleColor: '#1b65a6',
-        subtitleColor: '#5c74a0',
-      },
-    }
+    cardStyle: { type: Object, default: () => {} },
   },
 }
 </script>
 
 <style scoped>
-.background {
-  background-image: linear-gradient(180deg, #f7f8fc 0%, #f0f1f8 100%);
+.background-alternate {
+  background-color: var(--background-alternate-color, #f7f8fc);
 }
 .listcard-container {
   max-width: 70vw;

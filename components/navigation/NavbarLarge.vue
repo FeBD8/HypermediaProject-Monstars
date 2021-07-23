@@ -1,4 +1,8 @@
 <template>
+  <!-- Component of the navigation bar on large screen devices. It is composed of navigation buttons and 
+  dropdown menus based on the menuOptions defined inside the default layout. If the dropdown props is true, 
+  the content of the dropdown menu is shown only on hover like in the header while if it is false the content is 
+  always visible like in the footer. -->
   <nav class="w3-hide-small w3-hide-medium">
     <ul class="w3-bar-item">
       <li
@@ -40,6 +44,7 @@ export default {
     dropdownStyle: { type: Object, default: () => Object() },
   },
   computed: {
+    // Style of the dropdown content
     dropStyle() {
       return {
         '--border-bottom': this.dropdownStyle.border ?? '',

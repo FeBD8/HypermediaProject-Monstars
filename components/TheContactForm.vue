@@ -1,4 +1,6 @@
 <template>
+  <!-- Contact form container used inside the contact page. It contains some input fields and 
+  a fake button for the submission that only opens an alert. -->
   <section class="shadow form-container">
     <div class="text">
       <h4 class="title">
@@ -9,44 +11,34 @@
           <span>Full name</span>
           <span>*</span>
         </label>
-        <div class="input-container">
-          <input type="text" class="input" />
-        </div>
+        <input type="text" class="input" />
+        <div class="input-container"></div>
       </div>
       <div class="label-container">
         <label>
           <span>Work email</span>
           <span>*</span>
-        </label>
-        <div class="input-container">
           <input type="text" class="input" />
-        </div>
+        </label>
       </div>
       <div class="label-container">
         <label>
           <span>Company name</span>
-          <span>*</span>
+          <span>*</span><input type="text" class="input" />
         </label>
-        <div class="input-container">
-          <input type="text" class="input" />
-        </div>
       </div>
       <div class="label-container">
         <label>
           <span>Country</span>
           <span>*</span>
-        </label>
-        <div class="input-container">
           <input type="text" class="input" />
-        </div>
+        </label>
       </div>
       <div class="label-container">
         <label>
           <span>Message</span>
-        </label>
-        <div class="input-container">
           <textarea class="input" style="max-width: 530px"></textarea>
-        </div>
+        </label>
       </div>
       <div class="privacy">
         <p>
@@ -67,6 +59,7 @@
 <script>
 export default {
   methods: {
+    // Fake methos for submission
     submit() {
       alert('Form submitted!')
     },
@@ -87,13 +80,9 @@ export default {
 .text {
   padding: 20px;
 }
-.input-container {
-  width: 100%;
-  padding: 10px 0;
-}
 .privacy,
 .label-container {
-  margin: 10px;
+  margin: 25px;
 }
 .input {
   box-sizing: border-box;

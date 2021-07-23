@@ -1,20 +1,27 @@
 <template>
+  <!-- Page of a specific area. The content is dynamically generated and retrieved from the DB. 
+  It is composed of an introduction text, the details of the area and the transition links to 
+  the related topics. -->
   <div>
     <section class="area-description">
+      <!-- Introduction of the page. -->
       <div class="background">
         <intro-text
-          :intro-text="introText"
-          :intro-text-style="introTextStyle"
+          :title="area.name"
+          :subtitle="area.subtitle"
+          :description="area.description"
+          :style="introTextStyle"
         ></intro-text>
       </div>
       <location :name="area.name"></location>
       <!-- Details Container -->
       <div class="w3-container w3-padding-top-24">
         <section-title :title="area.name + ' SOLUTIONS'"></section-title>
-        <detail-list
-          :details="area.area_details"
-          :card-style="cardStyle"
-        ></detail-list>
+        <list
+          :list-items="area.area_details"
+          alt="Abstract image of the "
+          :style="{ '--background-alternate-color': 'trasparent' }"
+        ></list>
       </div>
     </section>
     <!-- Transition links -->
@@ -47,7 +54,7 @@
 <script>
 import Location from '~/components/intro/Location.vue'
 import SectionTitle from '~/components/SectionTitle.vue'
-import DetailList from '~/components/list/DetailList.vue'
+import List from '~/components/list/List.vue'
 import IntroText from '~/components/intro/IntroText.vue'
 import TransitionLink from '~/components/navigation/TransitionLink.vue'
 import BackButton from '~/components/navigation/BackButton.vue'
@@ -56,34 +63,27 @@ export default {
     Location,
     IntroText,
     SectionTitle,
-    DetailList,
+    List,
     TransitionLink,
     BackButton,
   },
   layout: 'default',
+  // Function used for fetching the data of the specific area from the db for the ssr
   async asyncData({ $axios, route }) {
     const { id } = route.params
     const { data } = await $axios.get(`${process.env.BASE_URL}/api/areas/${id}`)
     const area = data
     return {
-      introText: {
-        title: area.name,
-        subtitle: area.subtitle,
-        description: area.description,
-      },
       area,
     }
   },
-  data() {
-    return {
-      cardStyle: {
-        titleColor: '#1b65a6',
-        subtitleColor: '#5c74a0',
-      },
-      introTextStyle: {
-        subtitleColor: '#1d90eb',
-      },
-    }
+  computed: {
+    // Style of the introduction text
+    introTextStyle() {
+      return {
+        '--subtitle-color': '#1d90eb',
+      }
+    },
   },
   mounted() {
     this.$animateComponents()
@@ -108,7 +108,6 @@ export default {
 .text-container {
   padding-top: 15vh;
   padding-bottom: 10vh;
-  width: 50vw;
 }
 @media (max-width: 1000px) {
   .links-container {

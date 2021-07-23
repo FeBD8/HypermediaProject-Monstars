@@ -1,5 +1,5 @@
 <template>
-  <!-- Navigation button for the header and the footer -->
+  <!-- Navigation button used for navigation in the header, the footer and for the transition links. -->
   <nuxt-link class="w3-button" :to="path" @click.native="scrollUp()">
     <span class="hover">{{ name }}</span>
   </nuxt-link>
@@ -12,6 +12,8 @@ export default {
     path: { type: String, default: () => '' },
   },
   methods: {
+    /* This methods allows to scroll the page up to the top if the user clicks 
+    the navbutton of the currently open page. */
     scrollUp() {
       if (this.$route.name === this.name.toLowerCase()) {
         this.$scrollToTop()

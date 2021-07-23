@@ -1,16 +1,17 @@
 <template>
-  <!-- Paragraph component composed by a title or a logo image, a subtitle and a description -->
+  <!-- Paragraph component composed by a title or a logo image, a subtitle and a description. 
+  It is used as the text part inside the listcard. -->
   <div class="text-container">
     <div class="w3-row">
-      <h1 v-if="!logo" class="title">
+      <h4 v-if="!logo" class="title font-staatliches">
         <span>{{ title }}</span>
-      </h1>
+      </h4>
       <div v-else class="logo">
         <img class="filter" :src="logo" :alt="'Logo' + title" />
       </div>
-      <h2 v-if="subtitle" class="font-montserrat subtitle">
+      <h5 v-if="subtitle" class="subtitle">
         <b>{{ subtitle }}</b>
-      </h2>
+      </h5>
       <p v-if="description" class="description">{{ description }}</p>
     </div>
   </div>
@@ -29,39 +30,24 @@ export default {
 
 <style scoped>
 .title {
-  color: var(--title-color, black);
-  width: var(--title-width);
-  float: var(--title-position);
-  text-align: var(--title-align);
-  font-size: var(--title-size, 3.2rem);
+  color: var(--title-color, #47546b);
+  font-size: 2.2rem;
 }
 .subtitle {
-  color: var(--subtitle-color, black);
-  width: var(--subtitle-width);
-  float: var(--subtitle-position);
-  text-align: var(--subtitle-align);
-  font-size: var(--subtitle-size, 1.6rem);
+  color: var(--subtitle-color, #5c74a0);
+  font-size: 1.4rem;
 }
 .description {
   color: var(--description-color, black);
-  width: var(--description-width);
-  float: var(--description-position);
-  text-align: var(--description-align);
-  font-size: var(--description-size, 1.2rem);
+  font-size: 1.1rem;
 }
 .logo {
-  margin: var(--logo-margin);
-  text-align: var(--logo-align);
   padding-top: 15px;
   padding-bottom: 15px;
 }
 .logo > img {
   max-width: 250px !important;
   width: auto !important;
-}
-.filter {
-  filter: var(--logo-filter);
-  -webkit-filter: var(--logo-filter);
 }
 .text-container {
   position: relative;
@@ -70,9 +56,6 @@ export default {
   .logo > img {
     max-width: 150px !important;
   }
-  .title {
-    text-align: var(--title-responsive600-align) !important;
-  }
 }
 @media (max-width: 1000px) {
   .text-container {
@@ -80,13 +63,11 @@ export default {
   }
   .title {
     width: 100%;
-    text-align: var(--title-responsive-align);
-    font-size: var(--title-responsive-size, 2.3rem);
+    font-size: 2rem;
   }
   .subtitle {
     width: 100%;
-    text-align: var(--subtitle-responsive-align);
-    font-size: var(--subtitle-responsive-size, 1.5rem);
+    font-size: 1.5rem;
   }
   .description {
     width: 100%;

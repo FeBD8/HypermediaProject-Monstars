@@ -1,6 +1,6 @@
 <template>
-  <!-- Card for the dropdown navigation link, with image and name 
-  It is used in for the areas and their shortcut image -->
+  <!-- Component of the card for the dropdown navigation link, with image and name 
+  It is used for the areas and their shortcut image -->
   <div class="w3-display-container">
     <nuxt-link class="w3-button w3-large card-button" :to="path">
       <img :src="shortcutImage" alt="Logo area" />

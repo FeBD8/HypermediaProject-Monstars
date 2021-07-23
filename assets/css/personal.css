@@ -1,3 +1,4 @@
+/* Personal CSS file the styles of the Monstars website */
 header,
 footer,
 h1,
@@ -26,13 +27,6 @@ h6 {
 }
 .font-montserrat {
   font-family: 'Montserrat', 'sans-serif' !important;
-}
-.section-title {
-  font-size: 3rem;
-}
-.link {
-  font-size: 1.5rem;
-  text-decoration: underline;
 }
 .intro {
   min-height: 100vh;
@@ -68,27 +62,8 @@ h6 {
 .border-top {
   border-top: 1px solid #ffffff70 !important;
 }
-.zero-padding-top {
-  padding-top: 0 !important;
-}
-.margin-separator {
-  margin-top: 40px;
-  margin-bottom: 40px;
-}
-.margin-bottom {
-  margin-bottom: 25px;
-}
-.margin-top {
-  margin-top: 15px;
-}
 .shadow {
   box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.2), 0 4px 20px 0 rgba(0, 0, 0, 0.19);
-}
-.block {
-  display: block !important;
-  visibility: hidden !important;
-  opacity: 0 !important;
-  transition: visibility 0s linear 0.5s, opacity 0.5s linear;
 }
 .fade-in {
   visibility: visible !important;
@@ -149,9 +124,6 @@ h6 {
   html,
   body {
     font-size: 13px;
-  }
-  .section-title {
-    font-size: 2.5rem;
   }
   .horizontally-centered {
     display: block;

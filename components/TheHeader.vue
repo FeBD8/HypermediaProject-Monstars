@@ -1,6 +1,6 @@
 <template>
   <!-- Header of the page of the company, with logo and the navigation bar component.
-  It contains both the navbar for large and small screen -->
+  It contains both the navbar for large and small screen devices. -->
   <header class="w3-top">
     <section
       id="topBar"
@@ -12,13 +12,13 @@
         <div class="w3-bar-item">
           <the-logo @click.native="$closeNav()"></the-logo>
         </div>
-        <!-- Navigation bar on large screens -->
+        <!-- Navigation bar on large screen devices. -->
         <navbar-large
           :options="menuOptions"
           :style="top ? barStyleTop : null"
           class="w3-bar-item"
         ></navbar-large>
-        <!-- Button for showing and hiding the navbar on small screen devices -->
+        <!-- Button for showing and hiding the navbar on small screen devices. -->
         <button
           class="w3-bar-item w3-button menu-button w3-hide-large w3-ripple"
           @click="$openNav(), navBarSmallScreenScroll()"
@@ -34,7 +34,7 @@
         </button>
       </div>
     </section>
-    <!-- Navigation bar on small screens -->
+    <!-- Navigation bar on small screen devices. -->
     <navbar-small :options="menuOptions"></navbar-small>
   </header>
 </template>
@@ -65,6 +65,7 @@ export default {
       }
     },
   },
+  // Listener for scroll and resize event
   mounted() {
     this.navBarOnScroll()
     window.addEventListener('scroll', this.navBarOnScroll)
@@ -76,7 +77,7 @@ export default {
   },
   methods: {
     /* This function is used for showing and hiding the header when the footer is reached and in order to 
-    update the top value for the conditional styling */
+    update the top value for the conditional styling. */
     navBarOnScroll() {
       const header = document.getElementById('topBar')
       const footer = document.getElementById('bottomBar')

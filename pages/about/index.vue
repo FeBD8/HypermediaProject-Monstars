@@ -1,4 +1,5 @@
 <template>
+  <!-- About page. The content is statically generated. -->
   <div>
     <section class="intro">
       <intro-video
@@ -80,27 +81,23 @@
             subtitle="Gartner Cool Vendor 2021 per Software Engineering Technology"
             description="We are thrilled to be one of the three solutions worldwide selected by Gartner to emerge as Software Engineering Technology."
             image="https://website.test.mia-platform.eu/files/download/638bb6f9-8c95-4c6e-9bb4-430d402b3210.png"
-            :card-style="cardStyle"
           >
             <paragraph
               subtitle="Technology"
               description="We are partners of the best technology standards in the world: collaboration and innovation guarantee cutting-edge and unique expertise on the market that we bring to every project we create."
-              :style="textStyle"
             ></paragraph>
             <paragraph
               subtitle="FT 1000 Europe’s Fastest Growing Companies"
               description="We are one of the 1,000 fastest growing companies in Europe, according to the annual Financial Times ranking."
-              :style="textStyle"
             ></paragraph>
             <paragraph
               subtitle="ISO 9001"
               description="We are equipped with a Quality Management System based on the international UNI EN ISO 9001 standard."
-              :style="textStyle"
             ></paragraph>
           </list-card>
         </div>
       </section>
-      <section class="background-gradient text-container margin-separator">
+      <section class="background-gradient margin-separator">
         <div
           class="
             intro-about-container
@@ -165,7 +162,6 @@
           image="https://www.moviri.com/wp-content/uploads/2020/12/careers-screen2@2x.png"
           button-path="/contact"
           button-name="Contact Us"
-          :card-style="cardStyle"
         >
         </list-card>
       </section>
@@ -191,20 +187,7 @@ export default {
         subtitle:
           'Monstars is founded on values we all share and are ready to stand for. They bring us together well beyond our current products and technologies. They’ve defined our identity since the beginning, and they’ll continue to do so, no matter how our business evolves.',
       },
-      cardStyle: {
-        titleColor: '#47546b',
-        subtitleColor: '#5c74a0',
-      },
     }
-  },
-  computed: {
-    textStyle() {
-      return {
-        '--subtitle-color': '#5c74a0',
-        '--subtitle-size': '1.4rem',
-        '--description-size': '1.1rem',
-      }
-    },
   },
   mounted() {
     this.$animateComponents()
@@ -253,6 +236,10 @@ strong {
 }
 h5 {
   color: cornflowerblue !important;
+}
+.margin-separator {
+  margin-top: 40px;
+  margin-bottom: 40px;
 }
 @media (max-width: 1000px) {
   .row {

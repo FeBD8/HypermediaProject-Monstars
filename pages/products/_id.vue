@@ -1,10 +1,15 @@
 <template>
+  <!-- Page of a specific product. The content is dynamically generated and retrieved from the DB. 
+  It is composed of an introduction text, the details of the product, a slideshow with the customers
+  and the transition links to the related topics. -->
   <div>
     <section class="product-description">
       <div class="background">
         <intro-text
-          :intro-text="introText"
-          :intro-text-style="introTextStyle"
+          :logo="product.logo"
+          :subtitle="product.subtitle"
+          :description="product.description"
+          :style="introTextStyle"
         ></intro-text>
         <location :name="product.name" class="location" style="color: white">
         </location>
@@ -15,10 +20,12 @@
           :title="'THE ' + product.name + ' SUITE'"
           :style="{ '--title-color': 'white' }"
         ></section-title>
-        <detail-list
-          :details="product.product_details"
+        <list
+          :list-items="product.product_details"
+          alt="Abstract image of the "
           :card-style="cardStyle"
-        ></detail-list>
+          :style="{ '--background-alternate-color': 'trasparent' }"
+        ></list>
       </div>
     </section>
     <!-- Customers Container -->
@@ -57,7 +64,7 @@
 import Location from '~/components/intro/Location.vue'
 import SectionTitle from '~/components/SectionTitle.vue'
 import Slideshow from '~/components/Slideshow.vue'
-import DetailList from '~/components/list/DetailList.vue'
+import List from '~/components/list/List.vue'
 import IntroText from '~/components/intro/IntroText.vue'
 import TransitionLink from '~/components/navigation/TransitionLink.vue'
 import BackButton from '~/components/navigation/BackButton.vue'
@@ -66,12 +73,13 @@ export default {
     Location,
     SectionTitle,
     Slideshow,
-    DetailList,
+    List,
     IntroText,
     TransitionLink,
     BackButton,
   },
   layout: 'default',
+  // Function used for fetching the data of the specific product from the db for the ssr
   async asyncData({ $axios, route }) {
     const { id } = route.params
     const { data } = await $axios.get(
@@ -79,25 +87,26 @@ export default {
     )
     const product = data
     return {
-      introText: {
-        logo: product.logo,
-        subtitle: product.subtitle,
-        description: product.description,
-      },
       product,
     }
   },
   data() {
     return {
+      // Style of the list card for the detail list
       cardStyle: {
         titleColor: '#1d90eb',
         subtitleColor: '#5c74a0',
         descriptionColor: 'white',
       },
-      introTextStyle: {
-        subtitleColor: '#4fff63',
-      },
     }
+  },
+  computed: {
+    // Style for the introductory text
+    introTextStyle() {
+      return {
+        '--subtitle-color': '#4fff63',
+      }
+    },
   },
   mounted() {
     this.$animateComponents()
@@ -136,7 +145,6 @@ export default {
 .text-container {
   padding-top: 15vh;
   padding-bottom: 20vh;
-  width: 50vw;
 }
 @media (max-width: 600px) {
   .product-description {

@@ -1,4 +1,7 @@
 <template>
+  <!-- Component for the transition links between dynamic pages. It is composed of a title and a single navbutton 
+  if the specific topic is associated with a hasOne relationship or a list of navbuttons if the specific topic
+  is associated with a hasMany relationship inside the DB. -->
   <div v-if="items" class="flex">
     <div>
       <h3>
@@ -15,7 +18,7 @@
           :name="elem.name"
           :path="basePath + elem.id"
           class="font-montserrat link"
-          :style="textStyle"
+          :style="linkStyle"
         ></nav-button>
       </div>
     </div>
@@ -24,7 +27,7 @@
         :name="items.name"
         :path="basePath + items.id"
         class="font-montserrat link"
-        :style="textStyle"
+        :style="linkStyle"
       ></nav-button>
     </div>
   </div>
@@ -42,7 +45,8 @@ export default {
     basePath: { type: String, default: () => '' },
   },
   computed: {
-    textStyle() {
+    // Style for the link in the navbutton
+    linkStyle() {
       return {
         '--hover-color': '#335db1',
       }
@@ -69,6 +73,10 @@ h3 {
 }
 .grid {
   align-items: center;
+}
+.link {
+  font-size: 1.5rem;
+  text-decoration: underline;
 }
 @media (max-width: 600px) {
   .flex {
