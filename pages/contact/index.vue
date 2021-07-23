@@ -7,10 +7,10 @@
       ></intro-video>
     </section>
     <!-- Contact Container -->
-    <section id="content" class="w3-container">
+    <section id="content" class="w3-container background-gradient">
       <section-title title="CONTACTS"></section-title>
       <div class="contacts-container horizontally-centered hide-animate">
-        <div>
+        <div style="margin-top: 80px">
           <section class="offices-container">
             <h4 class="title">
               <span>Our Offices</span>
@@ -51,7 +51,8 @@
               </div>
             </div>
           </section>
-          <section class="email-container">
+          <div class="border-bottom"></div>
+          <section class="email-container" style="margin-top: 40px">
             <h4 class="title">
               <span>Contact Emails</span>
             </h4>
@@ -152,7 +153,9 @@ export default {
 .offices-container,
 .email-container {
   line-height: 2;
-  margin-top: 80px;
+}
+.border-bottom {
+  border-bottom: 1px solid #e4cdcd !important;
 }
 a {
   color: #2867c5;

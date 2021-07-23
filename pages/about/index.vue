@@ -8,8 +8,7 @@
     </section>
     <!-- About Container -->
     <section id="content" class="w3-container">
-      <section-title title="ABOUT US"></section-title>
-      <section class="background-gradient margin-separator">
+      <section class="background-gradient">
         <div
           class="
             center-container
@@ -176,10 +175,8 @@
 
 <script>
 import ListCard from '~/components/list/ListCard.vue'
-import SectionTitle from '~/components/SectionTitle.vue'
 export default {
   components: {
-    SectionTitle,
     ListCard,
   },
   layout: 'default',
@@ -216,6 +213,9 @@ export default {
 </script>
 
 <style scoped>
+#content {
+  padding-top: 0;
+}
 .center-container {
   width: 60vw;
 }

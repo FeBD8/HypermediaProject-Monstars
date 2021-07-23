@@ -4,7 +4,11 @@
     <the-header :menu-options="menuOptions"></the-header>
     <div>
       <Nuxt />
-      <chat :chat-list="list" :new-message="newMessage" />
+      <chat
+        :chat-list="list"
+        :new-message="newMessage"
+        class="hide-chat"
+      ></chat>
     </div>
     <the-footer :menu-options="menuOptions"></the-footer>
   </div>
@@ -86,6 +90,11 @@ img {
   position: fixed;
   bottom: 20px;
   right: 20px;
+}
+@media (max-height: 800px), (max-width: 600px) {
+  .hide-chat {
+    display: none;
+  }
 }
 @media (max-width: 1000px) {
   #content {

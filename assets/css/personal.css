@@ -157,6 +157,6 @@ h6 {
     display: block;
   }
   .flex {
-    flex-wrap: wrap;
+    display: block;
   }
 }

@@ -104,7 +104,7 @@ export default {
   background-color: rgb(233, 243, 232);
   border: 1px solid black;
   border-radius: 15px;
-  height: 500px;
+  height: 400px;
   width: 300px;
   position: absolute;
   bottom: 80px;
