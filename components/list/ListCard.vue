@@ -17,13 +17,14 @@
           :description="description"
           :style="textStyle"
         ></paragraph>
-        <div v-if="path" class="w3-padding-16">
-          <nuxt-link :to="path">
+        <slot></slot>
+        <div v-if="buttonPath" class="w3-padding-16">
+          <nuxt-link :to="buttonPath">
             <button
               class="w3-button w3-round-xxlarge w3-border"
               @click="$closeNav()"
             >
-              <b>Go to {{ title }}</b>
+              <b>{{ buttonName }}</b>
             </button>
           </nuxt-link>
         </div>
@@ -54,7 +55,8 @@ export default {
     image: { type: String, default: () => '' },
     alt: { type: String, default: () => '' },
     description: { type: String, default: () => '' },
-    path: { type: String, default: () => '' },
+    buttonPath: { type: String, default: () => '' },
+    buttonName: { type: String, default: () => '' },
     cardStyle: { type: Object, default: () => Object() },
   },
   computed: {

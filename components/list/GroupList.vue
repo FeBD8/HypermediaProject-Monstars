@@ -14,7 +14,8 @@
           :image="item.image"
           :alt="alt + item.name"
           :description="item.description"
-          :path="$route.path + '/' + item.id"
+          :button-name="'Go to ' + item.name"
+          :button-path="$route.path + '/' + item.id"
           :card-style="cardStyle"
         >
         </list-card>

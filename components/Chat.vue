@@ -50,6 +50,9 @@ export default {
   },
   methods: {
     sendMessage() {
+      if (this.messageToSend === '') {
+        return
+      }
       const { WebSocketEventBus } = require('mmcc/WebSocketEventBus')
       this.$store.commit('addMessage', {
         sender: false,
