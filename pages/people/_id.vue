@@ -31,6 +31,14 @@
               :subtitle="person.intro"
               :description="person.description"
               :style="textStyle"
+            >
+              <div class="social-icon">
+                <a :href="person.linkedin">
+                  <img
+                    src="~/static/icons/linkedin_dark.png"
+                    alt="Linkedin logo"
+                  />
+                </a></div
             ></paragraph>
           </div>
         </section>
@@ -54,8 +62,8 @@
               base-path="/products/"
             ></transition-link>
             <transition-link
-              title="Reference assistant of:"
-              :items="person.reference_assistant_of"
+              title="Assistance referent of:"
+              :items="person.assistance_referent_of"
               base-path="/products/"
             ></transition-link>
           </div>
@@ -91,6 +99,17 @@ export default {
     return {
       person,
     }
+  },
+  head: {
+    title: 'Person page',
+    meta: [
+      {
+        hid: 'Person page description',
+        name: 'Person page description',
+        content:
+          'Person page of the Monstars ICT company that shows the description of the specific person and all the roles that the employee plays.',
+      },
+    ],
   },
   computed: {
     // Style of the paragraph of the person description
@@ -144,6 +163,12 @@ img {
 .text-container {
   padding-left: 5vw;
   width: 90vw;
+}
+.social-icon {
+  max-width: 50px;
+}
+.social-icon:hover {
+  opacity: 80%;
 }
 .roles-container {
   padding-top: 3vh;

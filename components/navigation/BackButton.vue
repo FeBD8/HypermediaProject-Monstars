@@ -1,18 +1,16 @@
 <template>
-  <!-- Component for the back button. If the user navigates between pages, the back button brings the user to the last 
-    visited page, otherwise it brings the user to the topic page -->
+  <!-- Component for the back button. It is used inside kind of topic pages and it
+  brings the user back to the group page -->
   <div>
     <div class="back-button">
       <nuxt-link
-        :to="
-          $nuxt.context.from === undefined ? basePath : $nuxt.context.from.path
-        "
+        :to="'/' + basePath"
       >
         <button
           class="w3-button w3-round-xxlarge w3-border"
           @click="$closeNav()"
         >
-          <b>Go back</b>
+          <b>Back to {{ basePath }}</b>
         </button>
       </nuxt-link>
     </div>
@@ -22,9 +20,9 @@
 <script>
 export default {
   computed: {
-    // This methods computes the base path in case there is no a previous visited page
+    // This methods computes the base path from the url
     basePath() {
-      return '/' + this.$route.path.match(/\w+/)[0]
+      return this.$route.path.match(/\w+/)[0]
     },
   },
 }

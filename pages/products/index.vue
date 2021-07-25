@@ -52,6 +52,17 @@ export default {
       },
     }
   },
+  head: {
+    title: 'Products page',
+    meta: [
+      {
+        hid: 'Products page description',
+        name: 'Products page description',
+        content:
+          'Products page of the Monstars ICT company that shows the list of all the products offered by the company.',
+      },
+    ],
+  },
   mounted() {
     this.$animateComponents()
   },

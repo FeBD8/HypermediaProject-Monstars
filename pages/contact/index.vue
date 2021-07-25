@@ -125,6 +125,17 @@ export default {
       },
     }
   },
+  head: {
+    title: 'Contact page',
+    meta: [
+      {
+        hid: 'Contact page description',
+        name: 'Contact page description',
+        content:
+          'Contact page of the Monstars ICT company that shows the offices, the email contacts and the contact us form.',
+      },
+    ],
+  },
   mounted() {
     this.$animateComponents()
   },

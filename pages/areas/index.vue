@@ -52,6 +52,17 @@ export default {
       },
     }
   },
+  head: {
+    title: 'Areas page',
+    meta: [
+      {
+        hid: 'Areas page description',
+        name: 'Areas page description',
+        content:
+          'Areas page of the Monstars ICT company that shows the list of all the areas.',
+      },
+    ],
+  },
   mounted() {
     this.$animateComponents()
   },

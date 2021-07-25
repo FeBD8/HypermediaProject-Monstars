@@ -119,16 +119,16 @@ function defineDatabaseStructure() {
   })
   // Creating the 1 -> 1 association between Person and Product for which they are the reference for the assistance
   Product.belongsTo(Person, {
-    as: 'reference_assistant',
+    as: 'assistance_referent',
     foreignKey: {
-      name: 'reference_assistant_id',
+      name: 'assistance_referent_id',
       allowNull: false,
     },
     constraints: false,
   })
   Person.hasOne(Product, {
-    as: 'reference_assistant_of',
-    foreignKey: 'reference_assistant_id',
+    as: 'assistance_referent_of',
+    foreignKey: 'assistance_referent_id',
     constraints: false,
   })
   // Creating the 1 -> 1 association between Person and Product for which he/she is the product manager
@@ -329,7 +329,7 @@ async function insertFakeData() {
       'https://www.moviri.com/wp-content/uploads/2021/03/cleafy-dashboard.png',
     area_id: area1.id,
     product_manager_id: person1.id,
-    reference_assistant_id: person2.id,
+    assistance_referent_id: person2.id,
   })
   const product2 = await Product.create({
     name: 'Akamas',
@@ -341,7 +341,7 @@ async function insertFakeData() {
       'https://www.moviri.com/wp-content/uploads/2020/11/showcase-akamas1.png',
     area_id: area2.id,
     product_manager_id: person3.id,
-    reference_assistant_id: person4.id,
+    assistance_referent_id: person4.id,
   })
   const product3 = await Product.create({
     name: 'ContentWise',
@@ -352,7 +352,7 @@ async function insertFakeData() {
     image: 'https://www.moviri.com/wp-content/uploads/2020/12/contentwise2.png',
     area_id: area2.id,
     product_manager_id: person5.id,
-    reference_assistant_id: person6.id,
+    assistance_referent_id: person6.id,
   })
   // Create some Details for area 1
   const areaDetail1 = await AreaDetail.create({

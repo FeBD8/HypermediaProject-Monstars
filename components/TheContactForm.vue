@@ -37,7 +37,7 @@
       <div class="label-container">
         <label>
           <span>Message</span>
-          <textarea class="input" style="max-width: 530px"></textarea>
+          <textarea class="input"></textarea>
         </label>
       </div>
       <div class="privacy">

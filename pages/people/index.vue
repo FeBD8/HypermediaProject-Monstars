@@ -46,6 +46,17 @@ export default {
       },
     }
   },
+  head: {
+    title: 'People page',
+    meta: [
+      {
+        hid: 'People page description',
+        name: 'People page description',
+        content:
+          'People page of the Monstars ICT company that shows all the people that works in it.',
+      },
+    ],
+  },
   mounted() {
     this.$animateComponents()
   },

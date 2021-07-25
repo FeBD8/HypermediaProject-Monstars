@@ -189,6 +189,17 @@ export default {
       },
     }
   },
+  head: {
+    title: 'About page',
+    meta: [
+      {
+        hid: 'About page description',
+        name: 'About page description',
+        content:
+          'About page of the Monstars ICT company that explains the history of the company, its milestones and the global numbers.',
+      },
+    ],
+  },
   mounted() {
     this.$animateComponents()
   },

@@ -48,7 +48,7 @@ async function init() {
         },
         {
           model: Product,
-          as: 'reference_assistant_of',
+          as: 'assistance_referent_of',
         },
         {
           model: Product,
@@ -67,7 +67,7 @@ async function init() {
       include: [
         {
           model: Person,
-          as: 'reference_assistant',
+          as: 'assistance_referent',
         },
         {
           model: Person,

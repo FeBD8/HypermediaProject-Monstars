@@ -49,8 +49,8 @@
             base-path="/people/"
           ></transition-link>
           <transition-link
-            title="Reference Assistant:"
-            :items="product.reference_assistant"
+            title="Assistance Referent:"
+            :items="product.assistance_referent"
             base-path="/people/"
           ></transition-link>
         </div>
@@ -99,6 +99,17 @@ export default {
         descriptionColor: 'white',
       },
     }
+  },
+  head: {
+    title: 'Product page',
+    meta: [
+      {
+        hid: 'Product page description',
+        name: 'Product page description',
+        content:
+          'Product page of the Monstars ICT company that shows the suite for the specific product, the list of customers, the area and the main people related to the product.',
+      },
+    ],
   },
   computed: {
     // Style for the introductory text

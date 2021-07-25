@@ -77,6 +77,17 @@ export default {
       area,
     }
   },
+  head: {
+    title: 'Area page',
+    meta: [
+      {
+        hid: 'Area page description',
+        name: 'Area page description',
+        content:
+          'Area page of the Monstars ICT company that shows the solutions for the specific area, the list of emplyees and products related to that area.',
+      },
+    ],
+  },
   computed: {
     // Style of the introduction text
     introTextStyle() {
@@ -85,6 +96,7 @@ export default {
       }
     },
   },
+
   mounted() {
     this.$animateComponents()
   },

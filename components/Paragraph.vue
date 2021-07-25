@@ -13,6 +13,7 @@
         <b>{{ subtitle }}</b>
       </h5>
       <p v-if="description" class="description">{{ description }}</p>
+      <slot></slot>
     </div>
   </div>
 </template>

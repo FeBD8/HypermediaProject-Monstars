@@ -19,9 +19,15 @@
             "intents": [
               "I want to contact the company",
               "contact",
+              "Contact",
               "contacts",
+              "Contacts",
               "I need to contact the company",
-              "I need the contacts"
+              "I need the contacts", 
+              "Contact the company",
+              "contact the company",
+              "contacts of the company",
+              "Contacts of the company"
             ],
             "utterance": ["Okay", "Message received!", "As you want"]
           },
@@ -31,11 +37,19 @@
               "I want a personal guided tour",
               "I want a guided tour",
               "a tour",
+              "A tour",
               "the tour",
+              "The tour",
               "tour",
+              "Tour",
               "guided tour",
+              "Guided tour",
               "tour of the site",
-              "personal tour"
+              "Tour of the site",
+              "tour of the website",
+              "Tour of the website",
+              "personal tour",
+              "Personal tour"
             ]
           }
         ],
@@ -56,10 +70,17 @@
             "intents": [
               "I want to fulfill the form",
               "fulfill the form",
+              "Fulfill the form",
               "fulfill form",
+              "Fulfill form",
+              "fill the form",
+              "Fill the form",
               "form",
+              "Form",
               "the form",
-              "insert information in the form"
+              "The form",
+              "insert information in the form",
+              "Insert information in the form"
             ],
             "utterance": [
               "Welcome to the contact form. Fill it with your information to stay in touch with us.",
@@ -75,12 +96,19 @@
             "intents": [
               "I want to go to the contact page",
               "contact page",
+              "Contact page",
               "contact",
+              "Contacts",
               "bring me to the contact page",
-              "bting me to the contact",
+              "Bring me to the contact page",
+              "bring me to the contact",
+              "Bring me to the contact",
               "contacts",
+              "Contacts",
               "contacts of the company",
-              "page"
+              "Contacts of the company",
+              "page",
+              "Page"
             ],
             "utterance": [
               "Welcome to the Contact page of our website. Here you can find all the information you need.",
@@ -126,19 +154,36 @@
       "steps_v": ["", "/", "/about"],
       "continue_v": [
         "continue",
+        "Continue",
         "ok",
+        "Ok",
         "go",
+        "Go",
         "yes",
+        "Yes",
         "go on",
+        "Go on",
         "let's go",
+        "Let's go",
         "okay",
+        "Okay",
         "next",
+        "Next",
+        "next one",
+        "Next one",
         "show me the next page",
+        "Show me the next page",
         "I'm ready",
         "ready",
+        "Ready",
         "now",
+        "Now",
         "y",
-        "yep"
+        "Y",
+        "yep",
+        "Yep",
+        "always",
+        "Always"
       ],
       "guide_v": ["guide"],
       "stay_message": "I don't understand. Do you want to continue?"

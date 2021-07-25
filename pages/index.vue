@@ -51,6 +51,17 @@ export default {
       },
     }
   },
+  head: {
+    title: 'Home page',
+    meta: [
+      {
+        hid: 'Home page description',
+        name: 'Home page description',
+        content:
+          'Home page of the Monstars ICT company that shows the main sections of the website like the areas, the products and the customers.',
+      },
+    ],
+  },
   mounted() {
     this.$animateComponents()
   },
