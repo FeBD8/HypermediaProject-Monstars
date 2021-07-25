@@ -168,7 +168,7 @@ img {
   max-width: 50px;
 }
 .social-icon:hover {
-  opacity: 80%;
+  opacity: 0.8;
 }
 .roles-container {
   padding-top: 3vh;

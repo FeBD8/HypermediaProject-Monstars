@@ -35,7 +35,7 @@ export default {}
   margin: 4px 8px !important;
 }
 .link:hover {
-  opacity: 80%;
+  opacity: 0.8;
 }
 .icons-container {
   display: flex;

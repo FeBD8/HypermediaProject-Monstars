@@ -11,12 +11,8 @@
     <section id="content" class="w3-container">
       <section class="background-gradient">
         <div
-          class="
-            center-container
-            horizontally-centered
-            hide-animate
-            intro-about-container
-          "
+          class="center-container horizontally-centered hide-animate"
+          style="padding: 50px 0"
         >
           <h4 class="title">
             <span>A Global Technology Business</span>
@@ -99,12 +95,8 @@
       </section>
       <section class="background-gradient margin-separator">
         <div
-          class="
-            intro-about-container
-            center-container
-            horizontally-centered
-            hide-animate
-          "
+          class="center-container horizontally-centered hide-animate"
+          style="padding: 50px 0"
         >
           <div>
             <h4 class="title">
@@ -221,9 +213,6 @@ export default {
 .number {
   font-size: 2rem;
 }
-.intro-about-container {
-  padding: 50px 0;
-}
 .title {
   font-size: 2rem;
   text-align: center;
@@ -231,11 +220,6 @@ export default {
 .row {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  padding-bottom: 25px;
-}
-.row-23 {
-  display: grid;
-  grid-template-columns: 2fr 1fr;
   padding-bottom: 25px;
 }
 p {
@@ -256,9 +240,6 @@ h5 {
   .row {
     grid-template-columns: 1fr;
     padding-bottom: 0;
-  }
-  .intro-about-container {
-    width: 100vw;
   }
   .center-container {
     width: 90vw;
