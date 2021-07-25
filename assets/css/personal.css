@@ -65,6 +65,12 @@ h6 {
 .shadow {
   box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.2), 0 4px 20px 0 rgba(0, 0, 0, 0.19);
 }
+.block {
+  display: block !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  transition: visibility 0s linear 0.5s, opacity 0.5s linear;
+}
 .fade-in {
   visibility: visible !important;
   opacity: 1 !important;
@@ -126,9 +132,6 @@ h6 {
     font-size: 13px;
   }
   .horizontally-centered {
-    display: block;
-  }
-  .flex {
     display: block;
   }
 }

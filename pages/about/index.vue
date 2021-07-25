@@ -247,5 +247,8 @@ h5 {
   p {
     font-size: 1.1rem;
   }
+  .flex {
+    display: block;
+  }
 }
 </style>

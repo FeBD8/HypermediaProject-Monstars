@@ -25,6 +25,7 @@ export default ({ app }, inject) => {
   // Methods used for showing and hiding the navbar on small screen's devices
   inject('openNav', () => {
     const navBar = document.getElementById('navSmallScreen')
+    console.log(navBar)
     if (navBar.classList.contains('block')) {
       navBar.classList.remove('fade-in')
       setTimeout(() => navBar.classList.remove('block'), 500)
