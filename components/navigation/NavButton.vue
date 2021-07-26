@@ -1,40 +1,31 @@
 <template>
-  <!-- Navigation button used for navigation in the header, the footer and for the transition links. -->
-  <nuxt-link class="w3-button" :to="path" @click.native="scrollUp()">
-    <span class="hover">{{ name }}</span>
-  </nuxt-link>
+  <div class="w3-padding-16">
+    <nuxt-link :to="buttonPath">
+      <button class="w3-button w3-round-xxlarge w3-border" @click="$closeNav()">
+        <b>{{ buttonName }}</b>
+      </button>
+    </nuxt-link>
+  </div>
 </template>
 
 <script>
 export default {
   props: {
-    name: { type: String, default: () => '' },
-    path: { type: String, default: () => '' },
-  },
-  methods: {
-    /* This methods allows to scroll the page up to the top if the user clicks 
-    the navbutton of the currently open page. */
-    scrollUp() {
-      if (this.$route.name === this.name.toLowerCase()) {
-        this.$scrollToTop()
-      }
-    },
+    buttonPath: { type: String, default: () => '' },
+    buttonName: { type: String, default: () => '' },
   },
 }
 </script>
 
 <style scoped>
 .w3-button {
-  margin: 8px 16px;
-  padding: 0;
+  background-color: #0d2b66 !important;
+  color: white !important;
+  transition: background-color 0.3s ease-out;
+  border-color: #0d2b66 !important;
 }
-.hover:hover {
-  color: var(--hover-color);
-}
-.nuxt-link-active:after {
-  content: '';
-  display: block;
-  width: 100%;
-  height: 1px;
+.w3-button:hover {
+  background-color: transparent !important;
+  color: #0d2b66 !important;
 }
 </style>

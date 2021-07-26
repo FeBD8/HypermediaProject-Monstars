@@ -4,7 +4,7 @@ export default {
   target: 'server',
   env: {
     BASE_URL: 'https://hypermedia-monstars.herokuapp.com', // Production URL
-    //BASE_URL: '', // Development URL
+    // BASE_URL: '', // Development URL
     configurationId: '7f24de59-b3b2-4a41-87a5-fecda0cbe0f8',
   },
   serverMiddleware: [

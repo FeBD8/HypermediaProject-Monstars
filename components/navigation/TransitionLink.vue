@@ -14,30 +14,30 @@
         :key="'item-' + elemIndex"
         class="list"
       >
-        <nav-button
+        <nav-label
           :name="elem.name"
           :path="basePath + elem.id"
           class="font-montserrat link"
           :style="linkStyle"
-        ></nav-button>
+        ></nav-label>
       </div>
     </div>
     <div v-else class="single">
-      <nav-button
+      <nav-label
         :name="items.name"
         :path="basePath + items.id"
         class="font-montserrat link"
         :style="linkStyle"
-      ></nav-button>
+      ></nav-label>
     </div>
   </div>
 </template>
 
 <script>
-import NavButton from '~/components/navigation/NavButton.vue'
+import NavLabel from '~/components/navigation/NavLabel.vue'
 export default {
   components: {
-    NavButton,
+    NavLabel,
   },
   props: {
     title: { type: String, default: () => '' },

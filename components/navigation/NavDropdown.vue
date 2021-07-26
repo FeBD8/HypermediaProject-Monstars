@@ -15,24 +15,24 @@
         :path="path + '/' + item.id"
       >
       </nav-card>
-      <nav-button
+      <nav-label
         v-else
         :name="item.name"
         :path="path + '/' + item.id"
         class="font-montserrat"
       >
-      </nav-button>
+      </nav-label>
     </li>
   </ul>
 </template>
 
 <script>
 import NavCard from '~/components/navigation/NavCard.vue'
-import NavButton from '~/components/navigation/NavButton.vue'
+import NavLabel from '~/components/navigation/NavLabel.vue'
 export default {
   components: {
     NavCard,
-    NavButton,
+    NavLabel,
   },
   props: {
     path: { type: String, default: () => '' },

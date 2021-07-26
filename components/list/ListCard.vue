@@ -18,16 +18,12 @@
           :style="textStyle"
         ></paragraph>
         <slot></slot>
-        <div v-if="buttonPath" class="w3-padding-16">
-          <nuxt-link :to="buttonPath">
-            <button
-              class="w3-button w3-round-xxlarge w3-border"
-              @click="$closeNav()"
-            >
-              <b>{{ buttonName }}</b>
-            </button>
-          </nuxt-link>
-        </div>
+        <nav-button
+          v-if="buttonPath"
+          :button-name="buttonName"
+          :button-path="buttonPath"
+        >
+        </nav-button>
       </div>
     </div>
     <div
@@ -44,9 +40,9 @@
 
 <script>
 import Paragraph from '~/components/Paragraph.vue'
-
+import NavButton from '~/components/navigation/NavButton.vue'
 export default {
-  components: { Paragraph },
+  components: { Paragraph, NavButton },
   props: {
     num: { type: Number, default: () => 0 },
     title: { type: String, default: () => '' },
@@ -75,16 +71,6 @@ export default {
 <style scoped>
 img {
   padding: 32px 32px !important;
-}
-.w3-button {
-  background-color: #0d2b66 !important;
-  color: white !important;
-  transition: background-color 0.3s ease-out;
-  border-color: #0d2b66 !important;
-}
-.w3-button:hover {
-  background-color: transparent !important;
-  color: #0d2b66 !important;
 }
 .listcard-container {
   grid-template-columns: 1fr 1fr;

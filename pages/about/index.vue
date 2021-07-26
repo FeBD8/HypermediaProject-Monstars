@@ -10,10 +10,7 @@
     <!-- About Container -->
     <section id="content" class="w3-container">
       <section class="background-gradient">
-        <div
-          class="center-container horizontally-centered hide-animate"
-          style="padding: 50px 0"
-        >
+        <div class="hide-animate" style="padding: 50px 0">
           <h4 class="title">
             <span>A Global Technology Business</span>
           </h4>
@@ -71,7 +68,7 @@
         </div>
       </section>
       <section class="margin-separator">
-        <div class="center-container horizontally-centered hide-animate">
+        <div class="hide-animate">
           <list-card
             title="Certifications and Awards"
             subtitle="Gartner Cool Vendor 2021 per Software Engineering Technology"
@@ -133,14 +130,7 @@
           </div>
         </div>
       </section>
-      <section
-        class="
-          center-container
-          horizontally-centered
-          hide-animate
-          margin-separator
-        "
-      >
+      <section class="hide-animate margin-separator">
         <h4 class="title">
           <span>Join our Team</span>
         </h4>
@@ -202,6 +192,7 @@ export default {
 #content {
   padding-top: 0;
 }
+.listcard-container,
 .center-container {
   width: 60vw;
 }

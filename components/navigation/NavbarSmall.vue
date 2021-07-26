@@ -4,23 +4,23 @@
   <nav id="navSmallScreen" class="navbar-small w3-hide-large">
     <ul class="w3-ul">
       <li v-for="(item, itemIndex) of options" :key="'menu-item-' + itemIndex">
-        <nav-button
+        <nav-label
           :name="item.name"
           :path="item.path"
           class="underline-animation"
           @click.native="$closeNav()"
         >
-        </nav-button>
+        </nav-label>
       </li>
     </ul>
   </nav>
 </template>
 
 <script>
-import NavButton from '~/components/navigation/NavButton.vue'
+import NavLabel from '~/components/navigation/NavLabel.vue'
 export default {
   components: {
-    NavButton,
+    NavLabel,
   },
   props: {
     options: { type: Array, default: () => [] },

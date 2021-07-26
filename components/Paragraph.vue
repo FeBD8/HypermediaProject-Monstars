@@ -60,7 +60,7 @@ export default {
 }
 @media (max-width: 1000px) {
   .text-container {
-    width: 90vw !important;
+    width: var(--container-responsive-width, 90vw) !important;
   }
   .title {
     width: 100%;

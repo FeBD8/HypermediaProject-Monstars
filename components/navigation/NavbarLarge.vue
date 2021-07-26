@@ -11,11 +11,11 @@
         :class="{ 'w3-dropdown-hover': dropdown && item.content }"
         class="w3-bar-item"
       >
-        <nav-button
+        <nav-label
           class="underline-animation"
           :name="item.name"
           :path="item.path"
-        ></nav-button>
+        ></nav-label>
         <div v-if="!dropdown && item.content" class="border-bottom"></div>
         <nav-dropdown
           v-if="item.content"
@@ -32,11 +32,11 @@
 
 <script>
 import NavDropdown from '~/components/navigation/NavDropdown.vue'
-import NavButton from '~/components/navigation/NavButton.vue'
+import NavLabel from '~/components/navigation/NavLabel.vue'
 export default {
   components: {
     NavDropdown,
-    NavButton,
+    NavLabel,
   },
   props: {
     options: { type: Array, default: () => [] },

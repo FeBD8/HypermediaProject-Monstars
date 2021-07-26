@@ -24,7 +24,14 @@ async function init() {
   })
   // API to get all the products
   app.get('/products', async (req, res) => {
-    const products = await Product.findAll()
+    const products = await Product.findAll({
+      include: [
+        {
+          model: Customer,
+          as: 'customers',
+        },
+      ],
+    })
     return res.json(products)
   })
   // API to get a person by ID.
