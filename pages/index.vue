@@ -31,12 +31,6 @@
                   style="padding-top: 0 !important"
                   :style="areasParagraphStyle"
                 >
-                  <nuxt-link :to="'/areas/' + area.id">
-                    <img
-                      class="arrow-area hover"
-                      src="~/static/icons/arrow_right.png"
-                    />
-                  </nuxt-link>
                 </paragraph>
               </div>
             </div>
@@ -65,12 +59,6 @@
               :subtitle="prod.subtitle"
               class="padding"
             >
-              <nuxt-link :to="'/products/' + prod.id">
-                <img
-                  class="arrow-prod hover"
-                  src="~/static/icons/arrow_right.png"
-                />
-              </nuxt-link>
             </paragraph>
             <nav-button
               button-name="All Products"
@@ -114,6 +102,40 @@
             <img
               src="https://www.moviri.com/wp-content/uploads/2020/11/mobile_map5-533x1024.jpg"
             />
+          </div>
+        </div>
+      </section>
+      <section class="hide-animate background-gradient">
+        <div class="about-team-container horizontally-centered padding">
+          <div class="w3-row">
+            <div class="team padding">
+              <h4 class="title">
+                <span>Meet our team</span>
+              </h4>
+              <p>
+                We’d like to introduce you to our family of brilliant,
+                hard-working and talentuous team components.
+              </p>
+              <nav-button
+                button-name="People"
+                button-path="/people"
+                style="text-align: center"
+              ></nav-button>
+            </div>
+            <div class="about padding">
+              <h4 class="title">
+                <span>About us</span>
+              </h4>
+              <p>
+                We'd like to present you our company, the history of our
+                business and the and the goals we have achieved.
+              </p>
+              <nav-button
+                button-name="About Us"
+                button-path="/about"
+                style="text-align: center"
+              ></nav-button>
+            </div>
           </div>
         </div>
       </section>
@@ -209,6 +231,7 @@ export default {
 .areas-container,
 .products-container,
 .customers-container,
+.about-team-container,
 .listcard-container {
   width: 60vw;
 }
@@ -219,6 +242,11 @@ export default {
 .areas-container {
   padding-bottom: 50px;
 }
+.team,
+.about {
+  width: 50%;
+  float: left;
+}
 .img-container {
   max-width: 100vw;
 }
@@ -228,13 +256,6 @@ export default {
 .shortcut-area {
   width: 80px;
   height: 80px;
-}
-.arrow-area {
-  float: right;
-}
-.arrow-area,
-.arrow-prod {
-  width: 35px;
 }
 .title {
   font-size: 2rem;
@@ -253,9 +274,6 @@ export default {
 .padding {
   padding: 24px;
 }
-.hover:hover {
-  opacity: 0.6;
-}
 p {
   color: #717b99;
 }
@@ -268,6 +286,7 @@ p {
   .img-title {
     margin-bottom: -80px;
   }
+  .about-team-container,
   .products-container {
     width: 90vw;
   }
