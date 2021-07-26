@@ -74,8 +74,8 @@
         <div>
           <h4 class="title">
             <span
-              >We use data, software, and insights to solve our customers' most
-              substantial technology challenges</span
+              >We use data and software to solve our customers' technology
+              challenges</span
             >
           </h4>
           <slideshow
@@ -286,11 +286,15 @@ p {
   .img-title {
     margin-bottom: -80px;
   }
+  .customers-container,
   .about-team-container,
   .products-container {
     width: 90vw;
   }
-  .customers-container,
+  .team,
+  .about {
+    width: 100%;
+  }
   .areas-container {
     width: 100vw;
   }
