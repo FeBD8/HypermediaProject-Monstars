@@ -65,6 +65,9 @@ h6 {
 .shadow {
   box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.2), 0 4px 20px 0 rgba(0, 0, 0, 0.19);
 }
+.shadow-blue {
+  box-shadow: 0 4px 10px 0 rgba(13, 43, 102, 0.2), 0 4px 20px 0 rgba(13, 43, 102, 0.15);
+}
 .block {
   display: block !important;
   visibility: hidden !important;
@@ -130,8 +133,5 @@ h6 {
   html,
   body {
     font-size: 13px;
-  }
-  .horizontally-centered {
-    display: block !important;
   }
 }

@@ -3,10 +3,10 @@
   It is used as the text part inside the listcard. -->
   <div class="text-container">
     <div class="w3-row">
-      <h4 v-if="!logo" class="title font-staatliches">
+      <h4 v-if="!logo && title" class="title font-staatliches">
         <span>{{ title }}</span>
       </h4>
-      <div v-else class="logo">
+      <div v-if="logo" class="logo">
         <img class="filter" :src="logo" :alt="'Logo' + title" />
       </div>
       <h5 v-if="subtitle" class="subtitle">

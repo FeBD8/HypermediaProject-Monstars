@@ -20,26 +20,24 @@
               :style="'width:' + 100 / maxAreaToShow + '%'"
               class="card"
             >
-              <div class="shadow w3-round-xlarge" style="height: 100%">
+              <div class="shadow-blue w3-round-xlarge" style="height: 100%">
                 <div class="padding" style="padding-bottom: 0 !important">
                   <img class="shortcut-area" :src="area.shortcut_image" />
                 </div>
-                <div>
-                  <paragraph
-                    :title="area.name"
-                    :subtitle="area.subtitle"
-                    class="padding"
-                    style="padding-top: 0 !important"
-                    :style="{ '--container-responsive-width': 'auto' }"
-                  >
-                    <nuxt-link :to="'/areas/' + area.id">
-                      <img
-                        class="arrow-area hover"
-                        src="~/static/icons/arrow_right.png"
-                      />
-                    </nuxt-link>
-                  </paragraph>
-                </div>
+                <paragraph
+                  :subtitle="area.name"
+                  :description="area.subtitle"
+                  class="padding"
+                  style="padding-top: 0 !important"
+                  :style="areasParagraphStyle"
+                >
+                  <nuxt-link :to="'/areas/' + area.id">
+                    <img
+                      class="arrow-area hover"
+                      src="~/static/icons/arrow_right.png"
+                    />
+                  </nuxt-link>
+                </paragraph>
               </div>
             </div>
           </div>
@@ -53,8 +51,12 @@
       <section class="background-gradient">
         <div class="products-container horizontally-centered">
           <h4 class="title">
-            <span>Our Products</span>
+            <span>We build category-defining technology products</span>
           </h4>
+          <p>
+            We systematically develop, and invest in, innovative software and
+            technology products to deliver our solutions to global markets.
+          </p>
           <div>
             <paragraph
               v-for="(prod, prodIndex) in products.slice(0, maxProdToShow)"
@@ -63,6 +65,12 @@
               :subtitle="prod.subtitle"
               class="margin-separator padding"
             >
+              <nuxt-link :to="'/products/' + prod.id">
+                <img
+                  class="arrow-prod hover"
+                  src="~/static/icons/arrow_right.png"
+                />
+              </nuxt-link>
             </paragraph>
             <nav-button
               button-name="All Products"
@@ -71,10 +79,16 @@
           </div>
         </div>
       </section>
-      <section class="margin-separator" style="padding-top: 40px">
+      <section
+        class="customers-container horizontally-centered"
+        style="padding-top: 40px"
+      >
         <div>
           <h4 class="title">
-            <span>Our Customers</span>
+            <span
+              >We use data, software, and insights to solve our customers' most
+              substantial technology challenges</span
+            >
           </h4>
           <slideshow
             v-for="(prod, prodIndex) in products"
@@ -175,6 +189,16 @@ export default {
       },
     ],
   },
+  computed: {
+    // Style for the area paragraph
+    areasParagraphStyle() {
+      return {
+        '--subtitle-color': '#47546b',
+        '--description-color': '#717b99',
+        '--container-responsive-width': 'auto',
+      }
+    },
+  },
   mounted() {
     this.$animateComponents()
   },
@@ -184,6 +208,7 @@ export default {
 <style scoped>
 .areas-container,
 .products-container,
+.customers-container,
 .listcard-container {
   width: 60vw;
 }
@@ -206,6 +231,9 @@ export default {
 }
 .arrow-area {
   float: right;
+}
+.arrow-area,
+.arrow-prod {
   width: 35px;
 }
 .title {
@@ -214,7 +242,7 @@ export default {
 }
 .card {
   float: left;
-  padding: 30px;
+  padding: 50px 70px;
   height: 100%;
   word-wrap: break-word !important;
 }
@@ -228,6 +256,9 @@ export default {
 .hover:hover {
   opacity: 0.6;
 }
+p {
+  color: #717b99;
+}
 @media (max-width: 600px) {
   .img-title {
     margin-bottom: -100px !important;
@@ -240,11 +271,19 @@ export default {
   .products-container {
     width: 90vw;
   }
+  .customers-container,
+  .areas-container {
+    width: 100vw;
+  }
   .card {
     width: 100% !important;
+    padding: 30px 40px;
   }
   .text-container {
     width: auto;
+  }
+  .horizontally-centered {
+    display: block;
   }
 }
 </style>
