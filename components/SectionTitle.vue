@@ -1,5 +1,6 @@
 <template>
-  <!-- Section title component used to introduce a new section inside the different pages. -->
+  <!-- Section title component used to introduce a new section inside the different pages. 
+  It is used for standardize the style of the titles inside the whole website. -->
   <div class="w3-center hide-animate">
     <h3 class="section-title">
       <span>{{ title }}</span>

@@ -1,5 +1,6 @@
 <template>
-  <!-- Navigation label used as landmark for navigation in the header, the footer and for the transition links. -->
+  <!-- Navigation label used as landmark for navigation in the header, the footer and for the transition links.
+  It is used to standardize the style of the link labels inside the whole website. -->
   <nuxt-link class="w3-button" :to="path" @click.native="scrollUp()">
     <span class="hover">{{ name }}</span>
   </nuxt-link>

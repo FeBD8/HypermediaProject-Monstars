@@ -1,4 +1,6 @@
 <template>
+<!-- Navigation button component. It is used to standardize the style of the buttons inside the
+whole website. -->
   <div class="w3-padding-16">
     <nuxt-link :to="buttonPath">
       <button class="w3-button w3-round-xxlarge w3-border" @click="$closeNav()">

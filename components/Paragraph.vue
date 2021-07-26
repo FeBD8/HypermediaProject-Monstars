@@ -1,6 +1,6 @@
 <template>
   <!-- Paragraph component composed by a title or a logo image, a subtitle and a description. 
-  It is used as the text part inside the listcard. -->
+  It is used as the text part inside the listcard and in pages. -->
   <div class="text-container">
     <div class="w3-row">
       <h4 v-if="!logo && title" class="title font-staatliches">
