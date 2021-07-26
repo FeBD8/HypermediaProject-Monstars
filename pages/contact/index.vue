@@ -10,7 +10,7 @@
     <section id="content" class="w3-container background-gradient">
       <section-title title="CONTACTS"></section-title>
       <div class="contacts-container horizontally-centered hide-animate">
-        <div style="margin-top: 80px">
+        <div class="margintop-contacts">
           <section class="offices-container">
             <h4 class="title">
               <span>Our Offices</span>
@@ -153,6 +153,9 @@ export default {
   line-height: 1.5;
   padding-bottom: 50px;
 }
+.margintop-contacts {
+  margin-top: 80px;
+}
 .title {
   font-size: 2rem;
 }
@@ -186,6 +189,9 @@ b {
   .contacts-container {
     grid-template-columns: 1fr;
     width: 80vw;
+  }
+  .margintop-contacts {
+    margin-top: 20px;
   }
 }
 </style>
