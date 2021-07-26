@@ -10,7 +10,7 @@ It is used inside the dynamic pages where the items are retrieved from the DB. -
     >
       <div :class="{ 'background-alternate': itemIndex % 2 }">
         <list-card
-          :num="item.id"
+          :num="itemIndex"
           :title="item.name"
           :subtitle="item.subtitle"
           :logo="item.logo"

@@ -143,7 +143,7 @@ export default {
 }
 .location {
   position: absolute;
-  margin-top: -70px;
+  margin-top: -50px;
   margin-left: 30px;
 }
 #content {
