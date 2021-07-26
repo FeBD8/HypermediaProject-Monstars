@@ -171,6 +171,7 @@ export default {
       },
     }
   },
+  // Meta tag used by the SEO that improve the visibility of the website
   head: {
     title: 'About page',
     meta: [

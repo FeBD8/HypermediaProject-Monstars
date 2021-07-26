@@ -200,6 +200,7 @@ export default {
       maxAreaToShow: 2,
     }
   },
+  // Meta tag used by the SEO that improve the visibility of the website
   head: {
     title: 'Home page',
     meta: [
