@@ -7,7 +7,7 @@
       <chat
         :chat-list="list"
         :new-message="newMessage"
-        class="hide-chat"
+        class="w3-hide-small w3-hide-medium"
       ></chat>
     </div>
     <the-footer :menu-options="menuOptions"></the-footer>
@@ -90,11 +90,6 @@ img {
   position: fixed;
   bottom: 20px;
   right: 20px;
-}
-@media (max-height: 800px), (max-width: 600px) {
-  .hide-chat {
-    display: none;
-  }
 }
 @media (max-width: 1000px) {
   #content {
