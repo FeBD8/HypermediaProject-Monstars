@@ -101,7 +101,7 @@ export default {
     navBarLargeStyle() {
       return {
         '--text-color': 'white',
-        '--font-size': '1.3rem',
+        '--font-size': '1.1rem',
         '--text-align': 'center',
       }
     },
@@ -143,7 +143,7 @@ export default {
   background-color: #041a47 !important;
   color: white !important;
   position: absolute;
-  font-size: 1.3rem;
+  font-size: 1.1rem;
 }
 #navLinkLarge {
   padding: 24px 32px !important;
