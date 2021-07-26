@@ -63,7 +63,7 @@
               :key="'prod-' + prodIndex"
               :logo="prod.logo"
               :subtitle="prod.subtitle"
-              class="margin-separator padding"
+              class="padding"
             >
               <nuxt-link :to="'/products/' + prod.id">
                 <img
