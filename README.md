@@ -1,9 +1,5 @@
 # HypermediaProject-Monstars
 
-GROUP NAME: THE MONSTARS
-
-Member1: Luca Colombo - 10530695 - luca61.colombo@mail.polimi.it
-
 Server Technology: NodeJS
 
 DB Technology: PostgreSQL
@@ -45,8 +41,3 @@ PLUGINS:
 - Mixins: It is used for the chatbot integration.
 - Plugin:
   - Helpers.js: Personal plugin file with some useful functions that are used by several components inside the website. It implements the methods to animate the components, the methods to scrolling the page and methods for opening and closing the navbar on small screen devices.
-
-
-
-COMMENTS:
-I think that I have used the framework in the right way for what concernes the best practices.
