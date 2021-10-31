@@ -4,7 +4,7 @@ Server Technology: NodeJS
 
 DB Technology: PostgreSQL
 
-COMPONENTS:
+**COMPONENTS:**
 - Intro:
   - IntroText.vue: Component used for the introductory text in the various pages. It is composed of a title or a logo, a subtitle and a description.
   - IntroVideo.vue: Component for the introduction video of all the main pages. It contains a video, the location that indicates the current page, an intro-text component for the indroductory text and an arrow button that bring the user to the main content of the page.
@@ -35,7 +35,7 @@ COMPONENTS:
 - TheSocials.vue: It contains the socials buttons and links of the company.
 
 
-PLUGINS:
+**PLUGINS:**
 - Store: It is used for the chatbot messages. It contains an array that stores all the messages coming from the chatbot and written by the user and a newMessage flag used for notifying the user if a new message is arrived.
 - Route: It is used inside the mmcc in order to let the chatbot change the current route when it redirects the user to the contact page and the contact form.
 - Mixins: It is used for the chatbot integration.
