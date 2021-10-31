@@ -1,14 +1,31 @@
 # HypermediaProject-Monstars
 
 *Hypermedia Applications course project at Politecnico di Milano*
-
 WebPage: https://hypermedia-monstars.herokuapp.com/
 
-Server Technology: NodeJS
+## General Overview
+Design and Development of a website for an ICT company.  
+The website contains these pages:
+- HomePage
+- Areas
+- Products
+- People
+- About
+- Contact
 
-DB Technology: PostgreSQL
+In addition, a small experimental chatbot has been added for navigating between pages.
 
-**COMPONENTS:**
+The Design documentation is available here: [Design_Report.pdf](https://github.com/lucacolombo97/Hypermedia-Monstars/files/7449184/Design_Report.pdf)  
+The Chatbot Design documentation is available here: [Chatbot.pdf](https://github.com/lucacolombo97/Hypermedia-Monstars/files/7449186/Chatbot.pdf)
+
+**Technology:**  
+The project has been developed using the Nuxt.js framework.  
+
+**Other Technologies:**  
+Server Technology: NodeJS  
+DataBase Technology: PostgreSQL
+
+## Components
 - Intro:
   - IntroText.vue: Component used for the introductory text in the various pages. It is composed of a title or a logo, a subtitle and a description.
   - IntroVideo.vue: Component for the introduction video of all the main pages. It contains a video, the location that indicates the current page, an intro-text component for the indroductory text and an arrow button that bring the user to the main content of the page.
@@ -38,8 +55,7 @@ DB Technology: PostgreSQL
 - TheLogo.vue: Standardized logo of the company with the link to the home page.
 - TheSocials.vue: It contains the socials buttons and links of the company.
 
-
-**PLUGINS:**
+## Plugins
 - Store: It is used for the chatbot messages. It contains an array that stores all the messages coming from the chatbot and written by the user and a newMessage flag used for notifying the user if a new message is arrived.
 - Route: It is used inside the mmcc in order to let the chatbot change the current route when it redirects the user to the contact page and the contact form.
 - Mixins: It is used for the chatbot integration.
