@@ -1,5 +1,7 @@
 # HypermediaProject-Monstars
 
+*Hypermedia Applications course project at Politecnico di Milano*
+
 WebPage: https://hypermedia-monstars.herokuapp.com/
 
 Server Technology: NodeJS
