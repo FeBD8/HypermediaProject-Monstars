@@ -16,8 +16,8 @@ The website contains these pages:
 In addition, a small experimental chatbot has been added for navigating between pages.  
 The application integrates the Server Side Rendering feature.
 
-The Design documentation is available here: [Design_Report.pdf](https://github.com/lucacolombo97/Hypermedia-Monstars/files/7449184/Design_Report.pdf)  
-The Chatbot Design documentation is available here: [Chatbot.pdf](https://github.com/lucacolombo97/Hypermedia-Monstars/files/7449186/Chatbot.pdf)
+The Design document is available here: [Design_Report.pdf](https://github.com/lucacolombo97/Hypermedia-Monstars/files/7449184/Design_Report.pdf)  
+The Chatbot Design document is available here: [Chatbot.pdf](https://github.com/lucacolombo97/Hypermedia-Monstars/files/7449186/Chatbot.pdf)
 
 **Technology:**  
 The project has been developed using the Nuxt.js framework.  
