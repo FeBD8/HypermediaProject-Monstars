@@ -1,7 +1,7 @@
 # HypermediaProject-Monstars
 
 *Hypermedia Applications course project at Politecnico di Milano*  
-WebPage available at: https://hypermedia-monstars.herokuapp.com/ (**Loading may take a long time due to the free hosting plan**)
+WebPage available at: https://hypermedia-monstars.herokuapp.com/ (**Loading may take a while due to the free hosting plan**)
 
 ## General Overview
 Design and Development of a website for an ICT company.  
